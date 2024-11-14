@@ -1,5 +1,5 @@
-Laravel Town Post Final Project
+<p> Laravel Town Post Final Project <p>
 
-System integration and architecture
-Integrative programming
-Advanced database
+System integration and architecture <br>
+Integrative programming <br>
+Advanced database <br>
