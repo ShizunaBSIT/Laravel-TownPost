@@ -51,7 +51,7 @@
           <button class="react-button">Like</button>
           <button class="share-button">Share</button>
           <button class="comment-button">Comment</button>
-<!--Text Area-->
+<!--Comment section is disabled-->
           <textarea class="comment-textarea" placeholder="Create an account to Comment"></textarea>
     </div>
 
