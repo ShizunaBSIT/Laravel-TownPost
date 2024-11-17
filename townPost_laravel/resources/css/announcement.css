@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --primary-color: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    --primary-color-dark: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --secondary-color: inear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%);;
+    --text-dark: black;
+    --text-light: #6b7280;
+    --extra-light: #faf5ff;
+    --max-width: 1200px;
+}
