@@ -48,9 +48,9 @@
             <span><em>ibardaloza.eunice@titech.edu.ph</em></span>
         </div>
 <!--Reaction Button -->
-          <button class="react-button">Like</button>
-          <button class="share-button">Share</button>
-          <button class="comment-button">Comment</button>
+        <button class="btn">Like</button>
+        <button class="btn">Share</button>
+        <button class="btn">Comment</button>
 <!--Comment section is disabled-->
           <textarea class="comment-textarea" placeholder="Create an account to Comment"></textarea>
     </div>
@@ -79,10 +79,10 @@
                             <li>Fill out the application form and submit it to the officer on duty</li>
                           </ul>
                     </p>
-            <!--Reaction Button -->
-          <button class="react-button">Like</button>
-          <button class="share-button">Share</button>
-          <button class="comment-button">Comment</button>
+<!--Reaction Button -->
+          <button class="btn">Like</button>
+          <button class="btn">Share</button>
+          <button class="btn">Comment</button>
         <!--Text Area-->
           <textarea class="comment-textarea" placeholder="Create an account to Comment"></textarea>
         </div>
@@ -108,7 +108,6 @@
             </a>
         </div>
     </nav>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
