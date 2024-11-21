@@ -6,45 +6,42 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
-    <!--<link rel="stylesheet" href="{{asset('css/announcement.css')}}">-->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-        :root {
-                --primary-color: background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-                --primary-color-dark: background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-                --secondary-color: background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-                --text-dark: black;
-                --text-light: #6b7280;
-                --extra-light: #faf5ff;
-            }
 
         body {
-                background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+                background-color: #C6E7FF;
                 font-family: 'Roboto Condensed', sans-serif;
             }
 
-        .container-md {
-                background: var(--primary-color-dark);
-                margin-top: 20px;
-                padding: 20px;
-                border-radius: 10px;
+        .filter-posts {
+                position: absolute;
+                top: 80px; 
+                right: 20px; 
+                z-index: 1000; 
             }
 
-        .filter-posts {
-                text-align: right;
-                margin-top: 10px;
-                position: absolute;
-                top: 20px;
-                right: 0;
+        .container-md {
+                padding: 20px;
+                border-radius: 10px; 
             }
+
+        .card {
+                margin-top: 30px; 
+                background-color: #FBFBFB;
+                position: relative;
+                border-radius: 10px;
+                padding: 20px; 
+            }
+
 
         .navbar.fixed-bottom {
-                background: var(--secondary-color);
+                background-color: #FFDDAE;
             }
 
         .navbar.fixed-bottom .nav-link {
                 text-align: center;
-                color: var(--text-dark);
+                color: black;
         }
 
         .navbar.fixed-bottom .nav-link img {
@@ -54,14 +51,25 @@
 
         .heading {
                 text-align: center;
-                color: var(--text-light);
+                color: #6b7280;
             }
+        .form-inline{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar.fixed-top{
+            border-bottom: none;          
+            box-shadow: none;
+        }
     </style>
 
   </head>
 <body>
     <!-- Logo -->
-    <nav class="navbar navbar-light bg-light justify-content-between">
+    <nav class="navbar fixed-top justify-content-between">
         <img src="/images/Logo.jpg" width="50" height="50" alt="Logo">
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -69,8 +77,8 @@
         </form>
     </nav>
 
-    <!-- Filter posts by recent, date, and time -->
-    <div class="filter-posts">
+<!-- Filter posts by recent, date, and time -->
+<div class="filter-posts">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="bi bi-filter-circle"></i>
         </button>
@@ -82,6 +90,7 @@
     </div>
 
    <!-- Content: Card 1 -->
+<section class="header">
 <div class="container-md mt-4">
     <div class="card">
         <div class="card-header">
@@ -143,8 +152,9 @@
         </div>
     </div>
 </div>
+</section>
     <!-- Bottom Navbar -->
-    <nav class="navbar navbar-light bg-light fixed-bottom">
+    <nav class="navbar fixed-bottom">
         <div class="container d-flex justify-content-around">
             <a class="nav-link" href="#">
                 <img src="{{asset('/images/house.svg')}}" width="30" height="30" alt="Home">
@@ -160,10 +170,29 @@
             </a>
             <a class="nav-link" href="#">
                 <img src="{{asset('/images/person-circle.svg')}}" width="30" height="30" alt="Account Settings">
-                <div>Account Settings</div>
+                <div>Account</div>
             </a>
         </div>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!--Javascript for Weather API-->
+    <script>
+        async function getWeather() {
+            const city = document.getElementById('city').value;
+            const apiKey ='f7062ed848a912a0f655cf26f1fff01e';
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+            try {
+                const response =await fetch(url)
+                if(!response.ok) throw new Error('City not found');
+                const data = await response.json();
+                const weatherInfo =`Temperature in ${data.name}: ${data.main.temp} °C, Weather: ${data.weather[0].description}`;
+                document.getElementById('weatherInfo').innerText = weatherInfo;
+            } catch (error) {
+                document.getElementById('weatherInfo').innerText=error.message;
+            }
+        }
+    </script>
 </body>
 </html>
