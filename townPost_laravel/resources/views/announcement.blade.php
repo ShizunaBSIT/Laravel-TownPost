@@ -13,19 +13,16 @@
                 background-color: #C6E7FF;
                 font-family: 'Roboto Condensed', sans-serif;
             }
-
         .filter-posts {
                 position: absolute;
                 top: 80px; 
                 right: 20px; 
                 z-index: 1000; 
             }
-
         .container-md {
                 padding: 20px;
                 border-radius: 10px; 
             }
-
         .card {
                 margin-top: 30px; 
                 background-color: #FBFBFB;
@@ -33,54 +30,156 @@
                 border-radius: 10px;
                 padding: 20px; 
             }
-
-
         .navbar.fixed-bottom {
                 background-color: #FFDDAE;
             }
-
         .navbar.fixed-bottom .nav-link {
                 text-align: center;
                 color: black;
         }
-
         .navbar.fixed-bottom .nav-link img {
                 display: block;
                 margin: 0 auto;
         }
-
         .heading {
                 text-align: center;
                 color: #6b7280;
             }
         .form-inline{
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            background: white;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 5px 15px;
+        }
+       
+        .navbar img {
+            border-radius: 4px;
+        }
+        .form-inline input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            flex: 1;
+        }
+        .form-inline button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            color: #28a745;
+        }
+        .dropdown-toggle {
+            background: white;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 5px 10px;
+            color: black;
+        }
+        .dropdown-toggle .bi {
+            font-size: 18px;
+        }
+        .dropdown-menu {
+            min-width: 150px;
+            text-align: left;
+        }
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: #FBFBFB; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333; 
+        }
+        .weather-info input {
+            width: 300px;
             padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #999;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        .weather-info button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .weather-info button:hover {
+            background-color: #0056b3;
+        }
+        .weather-info p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #555;
             text-align: center;
         }
-        .navbar.fixed-top{
-            border-bottom: none;          
+        .container-weather{
+            position: relative;
+            margin-top: 90px; 
+            margin-bottom: 30px;
+        }
+        .card.fixed-mid{
+            border-bottom: none;
             box-shadow: none;
+            padding: 10px 20px;
+        }
+        .navbar{
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 20px;
+        }
+        .navbar-section {
+            display: flex;
+            align-items: center; 
+        }
+        .search {
+            flex: 1; 
+            display: flex;
+            justify-content: center; 
+        }
+        .form-control {
+            width: 300px; 
+        }
+        .filter-posts {
+            display: flex;
+            align-items: center;
         }
     </style>
-
   </head>
 <body>
-    <!-- Logo -->
-    <nav class="navbar fixed-top justify-content-between">
+<!-- Navbar -->
+<nav class="navbar fixed-top justify-content-between">
+        <!-- Logo -->
         <img src="/images/Logo.jpg" width="50" height="50" alt="Logo">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </nav>
 
-<!-- Filter posts by recent, date, and time -->
-<div class="filter-posts">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-filter-circle"></i>
+        <!-- Search Bar -->
+    <div class="navbar-section search">
+        <form class="form-inline">
+            <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
+            <button type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+        </div>
+
+         <!-- Filter Button -->
+    <div class="navbar-section filter-posts">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-sliders"></i>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">Recent</a>
@@ -88,6 +187,25 @@
             <a class="dropdown-item" href="#">Date</a>
         </div>
     </div>
+</nav>
+
+<!--Get Weather forecast by City-->
+<div class="container-weather">
+    <div class="card fixed-mid">
+            <div class="weather-info-container text-center">
+                <h2 class="card-title">Today's Forecast:</h2>
+                <input
+                    type="text"
+                    id="city"
+                    class="form-control my-3"
+                    placeholder="Enter City Name"
+                />
+                <button class="btn btn-primary" onclick="getWeather()">Get Weather</button>
+                <p id="weatherInfo" class="mt-3">Weather Info will appear here</p>
+            </div>
+    </div>
+</div>
+
 
    <!-- Content: Card 1 -->
 <section class="header">
