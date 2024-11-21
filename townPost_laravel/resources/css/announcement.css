@@ -1,15 +1,121 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Root Variables */
 :root {
     --primary-color: linear-gradient(to top, #1e3c72 0%, #2a5298 100%);
-    --primary-color-dark: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    --secondary-color: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%);
+    --primary-color-dark: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    --secondary-color: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
     --text-dark: black;
     --text-light: #6b7280;
     --extra-light: #faf5ff;
-    --max-width: 1200px;
 }
 
+/* Navbar Styles */
+.navbar {
+    background: var(--primary-color);
+}
+
+.navbar .form-inline .form-control {
+    margin-right: 0.5rem;
+}
+
+.navbar .form-inline .btn {
+    transition: background-color 0.3s ease;
+}
+
+.navbar .form-inline .btn:hover,
+.navbar .form-inline .btn:focus,
+.navbar .form-inline .btn:active {
+    background-color: var(--primary-color-dark);
+}
+
+/* Filter Posts */
+.filter-posts #dropdownMenuButton {
+    transition: background-color 0.3s ease;
+}
+
+.filter-posts #dropdownMenuButton:hover,
+.filter-posts #dropdownMenuButton:focus,
+.filter-posts #dropdownMenuButton:active {
+    background-color: var(--secondary-color);
+}
+
+.filter-posts .dropdown-menu .dropdown-item {
+    transition: background-color 0.3s ease;
+}
+
+.filter-posts .dropdown-menu .dropdown-item:hover,
+.filter-posts .dropdown-menu .dropdown-item:focus,
+.filter-posts .dropdown-menu .dropdown-item:active {
+    background-color: var(--primary-color-dark);
+}
+
+/* Card Styles */
+.container-md.mt-4 .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-family: 'Roboto Condensed', sans-serif;
+    background: var(--primary-color-dark);
+    color: var(--text-dark);
+}
+
+.card-body {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: var(--text-light);
+}
+
+.card-body .btn {
+    margin-right: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.card-body .btn-primary:hover,
+.card-body .btn-primary:focus,
+.card-body .btn-primary:active {
+    background-color: #0056b3;
+}
+
+.card-body .btn-secondary:hover,
+.card-body .btn-secondary:focus,
+.card-body .btn-secondary:active {
+    background-color: #6c757d;
+}
+
+.card-body .btn-info:hover,
+.card-body .btn-info:focus,
+.card-body .btn-info:active {
+    background-color: #117a8b;
+}
+
+/* List Styles */
+.card-body ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.card-body ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Fixed Bottom Navbar */
+.navbar.fixed-bottom {
+    background: var(--primary-color-dark);
+}
+
+.navbar.fixed-bottom .nav-link {
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+.navbar.fixed-bottom .nav-link:hover,
+.navbar.fixed-bottom .nav-link:focus,
+.navbar.fixed-bottom .nav-link:active {
+    color: var(--primary-color);
+}
 body {
     background: var(--primary-color);
     font-family: 'Roboto Condensed', sans-serif;
@@ -25,6 +131,9 @@ body {
 .filter-posts {
     text-align: right;
     margin-top: 10px;
+    position: absolute;
+    top: 20px;
+    right: 0;
 }
 
 .navbar.fixed-bottom {

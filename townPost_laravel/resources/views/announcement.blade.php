@@ -6,12 +6,63 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/announcement.css') }}">
+    <!--<link rel="stylesheet" href="{{asset('css/announcement.css')}}">-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+                --primary-color: background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+                --primary-color-dark: background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+                --secondary-color: background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+                --text-dark: black;
+                --text-light: #6b7280;
+                --extra-light: #faf5ff;
+            }
+
+        body {
+                background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+                font-family: 'Roboto Condensed', sans-serif;
+            }
+
+        .container-md {
+                background: var(--primary-color-dark);
+                margin-top: 20px;
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+        .filter-posts {
+                text-align: right;
+                margin-top: 10px;
+                position: absolute;
+                top: 20px;
+                right: 0;
+            }
+
+        .navbar.fixed-bottom {
+                background: var(--secondary-color);
+            }
+
+        .navbar.fixed-bottom .nav-link {
+                text-align: center;
+                color: var(--text-dark);
+        }
+
+        .navbar.fixed-bottom .nav-link img {
+                display: block;
+                margin: 0 auto;
+        }
+
+        .heading {
+                text-align: center;
+                color: var(--text-light);
+            }
+    </style>
+
   </head>
 <body>
     <!-- Logo -->
     <nav class="navbar navbar-light bg-light justify-content-between">
-        <img src="/images/Logo.jpg" width="30" height="30" alt="Logo">
+        <img src="/images/Logo.jpg" width="50" height="50" alt="Logo">
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -92,8 +143,6 @@
         </div>
     </div>
 </div>
-
-
     <!-- Bottom Navbar -->
     <nav class="navbar navbar-light bg-light fixed-bottom">
         <div class="container d-flex justify-content-around">
