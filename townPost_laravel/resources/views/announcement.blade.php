@@ -6,22 +6,180 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/announcement.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+                background-color: #C6E7FF;
+                font-family: 'Roboto Condensed', sans-serif;
+            }
+        .filter-posts {
+                position: absolute;
+                top: 80px; 
+                right: 20px; 
+                z-index: 1000; 
+            }
+        .container-md {
+                padding: 20px;
+                border-radius: 10px; 
+            }
+        .card {
+                margin-top: 30px; 
+                background-color: #FBFBFB;
+                position: relative;
+                border-radius: 10px;
+                padding: 20px; 
+            }
+        .navbar.fixed-bottom {
+                background-color: #FFDDAE;
+            }
+        .navbar.fixed-bottom .nav-link {
+                text-align: center;
+                color: black;
+        }
+        .navbar.fixed-bottom .nav-link img {
+                display: block;
+                margin: 0 auto;
+        }
+        .heading {
+                text-align: center;
+                color: #6b7280;
+            }
+        .form-inline{
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 5px 15px;
+        }
+       
+        .navbar img {
+            border-radius: 4px;
+        }
+        .form-inline input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            flex: 1;
+        }
+        .form-inline button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            color: #28a745;
+        }
+        .dropdown-toggle {
+            background: white;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 5px 10px;
+            color: black;
+        }
+        .dropdown-toggle .bi {
+            font-size: 18px;
+        }
+        .dropdown-menu {
+            min-width: 150px;
+            text-align: left;
+        }
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: #FBFBFB; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333; 
+        }
+        .weather-info input {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #999;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        .weather-info button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .weather-info button:hover {
+            background-color: #0056b3;
+        }
+        .weather-info p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+        }
+        .container-weather{
+            position: relative;
+            margin-top: 90px; 
+            margin-bottom: 30px;
+        }
+        .card.fixed-mid{
+            border-bottom: none;
+            box-shadow: none;
+            padding: 10px 20px;
+        }
+        .navbar{
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 10px 20px;
+        }
+        .navbar-section {
+            display: flex;
+            align-items: center; 
+        }
+        .search {
+            flex: 1; 
+            display: flex;
+            justify-content: center; 
+        }
+        .form-control {
+            width: 300px; 
+        }
+        .filter-posts {
+            display: flex;
+            align-items: center;
+        }
+    </style>
   </head>
 <body>
-    <!-- Logo -->
-    <nav class="navbar navbar-light bg-light justify-content-between">
-        <img src="/images/Logo.jpg" width="30" height="30" alt="Logo">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </nav>
+<!-- Navbar -->
+<nav class="navbar fixed-top justify-content-between">
+        <!-- Logo -->
+        <img src="/images/Logo.jpg" width="50" height="50" alt="Logo">
 
-    <!-- Filter posts by recent, date, and time -->
-    <div class="filter-posts">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-filter-circle"></i>
+        <!-- Search Bar -->
+    <div class="navbar-section search">
+        <form class="form-inline">
+            <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
+            <button type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+        </div>
+
+         <!-- Filter Button -->
+    <div class="navbar-section filter-posts">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-sliders"></i>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">Recent</a>
@@ -29,86 +187,130 @@
             <a class="dropdown-item" href="#">Date</a>
         </div>
     </div>
+</nav>
 
-    <!-- Content -->
-    <div class="container-md">
-        <div class="heading">
-            <p class="greeting">Today's News!</p>
-            <h1 class="title">Upcoming School Event</h1>
-            <p><strong>Headline:</strong> Mark Your Calendars for <strong>School's Got Talent Show</strong></p>
-            <p class="description">
+<!--Get Weather forecast by City-->
+<div class="container-weather">
+    <div class="card fixed-mid">
+            <div class="weather-info-container text-center">
+                <h2 class="card-title">Today's Forecast:</h2>
+                <input
+                    type="text"
+                    id="city"
+                    class="form-control my-3"
+                    placeholder="Enter City Name"
+                />
+                <button class="btn btn-primary" onclick="getWeather()">Get Weather</button>
+                <p id="weatherInfo" class="mt-3">Weather Info will appear here</p>
+            </div>
+    </div>
+</div>
+
+
+   <!-- Content: Card 1 -->
+<section class="header">
+<div class="container-md mt-4">
+    <div class="card">
+        <div class="card-header">
+            <p class="greeting mb-0">Today's News!</p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Upcoming School Event</h5>
+            <p class="card-text"><strong>Headline:</strong> Mark Your Calendars for <strong>School's Got Talent Show</strong></p>
+            <p class="card-text">
                 Get ready to be amazed! Our annual School's Got Talent Show is coming up on <strong>December 16, 2024</strong>
                 at <strong>7:30 PM</strong> in the Technological Institute of the Philippines. Sign-ups are open until
                 <strong>November 30, 2024</strong>. All students are encouraged to participate. Prizes will be awarded to the top
                 three performers. Let's showcase our talents and have some fun!
             </p>
-            <p><strong>Contact Information:</strong></p>
-            <span><em>Eunice D. Ibardaloza - Coordinator</em></span><br>
-            <span><em>0917-123-4567</em></span><br>
-            <span><em>ibardaloza.eunice@titech.edu.ph</em></span>
+            <p class="card-text"><strong>Contact Information:</strong></p>
+            <p class="card-text"><em>Eunice D. Ibardaloza - Coordinator</em></p>
+            <p class="card-text"><em>0917-123-4567</em></p>
+            <p class="card-text"><em>ibardaloza.eunice@titech.edu.ph</em></p>
+            <!-- Reaction Buttons -->
+            <button class="btn btn-primary">Like</button>
+            <button class="btn btn-secondary">Share</button>
+            <button class="btn btn-info">Comment</button>
+            <!-- Comment Section -->
+            <textarea class="form-control mt-2" placeholder="Create an account to Comment" disabled></textarea>
         </div>
-<!--Reaction Button -->
-          <button class="react-button">Like</button>
-          <button class="share-button">Share</button>
-          <button class="comment-button">Comment</button>
-<!--Comment section is disabled-->
-          <textarea class="comment-textarea" placeholder="Create an account to Comment"></textarea>
     </div>
+</div>
 
-<!--Conten no. 2-->
-        <div class="container-md">
-            <div class="heading">
-                <p class="greeting">Yesterdays News!</p>
-                  <h1 class="title">
-                     TUPAD Program Enrollment
-                   </h1>
-                       <p><strong>Headline: </strong>Earn Extra Income with TUPAD!, Enroll Now for Short-Term Jobs</p>
-                        <p class="description">The TUPAD program is now accepting applications! This program provides short-term employment opportunities for
-                          individuals in need of financial assistance.
-                          <strong>Eligibility:</strong>
-                              <ul>
-                                <li>Must be a resident of Metro Manila</li>
-                                <li>Must be at least 18 years old</li>
-                                <li>Must be willing to work for a specified number of days</li>
-                              </ul>
-                        </p> 
-                    <p><strong>How to Apply:</strong>
-                          <ul>
-                            <li>Visit the DOLE office in your Municipality</li>
-                            <li>Bring a valid ID and proof of residency</li>
-                            <li>Fill out the application form and submit it to the officer on duty</li>
-                          </ul>
-                    </p>
-            <!--Reaction Button -->
-          <button class="react-button">Like</button>
-          <button class="share-button">Share</button>
-          <button class="comment-button">Comment</button>
-        <!--Text Area-->
-          <textarea class="comment-textarea" placeholder="Create an account to Comment"></textarea>
+<!-- Content: Card 2 -->
+<div class="container-md mt-4">
+    <div class="card">
+        <div class="card-header">
+            <p class="greeting mb-0">Yesterday's News!</p>
         </div>
-
+        <div class="card-body">
+            <h5 class="card-title">TUPAD Program Enrollment</h5>
+            <p class="card-text"><strong>Headline:</strong> Earn Extra Income with TUPAD! Enroll Now for Short-Term Jobs</p>
+            <p class="card-text">The TUPAD program is now accepting applications! This program provides short-term employment opportunities for individuals in need of financial assistance.</p>
+            <div class="card-text"><strong>Eligibility:</strong>
+                <ul>
+                    <li>Must be a resident of Metro Manila</li>
+                    <li>Must be at least 18 years old</li>
+                    <li>Must be willing to work for a specified number of days</li>
+                </ul>
+            </div>
+            <div class="card-text"><strong>How to Apply:</strong>
+                <ul>
+                    <li>Visit the DOLE office in your Municipality</li>
+                    <li>Bring a valid ID and proof of residency</li>
+                    <li>Fill out the application form and submit it to the officer on duty</li>
+                </ul>
+            </div>
+            <!-- Reaction Buttons -->
+            <button class="btn btn-primary">Like</button>
+            <button class="btn btn-secondary">Share</button>
+            <button class="btn btn-info">Comment</button>
+            <!-- Comment Section -->
+            <textarea class="form-control mt-2" placeholder="Create an account to Comment" disabled></textarea>
+        </div>
+    </div>
+</div>
+</section>
     <!-- Bottom Navbar -->
-    <nav class="navbar navbar-light bg-light fixed-bottom">
+    <nav class="navbar fixed-bottom">
         <div class="container d-flex justify-content-around">
             <a class="nav-link" href="#">
-                <img src="/images/house.svg" width="30" height="30" alt="Home">
+                <img src="{{asset('/images/house.svg')}}" width="30" height="30" alt="Home">
                 <div>Home</div>
             </a>
             <a class="nav-link" href="#">
-                <img src="/images/Archive.svg" width="30" height="30" alt="Archive">
+                <img src="{{asset('/images/Archive.svg')}}" width="30" height="30" alt="Archive">
                 <div>Archive</div>
             </a>
             <a class="nav-link" href="#">
-                <img src="/images/pencil-square.svg" width="30" height="30" alt="Write Post">
+                <img src="{{asset('/images/pencil-square.svg')}}" width="30" height="30" alt="Write Post">
                 <div>Write Post</div>
             </a>
             <a class="nav-link" href="#">
-                <img src="/images/person-circle.svg" width="30" height="30" alt="Account Settings">
-                <div>Account Settings</div>
+                <img src="{{asset('/images/person-circle.svg')}}" width="30" height="30" alt="Account Settings">
+                <div>Account</div>
             </a>
         </div>
     </nav>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!--Javascript for Weather API-->
+    <script>
+        async function getWeather() {
+            const city = document.getElementById('city').value;
+            const apiKey ='f7062ed848a912a0f655cf26f1fff01e';
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+            try {
+                const response =await fetch(url)
+                if(!response.ok) throw new Error('City not found');
+                const data = await response.json();
+                const weatherInfo =`Temperature in ${data.name}: ${data.main.temp} °C, Weather: ${data.weather[0].description}`;
+                document.getElementById('weatherInfo').innerText = weatherInfo;
+            } catch (error) {
+                document.getElementById('weatherInfo').innerText=error.message;
+            }
+        }
+    </script>
 </body>
 </html>
