@@ -1,156 +1,151 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Root Variables */
-:root {
-    --primary-color: linear-gradient(to top, #1e3c72 0%, #2a5298 100%);
-    --primary-color-dark: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-    --secondary-color: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-    --text-dark: black;
-    --text-light: #6b7280;
-    --extra-light: #faf5ff;
+body {
+        background-color: #C6E7FF;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+.filter-posts {
+        position: absolute;
+        top: 80px; 
+        right: 20px; 
+        z-index: 1000; 
+    }
+.container-md {
+        padding: 20px;
+        border-radius: 10px; 
+    }
+.card {
+        margin-top: 30px; 
+        background-color: #FBFBFB;
+        position: relative;
+        border-radius: 10px;
+        padding: 20px; 
+    }
+.navbar.fixed-bottom {
+        background-color: #FFDDAE;
+    }
+.navbar.fixed-bottom .nav-link {
+        text-align: center;
+        color: black;
+}
+.navbar.fixed-bottom .nav-link img {
+        display: block;
+        margin: 0 auto;
+}
+.heading {
+        text-align: center;
+        color: #6b7280;
+    }
+.form-inline{
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 15px;
 }
 
-/* Navbar Styles */
-.navbar {
-    background: var(--primary-color);
+.navbar img {
+    border-radius: 4px;
 }
-
-.navbar .form-inline .form-control {
-    margin-right: 0.5rem;
+.form-inline input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    flex: 1;
 }
-
-.navbar .form-inline .btn {
-    transition: background-color 0.3s ease;
+.form-inline button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: #28a745;
 }
-
-.navbar .form-inline .btn:hover,
-.navbar .form-inline .btn:focus,
-.navbar .form-inline .btn:active {
-    background-color: var(--primary-color-dark);
+.dropdown-toggle {
+    background: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: black;
 }
-
-/* Filter Posts */
-.filter-posts #dropdownMenuButton {
-    transition: background-color 0.3s ease;
+.dropdown-toggle .bi {
+    font-size: 18px;
 }
-
-.filter-posts #dropdownMenuButton:hover,
-.filter-posts #dropdownMenuButton:focus,
-.filter-posts #dropdownMenuButton:active {
-    background-color: var(--secondary-color);
+.dropdown-menu {
+    min-width: 150px;
+    text-align: left;
 }
-
-.filter-posts .dropdown-menu .dropdown-item {
-    transition: background-color 0.3s ease;
-}
-
-.filter-posts .dropdown-menu .dropdown-item:hover,
-.filter-posts .dropdown-menu .dropdown-item:focus,
-.filter-posts .dropdown-menu .dropdown-item:active {
-    background-color: var(--primary-color-dark);
-}
-
-/* Card Styles */
-.container-md.mt-4 .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.card-header {
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #FBFBFB; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto Condensed', sans-serif;
-    background: var(--primary-color-dark);
-    color: var(--text-dark);
+    color: #333; 
 }
-
-.card-body {
-    font-family: 'Roboto Condensed', sans-serif;
-    color: var(--text-light);
+.weather-info input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
 }
-
-.card-body .btn {
-    margin-right: 0.5rem;
+.weather-info button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
-.card-body .btn-primary:hover,
-.card-body .btn-primary:focus,
-.card-body .btn-primary:active {
+.weather-info button:hover {
     background-color: #0056b3;
 }
-
-.card-body .btn-secondary:hover,
-.card-body .btn-secondary:focus,
-.card-body .btn-secondary:active {
-    background-color: #6c757d;
+.weather-info p {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #555;
+    text-align: center;
 }
-
-.card-body .btn-info:hover,
-.card-body .btn-info:focus,
-.card-body .btn-info:active {
-    background-color: #117a8b;
+.container-weather{
+    position: relative;
+    margin-top: 90px; 
+    margin-bottom: 30px;
 }
-
-/* List Styles */
-.card-body ul {
-    list-style: none;
-    padding-left: 1rem;
+.card.fixed-mid{
+    border-bottom: none;
+    box-shadow: none;
+    padding: 10px 20px;
 }
-
-.card-body ul li {
-    margin-bottom: 0.5rem;
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 20px;
 }
-
-/* Fixed Bottom Navbar */
-.navbar.fixed-bottom {
-    background: var(--primary-color-dark);
+.navbar-section {
+    display: flex;
+    align-items: center; 
 }
-
-.navbar.fixed-bottom .nav-link {
-    color: var(--text-dark);
-    transition: color 0.3s ease;
+.search {
+    flex: 1; 
+    display: flex;
+    justify-content: center; 
 }
-
-.navbar.fixed-bottom .nav-link:hover,
-.navbar.fixed-bottom .nav-link:focus,
-.navbar.fixed-bottom .nav-link:active {
-    color: var(--primary-color);
+.form-control {
+    width: 300px; 
 }
-body {
-    background: var(--primary-color);
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
-.container-md {
-    background: var(--primary-color-dark);
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
 .filter-posts {
-    text-align: right;
-    margin-top: 10px;
-    position: absolute;
-    top: 20px;
-    right: 0;
-}
-
-.navbar.fixed-bottom {
-    background: var(--secondary-color);
-}
-
-.navbar.fixed-bottom .nav-link {
-    text-align: center;
-    color: var(--text-dark);
-}
-
-.navbar.fixed-bottom .nav-link img {
-    display: block;
-    margin: 0 auto;
-}
-
-.heading {
-    text-align: center;
-    color: var(--text-light);
+    display: flex;
+    align-items: center;
 }

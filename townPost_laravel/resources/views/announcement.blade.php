@@ -6,178 +6,21 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-
-        body {
-                background-color: #C6E7FF;
-                font-family: 'Roboto Condensed', sans-serif;
-            }
-        .filter-posts {
-                position: absolute;
-                top: 80px; 
-                right: 20px; 
-                z-index: 1000; 
-            }
-        .container-md {
-                padding: 20px;
-                border-radius: 10px; 
-            }
-        .card {
-                margin-top: 30px; 
-                background-color: #FBFBFB;
-                position: relative;
-                border-radius: 10px;
-                padding: 20px; 
-            }
-        .navbar.fixed-bottom {
-                background-color: #FFDDAE;
-            }
-        .navbar.fixed-bottom .nav-link {
-                text-align: center;
-                color: black;
-        }
-        .navbar.fixed-bottom .nav-link img {
-                display: block;
-                margin: 0 auto;
-        }
-        .heading {
-                text-align: center;
-                color: #6b7280;
-            }
-        .form-inline{
-            display: flex;
-            align-items: center;
-            background: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 5px 15px;
-        }
-       
-        .navbar img {
-            border-radius: 4px;
-        }
-        .form-inline input {
-            border: none;
-            outline: none;
-            font-size: 14px;
-            flex: 1;
-        }
-        .form-inline button {
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 16px;
-            color: #28a745;
-        }
-        .dropdown-toggle {
-            background: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 5px 10px;
-            color: black;
-        }
-        .dropdown-toggle .bi {
-            font-size: 18px;
-        }
-        .dropdown-menu {
-            min-width: 150px;
-            text-align: left;
-        }
-        .weather-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 20px;
-            margin: 20px auto;
-            background-color: #FBFBFB; 
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-family: 'Roboto Condensed', sans-serif;
-            color: #333; 
-        }
-        .weather-info input {
-            width: 300px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #999;
-            border-radius: 25px;
-            font-size: 16px;
-            outline: none;
-        }
-        .weather-info button {
-            padding: 8px 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .weather-info button:hover {
-            background-color: #0056b3;
-        }
-        .weather-info p {
-            margin-top: 15px;
-            font-size: 18px;
-            color: #555;
-            text-align: center;
-        }
-        .container-weather{
-            position: relative;
-            margin-top: 90px; 
-            margin-bottom: 30px;
-        }
-        .card.fixed-mid{
-            border-bottom: none;
-            box-shadow: none;
-            padding: 10px 20px;
-        }
-        .navbar{
-            display: flex;
-            align-items: center;
-            justify-content: space-between; 
-            padding: 10px 20px;
-        }
-        .navbar-section {
-            display: flex;
-            align-items: center; 
-        }
-        .search {
-            flex: 1; 
-            display: flex;
-            justify-content: center; 
-        }
-        .form-control {
-            width: 300px; 
-        }
-        .filter-posts {
-            display: flex;
-            align-items: center;
-        }
-    </style>
+    <link href="{{ asset('/css/announcement.css') }}" rel="stylesheet">
   </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar fixed-top justify-content-between">
-        <!-- Logo -->
-        <img src="/images/Logo.jpg" width="50" height="50" alt="Logo">
 
-        <!-- Search Bar -->
-    <div class="navbar-section search">
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+       <img src = "/images/Logo.jpg" width ="30" height="30" alt = "Logo">
+    <div class="collapse navbar-collapse" id="search">
         <form class="form-inline">
-            <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
-            <button type="submit">
-                <i class="bi bi-search"></i>
-            </button>
+                <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
+                <button type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
         </form>
-        </div>
-
-         <!-- Filter Button -->
-    <div class="navbar-section filter-posts">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="bi bi-sliders"></i>
         </button>
@@ -187,19 +30,15 @@
             <a class="dropdown-item" href="#">Date</a>
         </div>
     </div>
+  </div>
 </nav>
 
 <!--Get Weather forecast by City-->
-<div class="container-weather">
-    <div class="card fixed-mid">
+<div class="container-weather expand-lg">
+    <div class="card">
             <div class="weather-info-container text-center">
                 <h2 class="card-title">Today's Forecast:</h2>
-                <input
-                    type="text"
-                    id="city"
-                    class="form-control my-3"
-                    placeholder="Enter City Name"
-                />
+                <input type="text" id="city" class="form-control my-3" placeholder="Enter City Name e.g Manila"/>
                 <button class="btn btn-primary" onclick="getWeather()">Get Weather</button>
                 <p id="weatherInfo" class="mt-3">Weather Info will appear here</p>
             </div>
@@ -232,7 +71,7 @@
             <button class="btn btn-secondary">Share</button>
             <button class="btn btn-info">Comment</button>
             <!-- Comment Section -->
-            <textarea class="form-control mt-2" placeholder="Create an account to Comment" disabled></textarea>
+            <textarea class="form-control mt-2" placeholder="Create an account to Comment" disabled img src="{{asset('/images/send.png')}}"></textarea>
         </div>
     </div>
 </div>
@@ -293,24 +132,6 @@
         </div>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!--Javascript for Weather API-->
-    <script>
-        async function getWeather() {
-            const city = document.getElementById('city').value;
-            const apiKey ='f7062ed848a912a0f655cf26f1fff01e';
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-            try {
-                const response =await fetch(url)
-                if(!response.ok) throw new Error('City not found');
-                const data = await response.json();
-                const weatherInfo =`Temperature in ${data.name}: ${data.main.temp} °C, Weather: ${data.weather[0].description}`;
-                document.getElementById('weatherInfo').innerText = weatherInfo;
-            } catch (error) {
-                document.getElementById('weatherInfo').innerText=error.message;
-            }
-        }
-    </script>
+    <script src="{{ asset('js/weatherapi.js')}}"></script>
 </body>
 </html>
