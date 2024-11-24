@@ -1,224 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    font-family: 'Josefin Sans', sans-serif; 
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:  "wdth" 100;
+    background: #EEF5FF;
 }
 
-.navbar .fixed-top{
-    background-color: #f8f9fa; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    padding: 10px 20px;
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100vh; 
+    background: #176B87;
+    transition: all 0.3s;
+    overflow-y: auto; 
 }
 
-.navbar .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+#sidebar.active {
+    margin-left: -250px;
 }
 
-
-.navbar img {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-
-.navbar .form-inline {
-    flex-grow: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar .form-inline .form-control {
-    width: 60%;
-    max-width: 500px; 
-    border-radius: 20px 0 0 20px;
-    border-right: none; 
-    box-shadow: none; 
-}
-
-.navbar .form-inline button {
-    background-color: #007bff; 
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 0 20px 20px 0;
-    cursor: pointer;
-}
-
-.navbar .form-inline button i {
-    font-size: 1.2rem; 
-}
-
-.navbar .btn.dropdown-toggle {
-    background-color: #f1f1f1;
-    border: none;
-    color: #333;
-    border-radius: 20px;
-    padding: 5px 10px;
-}
-
-.navbar .btn.dropdown-toggle i {
-    font-size: 1.2rem;
-}
-
-.navbar .dropdown-menu {
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-}
-
-/* Content */
-.container-weather {
-    margin-top: 80px;
-    display: flex;
-    justify-content: center;
+#sidebar .sidebar-header {
     padding: 20px;
+    background: #176B87;
 }
 
-.weather-info-container {
-    background-color: #f4e7fb;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #176B87;
 }
 
-.weather-info-container h2 {
-    font-size: 1.8rem;
-    color: #333;
-}
-
-.weather-info-container .form-control {
-    border-radius: 20px;
-    margin-bottom: 10px;
-}
-
-.weather-info-container button {
-    width: 100%;
-    border-radius: 20px;
-    background-color: wheat;
-    color: white;
-    border: none;
-}
-
-.container-md {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card {
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    min-height: 50%;
-}
-
-.card-header {
-    background-color: #007bff;
-    color: white;
-    border-radius: 10px 10px 0 0;
-    padding: 15px;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-body h5 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.card-body .card-text {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.card-body .card-text strong {
-    color: #333;
-}
-
-.card-body .card-text em {
-    color: #007bff;
-}
-
-.card-body button {
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-.card-img-top {
-    height: 10%;
-    object-fit: cover;
-    margin: auto;
-}
-
-form.form-control {
-    display: flex;
-    align-items: center;
+#sidebar ul li a {
     padding: 10px;
-    border: none;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    margin-top: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: black;
 }
 
-form .form-control {
-    border: none;
-    border-radius: 20px;
-    flex-grow: 1;
-    margin-right: 10px;
+#sidebar ul li a:hover {
+    background: #B4D4FF;
+    color: black;
 }
 
-form .post-comment {
-    border: none; /* Removed redundant background-color */
+#content {
+    margin-left: 250px;
+    transition: all 0.3s;
+    width: calc(100% - 250px); 
 }
 
-form .post-comment img {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-/* Style for the offcanvas sidebar */
-.offcanvas-body {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between each item */
+#sidebar.active + #content {
+    margin-left: 0;
+    width: 100%;
 }
 
-/* Style for the individual navigation links */
-.offcanvas-body .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between the icon and the text */
-    color: #fff; /* Adjust text color */
-    text-decoration: none; /* Remove underline from the links */
-}
-
-/* Style for the images (icons) */
-.offcanvas-body .nav-link img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain; /* Prevent distortion of icons */
-}
-
-/* On hover, change the color of the link */
-.offcanvas-body .nav-link:hover {
-    color: #ffbf00; /* Change to any color you like */
-}
-
-/* Optional: Change the color of the text when the link is active */
-.offcanvas-body .nav-link.active {
-    color: #ffbf00; /* Change this to the color you prefer */
+.d-flex {
+    gap: 10px;
 }

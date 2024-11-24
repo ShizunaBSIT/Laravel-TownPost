@@ -13,3 +13,7 @@ async function getWeather() {
         document.getElementById('weatherInfo').innerText=error.message;
     }
 }
+
+document.getElementById('sidebarCollapse').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('active');
+});
