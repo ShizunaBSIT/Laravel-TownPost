@@ -1,3 +1,4 @@
+//for weather
 async function getWeather() {
     const city = document.getElementById('city').value;
     const apiKey ='f7062ed848a912a0f655cf26f1fff01e';
@@ -14,6 +15,12 @@ async function getWeather() {
     }
 }
 
+//for sidebar
 document.getElementById('sidebarCollapse').addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('active');
 });
+
+//for buttons
+function myButtons() {
+    alert("Please go to account to create your profile🥰");
+}
