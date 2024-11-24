@@ -28,7 +28,7 @@
                                         </div>
                                         <h5 class="fw-bolder mb-3 pb-1" style="letter-spacing: 1px;">Sign into your account</h5>
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="email" id="form2Example17" name="email" class="form-control form-control-lg" required />
+                                            <input type="email" id="form2Example17" name="email" class="form-control form-control-lg" placeholder="junadelacruz@gmail.com" required />
                                             <label class="form-label" for="form2Example17">Email address</label>
                                         </div>
                                         <div data-mdb-input-init class="form-outline mb-4">
