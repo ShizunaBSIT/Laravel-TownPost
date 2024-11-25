@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{route('login')}}">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
