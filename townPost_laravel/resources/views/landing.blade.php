@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('login')}}">
+                <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
@@ -41,7 +41,7 @@
             <p class="text-white text-center">Filter Posts</p>
             <li>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-sliders"></i> Filter
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -63,7 +63,7 @@
             </button>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search Here" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit" onclick="myButtons()"> 
+                <button class="btn btn-outline-primary" type="submit">
                     <i class="bi bi-search"></i>
                 </button>
             </form>
@@ -82,7 +82,7 @@
             </div>
 
             <!-- News Section -->
-<div class="card mb-4">
+            <div class="card mb-4">
     <div class="card-header">
         <h5 class="card-title">School's Got Talent Show</h5>
     </div>
@@ -98,19 +98,24 @@
         <p><strong>Contact:</strong> Eunice D. Ibardaloza, 0917-123-4567, ibardaloza.eunice@titech.edu.ph</p>
         
         <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary" onclick="myButtons()">
+        <a href="#" class="btn btn-primary">
             <i class="bi bi-hand-thumbs-up"></i> Like
         </a>
-        <a href="#" class="btn btn-secondary" onclick="myButtons()">
+        <a href="#" class="btn btn-secondary">
             <i class="bi bi-share"></i> Share
         </a>
-        <a href="#" class="btn btn-info" onclick="myButtons()">
+        <a href="#" class="btn btn-info">
             <i class="bi bi-chat-left-quote"></i> Comment
         </a>
 
         <!-- Disable Comment -->
         <form class="mt-2">
-            <textarea class="form-control w-100" rows="3" readonly>Create an Account to comment</textarea>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter your comment">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-send"></i>
+                </button>
+            </div>
         </form>
     </div>
 </div>
@@ -140,19 +145,24 @@
         </ul>
         
          <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary" onclick="myButtons()">
+        <a href="#" class="btn btn-primary">
             <i class="bi bi-hand-thumbs-up"></i> Like
         </a>
-        <a href="#" class="btn btn-secondary" onclick="myButtons()">
+        <a href="#" class="btn btn-secondary">
             <i class="bi bi-share"></i> Share
         </a>
-        <a href="#" class="btn btn-info"onclick="myButtons()" >
+        <a href="#" class="btn btn-info">
             <i class="bi bi-chat-left-quote"></i> Comment
         </a>
 
         <!-- Disabled Comment -->
         <form class="mt-2">
-            <textarea class="form-control w-100" rows="3" readonly>Create an Account to comment</textarea>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter your comment">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-send"></i>
+                </button>
+            </div>
         </form>
     </div>
 </div>
@@ -160,6 +170,6 @@
 </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/announcement.js') }}"></script>
+    <script src="{{ asset('js/weatherapi.js') }}"></script>
 </body>
 </html>
