@@ -71,6 +71,10 @@
 
         <!-- Main Content -->
 <main class="container mt-4">
+    <!--greet users-->
+    <div class="greet">
+        <h1>Hello, {{Auth::user()->username}}</h1>
+    </div>
             <!-- Weather Forecast -->
             <div class="card text-center mb-4">
                 <div class="card-body">
