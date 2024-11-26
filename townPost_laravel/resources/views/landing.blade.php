@@ -83,19 +83,19 @@
 
             <!-- News Section -->
             <div class="card mb-4">
-    <div class="card-header">
-        <h5 class="card-title">School's Got Talent Show</h5>
-    </div>
-    <div class="card-body">
-        <p class="post-id"><strong>Post ID:</strong> 1</p>
-        <p class="post-category"><strong>Category:</strong> School</p>
-        <p class="posted-by"><strong>Author:</strong> shimshimi</p>
-        <p class="post-date"><strong>Posted on:</strong> 2022-01-01</p>
-        <p class="card-text">Get ready to be amazed! Our annual School's Got Talent Show is coming up on 
-            <strong>December 16, 2024</strong> at <strong>7:30 PM</strong> in the Technological Institute of the Philippines. 
-            Sign-ups are open until <strong>November 30, 2024</strong>.
-        </p>
-        <p><strong>Contact:</strong> Eunice D. Ibardaloza, 0917-123-4567, ibardaloza.eunice@titech.edu.ph</p>
+                <div class="card-header">
+                    <h5 class="card-title">School's Got Talent Show</h5>
+            </div>
+            <div class="card-body">
+                    <p class="post-id"><strong>Post ID:</strong> 1</p>
+                        <p class="post-category"><strong>Category:</strong> School</p>
+                            <p class="posted-by"><strong>Author:</strong> shimshimi</p>
+                                <p class="post-date"><strong>Posted on:</strong> 2022-01-01</p>
+                                    <p class="card-text">Get ready to be amazed! Our annual School's Got Talent Show is coming up on 
+                                        <strong>December 16, 2024</strong> at <strong>7:30 PM</strong> in the Technological Institute of the Philippines. 
+                                        Sign-ups are open until <strong>November 30, 2024</strong>.
+                    </p>
+            <p><strong>Contact:</strong> Eunice D. Ibardaloza, 0917-123-4567, ibardaloza.eunice@titech.edu.ph</p>
         
         <!-- if button is click it will prompt a message that they need an account to comment -->
         <a href="#" class="btn btn-primary">
@@ -119,7 +119,7 @@
         </form>
     </div>
 </div>
-
+<!--<form action="{{ route('#') }}" method="POST" enctype="multipart/form-data-->
 <div class="card mb-4">
     <div class="card-header">
         <h5 class="card-title">TUPAD Ongoing Enrollment</h5>
@@ -173,3 +173,7 @@
     <script src="{{ asset('js/weatherapi.js') }}"></script>
 </body>
 </html>
+     <!--greet the user -->
+    <!--<h1 class="greet-user">
+        <span class="text-primary">Welcome, {{ Auth::user()->username }}!</span>
+    </h1>-->
