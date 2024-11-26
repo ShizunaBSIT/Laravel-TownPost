@@ -22,7 +22,7 @@
                                         @csrf
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <a class="navbar-brand me-3" style="font-family: Garamond, serif; color: navy;" href="#">
-                                                <img src="{{ asset('img/towntalk_logo 2.jpg') }}" alt="Logo" style="height: 80px;" class="d-inline-block">
+                                                <img src="{{ asset('images/Logo.jpg') }}" alt="Logo" style="height: 80px;" class="d-inline-block">
                                                 <span class="h1 d-inline-block fw-bolder mb-0" style="max-width: 150px;">Town Talk E-Bulletin</span>
                                             </a>
                                         </div>
