@@ -22,5 +22,5 @@ document.getElementById('sidebarCollapse').addEventListener('click', () => {
 
 //for buttons
 function myButtons() {
-    alert("Please go to account to create your profile🥰");
+    alert("Please create an account to comment😣");
 }

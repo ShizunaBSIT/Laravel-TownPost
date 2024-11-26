@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login to Get Started</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap/bootstrap.min.css') }}">
 </head>
 <body>
     <section class="main-bg" style="background-color: #9A616D;">
@@ -22,7 +22,7 @@
                                         @csrf
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <a class="navbar-brand me-3" style="font-family: Garamond, serif; color: navy;" href="#">
-                                                <img src="{{ asset('img/towntalk_logo 2.jpg') }}" alt="Logo" style="height: 80px;" class="d-inline-block">
+                                                <img src="{{ asset('images/Logo.jpg') }}" alt="Logo" style="height: 80px;" class="d-inline-block">
                                                 <span class="h1 d-inline-block fw-bolder mb-0" style="max-width: 150px;">Town Talk E-Bulletin</span>
                                             </a>
                                         </div>
@@ -39,7 +39,7 @@
                                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                                         </div>
                                         <a class="small text-muted" href="#!">Forgot password?</a>
-                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{{ route('register') }}" style="color: #393f81;">Register here</a></p>
+                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="" style="color: #393f81;">Register here</a></p>
                                         <a href="#!" class="small text-muted">Terms of use.</a>
                                         <a href="#!" class="small text-muted">Privacy policy</a>
                                     </form>
