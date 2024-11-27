@@ -52,6 +52,7 @@ class postsControllers extends Controller
         if (!empty($post)) {
             $post->title = is_null($data->title) ? $post->title : $data->title;
             $post->content = is_null($data->content) ? $post->content : $data->content;
+            $post->save();
 
             return response()->json(["message" => "Post content updated"]);
         }
