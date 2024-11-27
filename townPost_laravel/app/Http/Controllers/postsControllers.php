@@ -36,7 +36,7 @@ class postsControllers extends Controller
         $post->category_ID = $data->category_ID;
         $post->title = $data->title;
         $post->content = $data->content;
-        $post->date_posted = $data->data_posted;
+        $post->date_posted = $data->date_posted;
         $post->save();
 
         return response()->json([

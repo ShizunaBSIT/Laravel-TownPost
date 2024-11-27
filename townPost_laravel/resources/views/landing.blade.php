@@ -32,7 +32,16 @@
                 </a>
             </li>
         </ul>
-        <ul class="list-unstyled components">
+    </nav>
+
+    <!-- Content -->
+    <div id="content" class="ms-auto">
+        <!-- Navbar -->
+        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
+            <button id="sidebarCollapse" class="btn btn-info">
+                <i class="bi bi-list"></i> Toggle Sidebar
+            </button>
+            <ul class="list-unstyled components d-flex">
             <p class="text-white text-center">Filter Posts</p>
             <li>
                 <div class="dropdown">
@@ -47,21 +56,6 @@
                 </div>
             </li>
         </ul>
-    </nav>
-
-    <!-- Content -->
-    <div id="content" class="ms-auto">
-        <!-- Navbar -->
-        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
-            <button id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list"></i> Toggle Sidebar
-            </button>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search Here" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
         </div>
 
         <!-- Main Content -->
@@ -79,7 +73,7 @@
             <!-- News Section -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <h5 class="card-title">School's Got Talent Show</h5>
+                    <h5 class="card-title"></h5>
             </div>
             <div class="card-body">
                     <p class="post-id"><strong>Post ID:</strong> 1</p>
@@ -90,85 +84,37 @@
                                         <strong>December 16, 2024</strong> at <strong>7:30 PM</strong> in the Technological Institute of the Philippines. 
                                         Sign-ups are open until <strong>November 30, 2024</strong>.
                     </p>
-            <p><strong>Contact:</strong> Eunice D. Ibardaloza, 0917-123-4567, ibardaloza.eunice@titech.edu.ph</p>
-        
         <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary">
-            <i class="bi bi-hand-thumbs-up"></i> Like
-        </a>
-        <a href="#" class="btn btn-secondary">
-            <i class="bi bi-share"></i> Share
-        </a>
-        <a href="#" class="btn btn-info">
-            <i class="bi bi-chat-left-quote"></i> Comment
-        </a>
+                    <button type="button" class="btn btn-outline-primary">
+                        <i class="bi bi-hand-thumbs-up">Like</i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i class="bi bi-share">Share</i>
+                    </button>
+                    <button type="button" class="btn btn-outline-success">
+                        <i class="bi bi-pencil-square">Edit</i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger">
+                        <i class="bi bi-trash3">Delete</i>
+                     </button>
+                    <button type="button" class="btn btn-outline-info">
+                        <i class="bi bi-comment-dots">Comment</i>
+                    </button>
 
-        <!-- Disable Comment -->
-        <form class="mt-2">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter your comment">
-                <button class="btn btn-primary" type="submit">
-                    <i class="bi bi-send"></i>
-                </button>
-            </div>
-        </form>
+                <!-- Disable Comment -->
+                <form class="mt-2">
+                  <div class="input-group">
+                     <input type="text" class="form-control" placeholder="Enter your comment">
+                     <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-send"></i>
+                     </button>
+                 </div>
+               </form>
+        </div>
     </div>
-</div>
-<!--<form action="{{ route('#') }}" method="POST" enctype="multipart/form-data-->
-<div class="card mb-4">
-    <div class="card-header">
-        <h5 class="card-title">TUPAD Ongoing Enrollment</h5>
-    </div>
-    <div class="card-body">
-        <p class="post-id"><strong>Post ID:</strong> 2</p>
-        <p class="post-category"><strong>Category:</strong> Community</p>
-        <p class="posted-by"><strong>Author:</strong> shimshimi</p>
-        <p class="post-date"><strong>Posted on:</strong> 2022-01-01</p>
-        <p class="card-text">TUPAD Program Enrollment</p>
-        <p>Earn extra income with TUPAD! Enroll now for short-term jobs.</p>
-        <p><strong>Eligibility:</strong></p>
-        <ul>
-            <li>Resident of Metro Manila</li>
-            <li>At least 18 years old</li>
-            <li>Willing to work for a specified number of days</li>
-        </ul>
-        <p><strong>How to Apply:</strong></p>
-        <ul>
-            <li>Visit your local DOLE office</li>
-            <li>Bring valid ID and proof of residency</li>
-            <li>Submit the application form</li>
-        </ul>
-        
-         <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary">
-            <i class="bi bi-hand-thumbs-up"></i> Like
-        </a>
-        <a href="#" class="btn btn-secondary">
-            <i class="bi bi-share"></i> Share
-        </a>
-        <a href="#" class="btn btn-info">
-            <i class="bi bi-chat-left-quote"></i> Comment
-        </a>
-
-        <!-- Disabled Comment -->
-        <form class="mt-2">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter your comment">
-                <button class="btn btn-primary" type="submit">
-                    <i class="bi bi-send"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
 </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/weatherapi.js') }}"></script>
 </body>
 </html>
-     <!--greet the user -->
-    <!--<h1 class="greet-user">
-        <span class="text-primary">Welcome, {{ Auth::user()->username }}!</span>
-    </h1>-->

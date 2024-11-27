@@ -37,12 +37,12 @@
     <!-- Content -->
     <div id="content" class="ms-auto">
         <!-- Navbar -->
-        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
+        <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> 
             </button>
             <ul class="list-unstyled components d-flex">
-            <p class="text-white text-center">Filter Posts</p>
+            <p class="text-white text-center"></p>
             <li>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
