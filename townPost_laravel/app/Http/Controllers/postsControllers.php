@@ -30,7 +30,7 @@ class postsControllers extends Controller
 
     // POST
     // create post
-    public function createPost($data) {
+    public function createPost(Request $data) {
         $post = new Posts;
         $post->user_ID = $data->user_ID;
         $post->category_ID = $data->category_ID;
@@ -45,13 +45,14 @@ class postsControllers extends Controller
     }
 
     // PUT
-    public function updatePost($data, $id) {
+    public function updatePost(Request $data, $id) {
 
         $post = Posts::find($id);
 
         if (!empty($post)) {
             $post->title = is_null($data->title) ? $post->title : $data->title;
             $post->content = is_null($data->content) ? $post->content : $data->content;
+            $post->save();
 
             return response()->json(["message" => "Post content updated"]);
         }

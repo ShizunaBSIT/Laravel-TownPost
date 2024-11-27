@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class admins extends Model
 {
     //
     use HasFactory;
-    protected $table='categories';
-
-    // also manual inputting of categories
+    protected $table='admins';
+    protected $fillable=['user_ID','date_start'];
 }

@@ -31,11 +31,13 @@ class usersController extends Controller
 
     // GET
     // Login user
-    public function loginUser($username, $password) {
+    public function loginUser(Request $data) {
         // this finds the corresponding user using login credentials (login and password)
         /* This is meant to be different from the "view user" since this involves letting said user have the ability to login
         and start creating posts on the website
         */
+        $username = $data->username;
+        $password = $data->password;
 
         $user = Users::where(
             [
@@ -62,7 +64,7 @@ class usersController extends Controller
 
     // POST
     // new user : account creation
-    public function createUser($data) {
+    public function createUser(Request $data) {
         $user = new Users;
         $user->username = $data->username;
         $user->password = $data->password;
@@ -79,7 +81,7 @@ class usersController extends Controller
 
     // PUT
     // update user info
-    public function updateUser($data, $userID) {
+    public function updateUser(Request $data, $userID) {
         if (Users::where('user_ID',$userID)->exists()) {
             $user = Users::find($userID);
             $user->username = is_null($data->username) ? $user->username : $data->username;
