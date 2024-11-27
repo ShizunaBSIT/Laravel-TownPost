@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postsControllers;
 use App\Http\Controllers\usersController;
 use App\Http\Controllers\commentsController;
+use App\Http\Controllers\reactionController;
 
 
 Route::get('/', function () {
@@ -29,4 +30,8 @@ Route::get('/test/comments/{id}',[commentsController::class, 'viewComments']);
 Route::get('/test/comments/create', [commentsController::class, 'postComment']);
 Route::get('/test/comments/update',[commentsController::class, 'updateComment']);
 Route::get('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
+
+Route::get('/test/reactions/{id}',[reactionController::class, 'getReactions']);
+Route::get('/test/reactions/react',[reactionController::class, 'react']);
+Route::get('/test/reactions/unreact',[reactionController::class, 'unreact']);
 /* ^^ Routing for postman ^^*/
