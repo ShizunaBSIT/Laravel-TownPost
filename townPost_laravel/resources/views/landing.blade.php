@@ -23,11 +23,6 @@
             </li>
             <li>
                 <a class="nav-link text-white" href="#">
-                    <img src="{{ asset('/images/Archive.svg') }}" width="30" height="30" alt="Archive" class="me-2"> Archive
-                </a>
-            </li>
-            <li>
-                <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>

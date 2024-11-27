@@ -61,3 +61,8 @@ body {
     background-attachment: fixed;
     background-color: #F2D9DA;
 }
+main.container {
+    max-width: 90%; 
+    margin: 20px auto; 
+    min-height: 100px;
+}
