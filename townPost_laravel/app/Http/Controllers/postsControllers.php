@@ -30,7 +30,7 @@ class postsControllers extends Controller
 
     // POST
     // create post
-    public function createPost($data) {
+    public function createPost(Request $data) {
         $post = new Posts;
         $post->user_ID = $data->user_ID;
         $post->category_ID = $data->category_ID;
@@ -45,7 +45,7 @@ class postsControllers extends Controller
     }
 
     // PUT
-    public function updatePost($data, $id) {
+    public function updatePost(Request $data, $id) {
 
         $post = Posts::find($id);
 
