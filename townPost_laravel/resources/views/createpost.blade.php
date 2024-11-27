@@ -86,13 +86,13 @@
             </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
-                    <input type="text" class="form-control" id="publishDate" name="date_posted" readonly>
+                    <input type="text" class="form-control" id="publishDate" name="date_posted" readonly placeholder="Press the button set date">
                     <button class="btn btn-outline-primary btn-sm float-right" type="button" onclick="getDate()">Set Date</button>
             </div>
-            <div class="card">
-                    <label for="content" class="form-label"><strong>Content:</strong></label>
-                    <input type="text" class="form-control my-3xs" id="content" name="content" placeholder="Enter your content here">
-            </div><br><br>
+            <div class="card mb-4">
+                    <label class="content"><strong>Content:</strong></label>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
                     <button class="btn btn-outline-primary float-end"type="submit">Save</button>
     </div>
 </form>
