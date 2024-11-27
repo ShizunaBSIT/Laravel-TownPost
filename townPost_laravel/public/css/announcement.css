@@ -5,12 +5,12 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings:  "wdth" 100;
-    background: #F4F6FF;
+    background:  #89CFF0;
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 150px;
+    max-width: 150px;
     height: 100vh; 
     background-color: #A6AEBF;
     transition: all 0.3s;
@@ -45,7 +45,7 @@ body {
 #content {
     margin-left: 250px;
     transition: all 0.3s;
-    width: calc(100% - 250px); 
+    width: calc(100% - 150px); 
 }
 
 #sidebar.active + #content {
@@ -59,7 +59,7 @@ body {
 }
 .card{
     background-attachment: fixed;
-    background-color: #89CFF0;
+    background-color: #F4F6FF;
 }
 main.container {
     max-width: 90%; 

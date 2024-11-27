@@ -37,12 +37,12 @@
     <!-- Content -->
     <div id="content" class="ms-auto">
         <!-- Navbar -->
-        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
+        <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> Toggle Sidebar
             </button>
             <ul class="list-unstyled components d-flex">
-            <p class="text-white text-center">Filter Posts</p>
+            <p class="text-white text-center"></p>
             <li>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,16 +88,16 @@
                     <button type="button" class="btn btn-outline-primary">
                         <i class="bi bi-hand-thumbs-up">Like</i>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" class="btn btn-outline-secondary" onclick="sharePost()">
                         <i class="bi bi-share">Share</i>
                     </button>
-                    <button type="button" class="btn btn-outline-success">
+                    <button type="button" class="btn btn-outline-success" onclick="editPost()">
                         <i class="bi bi-pencil-square">Edit</i>
                     </button>
-                    <button type="button" class="btn btn-outline-danger">
+                    <button type="button" class="btn btn-outline-danger" onclick="deletePost()">
                         <i class="bi bi-trash3">Delete</i>
                      </button>
-                    <button type="button" class="btn btn-outline-info">
+                    <button type="button" class="btn btn-outline-info" onclick="writeComment()">
                         <i class="bi bi-comment-dots">Comment</i>
                     </button>
 

@@ -37,7 +37,7 @@
     <!-- Content -->
     <div id="content" class="ms-auto">
         <!-- Navbar -->
-        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
+        <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> Toggle Sidebar
             </button>
@@ -60,7 +60,7 @@
 
         <!-- Main Content -->
 <main class="container mt-4">
-<form method="POST" action="/">
+<form method="POST" action="/test/posts/create">
     @csrf
         <div class="card mb-4">
             <div class="card-header">
