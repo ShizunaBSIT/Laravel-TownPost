@@ -12,14 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->temporary(); // comment this when done testing and developing
-            /*
-            This is so that the database doesnt get bloated with testing data
-            From Laravel docs:
-            Temporary tables are only visible to the current connection's database session 
-            and are dropped automatically when the connection is closed
-            */
-
             $table->id('user_ID');
             $table->string('username');
             $table->string('password');

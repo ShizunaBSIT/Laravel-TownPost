@@ -58,26 +58,13 @@
         </ul>
         </div>
         <main class="container mt-4">
-            <form method="POST" action="{{route('posts.update', $posts->id)}}">
+            <form method="POST" action="{{route('posts.update', [$post_id->id])}}">
                 @method('PUT')
                 <div class="card-body">
                     <div class="card mb-4">
                         <label for="titlepage" class="form-label"><strong>Title:</strong></label>
                         <input type="text" class="form-control" id="titlepage" name="title" placeholder="Enter your title here" value="{{$post->title}}" required>
                     </div>
-            <div class="card mb-4">
-            <label for="category" class="form-label"><strong>Category ID:</strong></label>
-                <select class="form-select" id="category" name="category_ID" value="{{$post->category_ID}}" required>
-                    <option selected>Choose...</option>
-                    <option value="1">Job</option>
-                    <option value="2">School</option>
-                    <option value="3">Community</option>
-                </select>
-            </div>
-                <div class="card mb-4">
-                    <label for="userid" class="form-label"><strong>User ID:</strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your user ID here" value="{{$post->user_ID}}" required>
-                </div>
                 <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
                     <input type="text" class="form-control" id="publishDate" name="date_posted" readonly placeholder="Press the button set date" value="{{$post->date_posted}}">
@@ -92,3 +79,5 @@
             </form>
         </main>
 
+
+</body>

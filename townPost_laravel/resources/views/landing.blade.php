@@ -126,7 +126,7 @@
             }).then(response => response.json())
             .then(data => {
                 alert(data.message);
-                location.reload(); // Reload to reflect changes
+                location.reload(); 
             }).catch(error => console.error('Error:', error));
         }
     }

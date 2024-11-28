@@ -61,6 +61,7 @@
         <!-- Main Content -->
 <main class="container mt-4">
 <form method="POST" action="{{route('posts.create')}}">
+    @csrf
         <div class="card mb-4">
             <div class="card-header">
                 <h5 class="card-title">Add New Post</h5>

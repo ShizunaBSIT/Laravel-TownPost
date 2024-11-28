@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id("post_ID");
+            $table->unsignedBigInteger('user_ID');
             $table->foreign('user_ID')->references('user_ID')->on('users');
+            $table->unsignedBigInteger('category_ID');
             $table->foreign('category_ID')->references('category_ID')->on('categories');
             $table->string("title");
             $table->string("content");
