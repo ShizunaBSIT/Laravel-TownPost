@@ -41,28 +41,20 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> Toggle Sidebar
             </button>
-            <ul class="list-unstyled components d-flex">
-            <p class="text-white text-center"></p>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-sliders"></i> Filter
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Recent</a></li>
-                        <li><a class="dropdown-item" href="#">Time</a></li>
-                        <li><a class="dropdown-item" href="#">Date</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+            <!--method="GET" action = "{{route('posts.find', [$post_ID->id])}}"-->
+            <form class="form-inline my-2 my-lg-0 d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
 
         <!-- Main Content -->
 <main class="container mt-4">
-@session('success')
-            <div class="alert alert-success" role="user"> Welcome{{ $user->username }} </div>
-@endsession
+@if(session('success'))
+    <div class="alert alert-success" role="alert">
+        Welcome {{ $user->username }}
+    </div>
+@endif
             <!-- Weather Forecast -->
             <div class="card text-center mb-4">
                 <div class="card-body">
@@ -74,33 +66,37 @@
             </div>
 
     <form method="GET" action ="{{route('posts.get')}}">      <!-- News Section -->
-        @csrf
         <div class="card-body">
         <div class="card mb-4">
             <div class="card-header">
                 <h5 class="card-title">Retrieve Content</h5>
         </div>
         <div class="card-body">
-                    <div class="card mb-4">
-                        <label for="titlepage" class="form-label"><strong>Title:</strong></label>
-                        {{$posts->title}}
-                    </div>
-                    <div class="card mb-4">
-                <label for="category" class="form-label"><strong>Category ID:</strong></label>
-                        {{$posts->category_ID}}
-            </div>
-            <div class="card mb-4">
+            @if(isset($posts))
+                <div class="card mb-4">
+                    <label for="titlepage" class="form-label"><strong>Title:</strong></label>
+                        {{$posts->title }}
+                </div>
+                <div class="card mb-4">
+                    <label for="category" class="form-label"><strong>Category ID:</strong></label>
+                        {{ $posts->category_ID }}
+                </div>
+                <div class="card mb-4">
                     <label for="userid" class="form-label"><strong>User ID:</strong></label>
-                    {{$posts->user_ID}}
-            </div>
+                        {{ $posts->user_ID }}
+                </div>
                 <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
-                    {{$posts->publish_date}}
+                        {{ $posts->publish_date }}
                 </div>
                 <div class="card mb-4">
                     <label class="content"><strong>Content:</strong></label>
-                    {{$posts->content}}
+                        {{ $posts->content }}
                 </div>
+                @else
+                    <p>No post available to display.</p>    
+                @endif
+
         <!-- if button is click it will prompt a message that they need an account to comment -->
                     <button type="button" class="btn btn-outline-primary">
                         <i class="bi bi-hand-thumbs-up">Like</i>
@@ -109,7 +105,6 @@
                         <i class="bi bi-share">Share</i>
                     </button>
                     <button type="button" class="btn btn-outline-success">
-                       <a href="{{route('editpost')}}"></a>
                         <i class="bi bi-pencil-square">Edit</i>
                     </button>
                     <button type="button" class="btn btn-outline-danger" onclick="deletePost()">
@@ -128,6 +123,7 @@
                      </button>
                  </div>
                </form>
+            </div>
         </div>
     </div>
 </main>
@@ -144,6 +140,15 @@
                 alert(data.message);
                 location.reload(); 
             }).catch(error => console.error('Error:', error));
+        }
+    }
+    //for searcg post
+    function submitForm() {
+        const postID = document.getElementById('postID').value;
+        if (postID) {
+            window.location.href = `/test/posts/${postID}`; 
+        } else {
+            alert('Please enter a Post ID to search.');
         }
     }
 </script>

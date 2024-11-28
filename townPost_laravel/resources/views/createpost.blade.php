@@ -39,25 +39,14 @@
         <!-- Navbar -->
         <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list"></i> Toggle Sidebar
+                <i class="bi bi-list"></i> 
             </button>
-            <ul class="list-unstyled components d-flex">
-            <p class="text-white text-center">Filter Posts</p>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-sliders"></i> Filter
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Recent</a></li>
-                        <li><a class="dropdown-item" href="#">Time</a></li>
-                        <li><a class="dropdown-item" href="#">Date</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+            <form class="form-inline my-2 my-lg-0 d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="submitForm()">Search</button>
+            </form>
         </div>
-
+        
         <!-- Main Content -->
 <main class="container mt-4">
 <form method="POST" action="{{route('posts.create')}}">

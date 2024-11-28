@@ -41,21 +41,10 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> 
             </button>
-            <ul class="list-unstyled components d-flex">
-            <p class="text-white text-center"></p>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-sliders"></i> Filter
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Recent</a></li>
-                        <li><a class="dropdown-item" href="#">Time</a></li>
-                        <li><a class="dropdown-item" href="#">Date</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+            <form class="form-inline my-2 my-lg-0 d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="submitForm()">Search</button>
+            </form>
         </div>
 
         <!-- Main Content -->
@@ -150,5 +139,10 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/announcement.js') }}"></script>
+    <script>
+        function submitForm(){
+            window.alert('Create Account to Search Post🥲')
+        }
+    </script>
 </body>
 </html>

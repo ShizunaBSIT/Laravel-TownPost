@@ -39,7 +39,7 @@ Route::delete('/test/users/delete', [usersController::class, 'deleteUser']);
 
 
 Route::get ('/test/posts', [postsControllers::class, 'retrievePosts'])->name('posts.get');
-Route::get('/test/posts/{id}', [postsControllers::class, 'getPost']);
+Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('posts.find');
 Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('posts.create');
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('posts.update');
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('posts.delete');
