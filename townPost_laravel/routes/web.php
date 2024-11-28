@@ -15,9 +15,19 @@ Route::get('/', function () {
 Route::get('/landing', function () {
     return view('landing');
 });
+
 Route::get('/createpost', function () {
     return view('createpost');
 });
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/terms', function () {
+    return view('terms');
+});
+
 //Login routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
