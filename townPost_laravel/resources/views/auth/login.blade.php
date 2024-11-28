@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-5 text-black fw-bold">
-                                    <form action="{{ route('login') }}" method="POST">
+                                <form class="mx-1 mx-md-4" action="{{ route('login') }}" method="POST">
                                         @csrf
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <i class="me-3"style="
