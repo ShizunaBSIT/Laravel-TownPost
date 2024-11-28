@@ -60,6 +60,9 @@
 
         <!-- Main Content -->
 <main class="container mt-4">
+@session('success')
+            <div class="alert alert-success" role="user"> Welcome{{ $user->username }} </div>
+@endsession
             <!-- Weather Forecast -->
             <div class="card text-center mb-4">
                 <div class="card-body">
@@ -71,20 +74,33 @@
             </div>
 
     <form method="GET" action ="{{route('posts.get')}}">      <!-- News Section -->
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h5 class="card-title">School's Got Talent</h5>
+        @csrf
+        <div class="card-body">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Retrieve Content</h5>
+        </div>
+        <div class="card-body">
+                    <div class="card mb-4">
+                        <label for="titlepage" class="form-label"><strong>Title:</strong></label>
+                        {{$posts->title}}
+                    </div>
+                    <div class="card mb-4">
+                <label for="category" class="form-label"><strong>Category ID:</strong></label>
+                        {{$posts->category_ID}}
             </div>
-            <div class="card-body">
-                    <p class="post-id"><strong>Post ID:</strong> 1</p>
-                        <p class="post-category"><strong>Category:</strong> School</p>
-                            <p class="posted-by"><strong>Author:</strong> shimshimi</p>
-                                <p class="post-date"><strong>Posted on:</strong> 2022-01-01</p>
-                                    <p class="card-text">Get ready to be amazed! Our annual School's Got Talent Show is coming up on 
-                                        <strong>December 16, 2024</strong> at <strong>7:30 PM</strong> in the Technological Institute of the Philippines. 
-                                        Sign-ups are open until <strong>November 30, 2024</strong>.
-                    </p>
-</form>
+            <div class="card mb-4">
+                    <label for="userid" class="form-label"><strong>User ID:</strong></label>
+                    {{$posts->user_ID}}
+            </div>
+                <div class="card mb-4 publish-date-container">
+                    <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
+                    {{$posts->publish_date}}
+                </div>
+                <div class="card mb-4">
+                    <label class="content"><strong>Content:</strong></label>
+                    {{$posts->content}}
+                </div>
         <!-- if button is click it will prompt a message that they need an account to comment -->
                     <button type="button" class="btn btn-outline-primary">
                         <i class="bi bi-hand-thumbs-up">Like</i>
@@ -93,7 +109,7 @@
                         <i class="bi bi-share">Share</i>
                     </button>
                     <button type="button" class="btn btn-outline-success">
-                        <!--<a href="{{asset('editpost.blade.php')}}">-->
+                       <a href="{{route('editpost')}}"></a>
                         <i class="bi bi-pencil-square">Edit</i>
                     </button>
                     <button type="button" class="btn btn-outline-danger" onclick="deletePost()">
@@ -101,9 +117,9 @@
                     </button>
                     <button type="button" class="btn btn-outline-info" onclick="writeComment()">
                         <i class="bi bi-comment-dots">Comment</i>
-                    </button>
+                    </button> <br><br>
 
-                <!-- Disable Comment -->
+                <!-- Comment Enabled -->
                 <form class="mt-2">
                   <div class="input-group">
                      <input type="text" class="form-control" placeholder="Enter your comment">
