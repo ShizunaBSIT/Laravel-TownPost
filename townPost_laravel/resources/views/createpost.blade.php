@@ -104,7 +104,7 @@
         var day = date.getDate();
         var month = date.getMonth() + 1;
         var year = date.getFullYear();
-        var formattedTime = `${day}/${month}/${year}`;
+        var formattedTime = `${year}/${month}/${day}`;
         document.getElementById('publishDate').value = formattedTime;
     }
 </script>
