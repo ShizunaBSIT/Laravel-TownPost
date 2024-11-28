@@ -13,6 +13,14 @@ Route::get('/landing', function () {
     return view('landing');
 });
 
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/terms', function () {
+    return view('terms');
+});
+
 //Login routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
