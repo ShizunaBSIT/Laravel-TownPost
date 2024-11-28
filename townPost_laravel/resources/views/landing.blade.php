@@ -70,10 +70,10 @@
                 </div>
             </div>
 
-            <!-- News Section -->
+    <form method="GET" action ="{{route('posts.get')}}">      <!-- News Section -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <h5 class="card-title"></h5>
+                    <h5 class="card-title">School's Got Talent</h5>
             </div>
             <div class="card-body">
                     <p class="post-id"><strong>Post ID:</strong> 1</p>
@@ -84,6 +84,7 @@
                                         <strong>December 16, 2024</strong> at <strong>7:30 PM</strong> in the Technological Institute of the Philippines. 
                                         Sign-ups are open until <strong>November 30, 2024</strong>.
                     </p>
+</form>
         <!-- if button is click it will prompt a message that they need an account to comment -->
                     <button type="button" class="btn btn-outline-primary">
                         <i class="bi bi-hand-thumbs-up">Like</i>
@@ -91,12 +92,13 @@
                     <button type="button" class="btn btn-outline-secondary" onclick="sharePost()">
                         <i class="bi bi-share">Share</i>
                     </button>
-                    <button type="button" class="btn btn-outline-success" onclick="editPost()">
+                    <button type="button" class="btn btn-outline-success">
+                        <!--<a href="{{asset('editpost.blade.php')}}">-->
                         <i class="bi bi-pencil-square">Edit</i>
                     </button>
                     <button type="button" class="btn btn-outline-danger" onclick="deletePost()">
                         <i class="bi bi-trash3">Delete</i>
-                     </button>
+                    </button>
                     <button type="button" class="btn btn-outline-info" onclick="writeComment()">
                         <i class="bi bi-comment-dots">Comment</i>
                     </button>
@@ -116,5 +118,18 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/weatherapi.js') }}"></script>
+    <script>
+    function deletePost(postId) {
+        if (confirm('Are you sure you want to delete this post?')) {
+            fetch(`/test/posts/delete/${postId}`, {
+                method: 'DELETE'
+            }).then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                location.reload(); // Reload to reflect changes
+            }).catch(error => console.error('Error:', error));
+        }
+    }
+</script>
 </body>
 </html>

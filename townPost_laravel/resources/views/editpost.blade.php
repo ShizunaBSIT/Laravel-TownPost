@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Post</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
-    <link href="{{ asset('/css/createpost.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/creeatepost.css') }}" rel="stylesheet">
 </head>
-  <body>
- <!-- Sidebar -->
- <nav id="sidebar" class="position-fixed">
+<body>
+    <!-- Sidebar -->
+    <nav id="sidebar" class="position-fixed">
         <div class="sidebar-header text-center py-4">
             <img src="/images/Logo.jpg" width="50" height="50" alt="Logo">
         </div>
@@ -42,7 +42,7 @@
                 <i class="bi bi-list"></i> Toggle Sidebar
             </button>
             <ul class="list-unstyled components d-flex">
-            <p class="text-white text-center">Filter Posts</p>
+            <p class="text-white text-center"></p>
             <li>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,56 +57,38 @@
             </li>
         </ul>
         </div>
-
-        <!-- Main Content -->
-<main class="container mt-4">
-<form method="POST" action="{{route('posts.create')}}">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="card-title">Add New Post</h5>
-        </div>
-        <div class="card-body">
-            <div class="card mb-4">
-                <label for="titlepage" class="form-label"><strong>Title:</strong></label>
-                <input type="text" class="form-control" id="titlepage" name="title" placeholder="Enter your title here">
-            </div>
+        <main class="container mt-4">
+            <form method="POST" action="{{route('posts.update', $posts->id)}}">
+                @method('PUT')
+                <div class="card-body">
+                    <div class="card mb-4">
+                        <label for="titlepage" class="form-label"><strong>Title:</strong></label>
+                        <input type="text" class="form-control" id="titlepage" name="title" placeholder="Enter your title here" value="{{$post->title}}" required>
+                    </div>
             <div class="card mb-4">
             <label for="category" class="form-label"><strong>Category ID:</strong></label>
-                <select class="form-select" id="category" name="category_ID">
+                <select class="form-select" id="category" name="category_ID" value="{{$post->category_ID}}" required>
                     <option selected>Choose...</option>
                     <option value="1">Job</option>
                     <option value="2">School</option>
                     <option value="3">Community</option>
                 </select>
             </div>
-            <div class="card mb-4">
+                <div class="card mb-4">
                     <label for="userid" class="form-label"><strong>User ID:</strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your user ID here">
-            </div>
-            <div class="card mb-4 publish-date-container">
+                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your user ID here" value="{{$post->user_ID}}" required>
+                </div>
+                <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
-                    <input type="text" class="form-control" id="publishDate" name="date_posted" readonly placeholder="Press the button set date">
+                    <input type="text" class="form-control" id="publishDate" name="date_posted" readonly placeholder="Press the button set date" value="{{$post->date_posted}}">
                     <button class="btn btn-outline-primary btn-sm float-right" type="button" onclick="getDate()">Set Date</button>
-            </div>
-            <div class="card mb-4">
+                </div>
+                <div class="card mb-4">
                     <label class="content"><strong>Content:</strong></label>
-                    <textarea class="form-control" aria-label="With textarea" name="content"></textarea>
-            </div>
-                    <button class="btn btn-outline-primary float-end"type="submit">Save</button>
-    </div>
-</form>
-</main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-    function getDate() {
-        var date = new Date();
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-        var formattedTime = `${day}/${month}/${year}`;
-        document.getElementById('publishDate').value = formattedTime;
-    }
-</script>
-<script src="{{ asset('js/announcement.js') }}"></script>
-</body>
-</html>
+                    <textarea class="form-control" aria-label="With textarea" name="content" value="{{$post->content}}" reuqired></textarea>
+                </div>
+                    <button class="btn btn-outline-primary float-end"type="submit">Update Post</button>
+                </div>
+            </form>
+        </main>
+
