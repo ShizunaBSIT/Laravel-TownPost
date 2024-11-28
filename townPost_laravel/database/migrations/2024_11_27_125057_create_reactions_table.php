@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id("post_ID");
+        Schema::create('reactions', function (Blueprint $table) {
+            $table->unsignedBigInteger('post_ID');
+            $table->foreign('post_ID')->references('post_ID')->on('posts');
             $table->unsignedBigInteger('user_ID');
             $table->foreign('user_ID')->references('user_ID')->on('users');
-            $table->unsignedBigInteger('category_ID');
-            $table->foreign('category_ID')->references('category_ID')->on('categories');
-            $table->string("title");
-            $table->string("content");
-            $table->date("date_posted");
+            $table->string('reaction')->references('reaction')->on('reaction_imgs');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('reactions');
     }
 };

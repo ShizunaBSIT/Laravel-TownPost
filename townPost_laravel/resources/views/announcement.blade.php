@@ -22,17 +22,31 @@
                 </a>
             </li>
             <li>
+                <a class="nav-link text-white" href="#">
+                    <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
+                </a>
+            </li>
+            <li>
                 <a class="nav-link text-white" href="{{route('login')}}">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
         </ul>
-        <ul class="list-unstyled components">
-            <p class="text-white text-center">Filter Posts</p>
+    </nav>
+
+    <!-- Content -->
+    <div id="content" class="ms-auto">
+        <!-- Navbar -->
+        <div class="d-flex justify-content-between align-items-center py-3 px-3">
+            <button id="sidebarCollapse" class="btn btn-info">
+                <i class="bi bi-list"></i> 
+            </button>
+            <ul class="list-unstyled components d-flex">
+            <p class="text-white text-center"></p>
             <li>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" >
-                        <i class="bi bi-sliders"></i> 
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-sliders"></i> Filter
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="#">Recent</a></li>
@@ -42,21 +56,6 @@
                 </div>
             </li>
         </ul>
-    </nav>
-
-    <!-- Content -->
-    <div id="content" class="ms-auto">
-        <!-- Navbar -->
-        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
-            <button id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list"></i> 
-            </button>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search Here" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit" onclick="myButtons()"> 
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
         </div>
 
         <!-- Main Content -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use Carbon\Carbon;
 
 class postsControllers extends Controller
 {
@@ -30,13 +31,13 @@ class postsControllers extends Controller
 
     // POST
     // create post
-    public function createPost($data) {
+    public function createPost(Request $data) {
         $post = new Posts;
         $post->user_ID = $data->user_ID;
         $post->category_ID = $data->category_ID;
         $post->title = $data->title;
         $post->content = $data->content;
-        $post->date_posted = $data->data_posted;
+        $post->date_posted = Carbon::parse($data->date_posted)->format('Y/m/d');
         $post->save();
 
         return response()->json([
@@ -45,13 +46,14 @@ class postsControllers extends Controller
     }
 
     // PUT
-    public function updatePost($data, $id) {
+    public function updatePost(Request $data, $id) {
 
         $post = Posts::find($id);
 
         if (!empty($post)) {
             $post->title = is_null($data->title) ? $post->title : $data->title;
             $post->content = is_null($data->content) ? $post->content : $data->content;
+            $post->save();
 
             return response()->json(["message" => "Post content updated"]);
         }

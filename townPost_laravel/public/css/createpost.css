@@ -1,18 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
-
 body {
     font-family: "Sour Gummy", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings:  "wdth" 100;
-    background:  #89CFF0;
+    background: #4E8372;
 }
 
 #sidebar {
-    min-width: 150px;
-    max-width: 150px;
+    min-width: 250px;
+    max-width: 250px;
     height: 100vh; 
-    background-color: #A6AEBF;
+    background: #2E200F;
     transition: all 0.3s;
     overflow-y: auto; 
 }
@@ -23,11 +22,12 @@ body {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background-color: #A6AEBF;
+    background: #2E200F;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
+    border-bottom: 1px solid #176B87;
 }
 
 #sidebar ul li a {
@@ -45,7 +45,7 @@ body {
 #content {
     margin-left: 250px;
     transition: all 0.3s;
-    width: calc(100% - 150px); 
+    width: calc(100% - 250px); 
 }
 
 #sidebar.active + #content {
@@ -55,14 +55,49 @@ body {
 
 .d-flex {
     gap: 10px;
-    background-color: #A6AEBF;
-}
-.card{
-    background-attachment: fixed;
-    background-color: #F4F6FF;
 }
 main.container {
     max-width: 90%; 
     margin: 20px auto; 
     min-height: 100px;
+}
+
+.card {
+    border-radius: 10px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 15px; 
+    background-attachment: fixed;
+    background-color: #F2D9DA;
+}
+
+.card.mb-4.publish-date-container {
+    display: flex;
+    align-items: left; 
+    gap: 10px; 
+}
+
+.form-control {
+    width: 100%; 
+    padding: 10px;
+    font-size: 1rem;
+}
+
+#content {
+    min-height: 100px; 
+    resize: none; 
+}
+
+.btn-outline-primary {
+    white-space: nowrap; 
+    padding: 8px 15px; 
+    position: relative;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333; 
+}
+.btn-outline-primary{
+    width: 10%;
 }

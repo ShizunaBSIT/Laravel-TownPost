@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+
+// controllers
+use App\Http\Controllers\postsControllers;
+use App\Http\Controllers\usersController;
+use App\Http\Controllers\commentsController;
 
 
 Route::get('/', function () {
@@ -11,6 +14,10 @@ Route::get('/', function () {
 
 Route::get('/landing', function () {
     return view('landing');
+});
+
+Route::get('/createpost', function () {
+    return view('createpost');
 });
 
 Route::get('/register', function () {
@@ -30,10 +37,22 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+/* Routing for postman -- TESTING PURPOSES -- */
+Route::get('/test/users/{id}',[usersController::class, 'viewUser']);
+Route::post('/test/users/create', [usersController::class,'createUser']);
+Route::get('/test/users/login', [usersController::class,'loginUser']);
+Route::put('/test/users/update', [usersController::class, 'updateUser']);
+Route::delete('/test/users/delete', [usersController::class, 'deleteUser']);
 
-//require __DIR__.'/auth.php';
+
+Route::get ('/test/posts', [postsControllers::class, 'retrievePosts'])->name('posts.get');
+Route::get('/test/posts/{id}', [postsControllers::class, 'getPost']);
+Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('posts.create');
+Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('posts.update');
+Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('posts.delete');
+
+Route::get('/test/comments/{id}',[commentsController::class, 'viewComments']);
+Route::post('/test/comments/create', [commentsController::class, 'postComment']);
+Route::put('/test/comments/update',[commentsController::class, 'updateComment']);
+Route::delete('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
+/* ^^ Routing for postman ^^*/
