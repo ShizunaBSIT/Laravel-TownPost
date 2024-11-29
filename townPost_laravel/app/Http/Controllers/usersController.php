@@ -67,8 +67,8 @@ class usersController extends Controller
     public function createUser(Request $data) {
         $user = new Users;
         $user->username = $data->username;
-        $user->password = $data->password;
         $user->email = $data->email;
+        $user->password = Hash::make($data->password);
         $user->date_created = $data->date_created;
         $user->save();
 
@@ -86,7 +86,7 @@ class usersController extends Controller
         if (Users::where('user_ID',$userID)->exists()) {
             $user = Users::find($userID);
             $user->username = is_null($data->username) ? $user->username : $data->username;
-            $user->password = is_null($data->password) ? $user->password : $data->password;
+            $user->password = is_null($data->password) ? $user->password : Hash::make($data->password);
 
             return response()->json(["message" => "User account Updated"]);
         } else {
