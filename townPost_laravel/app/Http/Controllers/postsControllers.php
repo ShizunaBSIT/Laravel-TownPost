@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use Carbon\Carbon;
 
 class postsControllers extends Controller
 {
@@ -36,7 +37,7 @@ class postsControllers extends Controller
         $post->category_ID = $data->category_ID;
         $post->title = $data->title;
         $post->content = $data->content;
-        $post->date_posted = $data->data_posted;
+        $post->date_posted = Carbon::parse($data->date_posted)->format('Y/m/d');
         $post->save();
 
         return response()->json([

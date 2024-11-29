@@ -4,12 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class Users extends Model
 {
-    // users table
-
     use HasFactory;
-    protected $table='users';
-    protected $fillable=['username','password','date_created'];
+
+    // Specify the table name
+    protected $table = 'users';
+
+    // Specify the fillable fields
+    protected $fillable = ['username', 'email', 'password', 'date_created'];
+
+    // Hash the password when setting it
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 }

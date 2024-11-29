@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin_permissions', function (Blueprint $table) {
+            $table->unsignedBigInteger('admin_ID');
             $table->foreign('admin_ID')->references('admin_ID')->on('admins');
             $table->id('permission_ID');
             $table->string('permission_name');

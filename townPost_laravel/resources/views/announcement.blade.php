@@ -23,11 +23,6 @@
             </li>
             <li>
                 <a class="nav-link text-white" href="#">
-                    <img src="{{ asset('/images/Archive.svg') }}" width="30" height="30" alt="Archive" class="me-2"> Archive
-                </a>
-            </li>
-            <li>
-                <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
@@ -37,35 +32,18 @@
                 </a>
             </li>
         </ul>
-        <ul class="list-unstyled components">
-            <p class="text-white text-center">Filter Posts</p>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" >
-                        <i class="bi bi-sliders"></i> Filter
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Recent</a></li>
-                        <li><a class="dropdown-item" href="#">Time</a></li>
-                        <li><a class="dropdown-item" href="#">Date</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
     </nav>
 
     <!-- Content -->
     <div id="content" class="ms-auto">
         <!-- Navbar -->
-        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
+        <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list"></i> Toggle Sidebar
+                <i class="bi bi-list"></i> 
             </button>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search Here" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit" onclick="myButtons()"> 
-                    <i class="bi bi-search"></i>
-                </button>
+            <form class="form-inline my-2 my-lg-0 d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="submitForm()">Search</button>
             </form>
         </div>
 
