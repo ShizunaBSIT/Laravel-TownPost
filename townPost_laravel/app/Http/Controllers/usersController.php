@@ -68,6 +68,7 @@ class usersController extends Controller
         $user = new Users;
         $user->username = $data->username;
         $user->password = $data->password;
+        $user->email = $data->email;
         $user->date_created = $data->date_created;
         $user->save();
 
