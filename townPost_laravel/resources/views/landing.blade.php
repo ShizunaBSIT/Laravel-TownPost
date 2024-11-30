@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap Demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="">
 </head>
 <body>
 <!-- Sidebar -->
@@ -59,11 +60,28 @@
             </div>
         </div>
 
-        <form method="GET" action="{{ route('retrievePost', $posts->postID)}}">
+        <form method="GET" action="{{ route('retrievePost')}}">
             <div class="card mb-4">
                 <div class="card-header">
                     <h5 class="card-title">Retrieve Content</h5>
                 </div>
+        <!-- Main Content -->
+<main class="container mt-4">
+@if(session('success'))
+    <div class="alert alert-success" role="alert">
+        Welcome {{ Auth::user()->username }}
+    </div>
+@endif
+            <!-- Weather Forecast -->
+            <div class="card text-center mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">Today's Forecast</h2>
+                    <input type="text" id="city" class="form-control my-3" placeholder="Enter City Name e.g. Manila">
+                    <button class="btn btn-primary" id="getWeatherButton" onclick="getWeather()">Get Weather</button>
+                    <p id="weatherInfo" class="mt-3">Weather Info will appear here</p>
+                </div>
+            </div>
+            <form method="GET" action="{{ route('getPost', ['$post->postID']) }}">
                 <div class="card-body">
                     <div class="card mb-4">
                         <label for="titlepage" class="form-label"><strong>Title:</strong></label>
