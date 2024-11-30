@@ -22,12 +22,12 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{route('posts.create')}}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('login')}}">
+                <a class="nav-link text-white" href="{{route('logout')}}">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
@@ -41,10 +41,6 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> 
             </button>
-            <form class="form-inline my-2 my-lg-0 d-flex">
-                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="submitForm()">Search</button>
-            </form>
         </div>
         
         <!-- Main Content -->

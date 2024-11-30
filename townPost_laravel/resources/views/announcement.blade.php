@@ -17,17 +17,17 @@
         <ul class="list-unstyled components">
             <p class="text-white text-center">Menu</p>
             <li class="active">
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{route('modals.account')}}" >
                     <img src="{{ asset('/images/house.svg') }}" width="30" height="30" alt="Home" class="me-2"> Home
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="#">
-                    <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
+                <a class="nav-link text-white" href="{{route('modals.account')}}" >
+                    <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" style="color: white "class="me-2"> Write Post
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('login')}}">
+                <a class="nav-link text-white" href="{{route('modals.account')}}" >
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
@@ -41,10 +41,6 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> 
             </button>
-            <form class="form-inline my-2 my-lg-0 d-flex">
-                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="submitForm()">Search</button>
-            </form>
         </div>
 
         <!-- Main Content -->
@@ -76,13 +72,10 @@
         <p><strong>Contact:</strong> Eunice D. Ibardaloza, 0917-123-4567, ibardaloza.eunice@titech.edu.ph</p>
         
         <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary" onclick="myButtons()">
+        <a href="{{route('modals.account')}}" class="btn btn-primary">
             <i class="bi bi-hand-thumbs-up"></i> Like
         </a>
-        <a href="#" class="btn btn-secondary" onclick="myButtons()">
-            <i class="bi bi-share"></i> Share
-        </a>
-        <a href="#" class="btn btn-info" onclick="myButtons()">
+        <a href="{{route('modals.account')}}"  class="btn btn-info" onclick="myButtons()">
             <i class="bi bi-chat-left-quote"></i> Comment
         </a>
 

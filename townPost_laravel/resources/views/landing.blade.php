@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{route('posts.create')}}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
@@ -41,11 +41,6 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> Toggle Sidebar
             </button>
-            <!--method="GET" action = "{{route('posts.find', [$post_ID->id])}}"-->
-            <form class="form-inline my-2 my-lg-0 d-flex">
-                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
 
         <!-- Main Content -->
@@ -101,18 +96,21 @@
                     <button type="button" class="btn btn-outline-primary">
                         <i class="bi bi-hand-thumbs-up">Like</i>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary" onclick="sharePost()">
-                        <i class="bi bi-share">Share</i>
-                    </button>
-                    <button type="button" class="btn btn-outline-success">
+                    <button type="button" class="btn btn-outline-info">
+                        <i class="bi bi-comment-dots">Comment</i>
+                    </button> 
+                    <a href="{{route('posts.update', $post->id)}}" button type="button" class="btn btn-outline-success">
+                    @csrf
+                    @method('PUT')
                         <i class="bi bi-pencil-square">Edit</i>
                     </button>
-                    <button type="button" class="btn btn-outline-danger" onclick="deletePost()">
-                        <i class="bi bi-trash3">Delete</i>
-                    </button>
-                    <button type="button" class="btn btn-outline-info" onclick="writeComment()">
-                        <i class="bi bi-comment-dots">Comment</i>
-                    </button> <br><br>
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger">
+                                <i class="bi bi-trash3">Delete</i>
+                            </button><br><br>
+                    </form>
 
                 <!-- Comment Enabled -->
                 <form class="mt-2">
@@ -130,27 +128,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/weatherapi.js') }}"></script>
-    <script>
-    function deletePost(postId) {
-        if (confirm('Are you sure you want to delete this post?')) {
-            fetch(`/test/posts/delete/${postId}`, {
-                method: 'DELETE'
-            }).then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                location.reload(); 
-            }).catch(error => console.error('Error:', error));
-        }
-    }
-    //for searcg post
-    function submitForm() {
-        const postID = document.getElementById('postID').value;
-        if (postID) {
-            window.location.href = `/test/posts/${postID}`; 
-        } else {
-            alert('Please enter a Post ID to search.');
-        }
-    }
-</script>
 </body>
 </html>
