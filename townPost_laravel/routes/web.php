@@ -49,20 +49,19 @@ Route::get('/test/users/login', [usersController::class,'loginUser']);
 Route::put('/test/users/update', [usersController::class, 'updateUser']);
 Route::delete('/test/users/delete', [usersController::class, 'deleteUser']);
 
-Route::get ('/test/posts', [postsControllers::class, 'retrievePosts'])->name('posts.get');
-Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('posts.find');
-Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('posts.create');
-Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('posts.update');
-Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('posts.delete');
-
 // search method
 Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost']);
 
 Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comments.get');
 Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
 
+
 Route::get ('/test/posts/retrieve', [postsControllers::class, 'getPost'])->name('getPost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'retrievePosts'])->name('retrievePost');
+
+Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
+Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
+
 Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('deletePost');

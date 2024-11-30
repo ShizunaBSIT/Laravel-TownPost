@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('posts.create')}}">
+                <a class="nav-link text-white" href="{{route('createPost')}}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
@@ -42,7 +42,6 @@
                 <i class="bi bi-list"></i> 
             </button>
         </div>
-        
         <!-- Main Content -->
 <main class="container mt-4">
 <form method="POST" action="{{route('createPost')}}">
@@ -69,7 +68,7 @@
             </div>
             <div class="card mb-4">
                     <label for="userid" class="form-label"><strong>Publish by: </strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your username here">
+                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your userId here">
             </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
