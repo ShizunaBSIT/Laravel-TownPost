@@ -8,7 +8,7 @@ use Carbon\Carbon;
 class postsControllers extends Controller
 {
     // GET - Retrieve posts sorted by date created/posted (for landing page)
-    public function index() {
+    public function retrievePosts() {
         // Fetch the latest 5 posts
         $posts = Posts::orderBy('date_posted', 'desc')->take(5)->get();
 
