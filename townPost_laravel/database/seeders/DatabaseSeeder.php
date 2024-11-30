@@ -29,13 +29,15 @@ class DatabaseSeeder extends Seeder
              DB::table('users')->insert([
             'username' => Str::random(10).$ctr,
             'email' => Str::random(10).$ctr.'@example.com',
+        for ( $ctr = 0, $ctr <= 10, 
+        DB::table('users')->insert([
+            'username' => Str::random(10),
+            'email' => Str::random(10).'@example.com',
             'password' => Hash::make('password'),
             'date_created' => date()
         ]);
 
-
         }
-
         
     }
 }

@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\reactionController;
 
+use App\Http\Controllers\reactionController;
+
 Route::get('/', function () {
     return view('announcement');
 });

@@ -67,6 +67,7 @@ class usersController extends Controller
     public function createUser(Request $data) {
         $user = new Users;
         $user->username = $data->username;
+
         $user->email = $data->email;
         $user->password = Hash::make($data->password);
         $user->date_created = $data->date_created;
