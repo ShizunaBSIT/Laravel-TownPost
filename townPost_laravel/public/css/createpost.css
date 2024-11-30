@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
     font-family: "Sour Gummy", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings:  "wdth" 100;
-    background: #4E8372;
+    background:  #F5F7F8;
 }
 
 #sidebar {
     min-width: 150px;
     max-width: 150px;
     height: 100vh; 
-    background: #2E200F;
+    background-color: #45474B;
     transition: all 0.3s;
     overflow-y: auto; 
 }
@@ -22,24 +23,30 @@ body {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #2E200F;
+    background-color: #45474B;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #176B87;
 }
 
 #sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
     padding: 10px;
-    font-size: 1.1em;
-    display: block;
-    color: black;
+    transition: background 0.3s, color 0.3s; 
 }
 
 #sidebar ul li a:hover {
-    background: #D98526;
-    color: black;
+    background: #F4CE14; 
+    color: #000000; 
+}
+
+#sidebar ul li a:hover img {
+    filter: brightness(0.8); 
+    transition: filter 0.3s; 
 }
 
 #content {
@@ -55,8 +62,12 @@ body {
 
 .d-flex {
     gap: 10px;
-    background-color: #A6AEBF;
+    background-color:#45474B
 }
+.nav-link img {
+    filter: invert(100%) brightness(100%);
+}
+
 main.container {
     max-width: 90%; 
     margin: 20px auto; 
@@ -68,7 +79,8 @@ main.container {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
     padding: 15px; 
     background-attachment: fixed;
-    background-color: #F2D9DA;
+    background-color:  #495E57;
+    color:#FDEFF4;
 }
 
 .card.mb-4.publish-date-container {
@@ -97,7 +109,7 @@ main.container {
 .card-title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333; 
+    color:#FDEFF4;
 }
 .btn-outline-primary{
     width: 10%;

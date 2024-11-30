@@ -5,32 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Posts;
 use Carbon\Carbon;
-
 class postsControllers extends Controller
 {
-    // GET
-    // retrieve posts sorted by date created/posted
-    public function retrievePosts() {
-        $posts = Posts::all()->sortBy('date_created', SORT_NATURAL, false)->limit(5);
+    // GET - Retrieve posts sorted by date created/posted (for landing page)
+    public function index() {
+        // Fetch the latest 5 posts
+        $posts = Posts::orderBy('date_posted', 'desc')->take(5)->get();
 
-        return response()->json($posts);
+        // Pass the posts to the view
+        return view('landing', compact('posts'));
     }
 
-    // GET
-    // retrieve specific post
+    // GET - Retrieve a specific post (for viewing a single post)
     public function getPost($postID) {
         $post = Posts::find($postID);
 
         if (!empty($post)) {
             return response()->json($post);
-        }
-        else {
-            return response()->json(["message" => "post does not exist"]);
+        } else {
+            return response()->json(["message" => "Post does not exist"]);
         }
     }
 
-    // POST
-    // create post
+    // POST - Create a new post
     public function createPost(Request $data) {
         $post = new Posts;
         $post->user_ID = $data->user_ID;
@@ -45,9 +42,8 @@ class postsControllers extends Controller
         ], 201);
     }
 
-    // PUT
+    // PUT - Update post content
     public function updatePost(Request $data, $id) {
-
         $post = Posts::find($id);
 
         if (!empty($post)) {
@@ -56,26 +52,21 @@ class postsControllers extends Controller
             $post->save();
 
             return response()->json(["message" => "Post content updated"]);
-        }
-        else {
+        } else {
             return response()->json(["message" => "Update failed"]);
         }
-
     }
 
-    // DELETE
+    // DELETE - Delete a post
     public function deletePost($id) {
         $post = Posts::find($id);
 
         if (!empty($post)) {
             $post->delete();
 
-            return response()->json(["message" => "post successfully deleted"]);
-        }
-        else {
-            return response()->json(["message" => "post not found"]);
+            return response()->json(["message" => "Post successfully deleted"]);
+        } else {
+            return response()->json(["message" => "Post not found"]);
         }
     }
-
-
 }
