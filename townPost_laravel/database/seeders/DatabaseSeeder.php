@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use App\Models\Users;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,12 +22,18 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]); */
-    
-        $this->call([
-            //UserDummyData::class,
-            CategoriesData::class,
-            PostDummyData::class
-        ]);
+        
+        // create 10 users
+        for ($ctr = 0; $ctr <= 10; $ctr++) {
+            
+            DB::table('users')->insert([
+                'username' => Str::random(10).$ctr,
+                'email' => Str::random(10).$ctr.'@example.com',
+                'password' => Hash::make('password'),
+                'date_created' => date()
+            ]);
+        }
+        
 
         
     }
