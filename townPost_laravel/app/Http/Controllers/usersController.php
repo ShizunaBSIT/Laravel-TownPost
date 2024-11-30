@@ -16,7 +16,7 @@ class usersController extends Controller
     // GET
     // view user
     public function viewUser($id) {
-        $user = Users::find($id);
+        $user = Users::where('user_id','=',$id)->get();
 
         if (!empty($user)) {
             // check if user is not empty and send all user's details to be displayed
@@ -35,8 +35,7 @@ class usersController extends Controller
     public function loginUser(Request $data) {
         // this finds the corresponding user using login credentials (login and password)
         /* This is meant to be different from the "view user" since this involves letting said user have the ability to login
-        and start creating posts on the website
-        */
+        and start creating posts on the website */
         $email = $data->email;
         $password = $data->password;
 
@@ -44,7 +43,7 @@ class usersController extends Controller
             [
                 ['email','=',$email]
             ]
-        )->first();
+        )->first()->get();
 
         if (empty($user)) { // if user empty
             return response()->json(
@@ -56,10 +55,10 @@ class usersController extends Controller
                 ["message"=>"Login Failed, please check password"],
                  status: 404);
         }
-        else { 
+        else {
             // Login successful
             Auth::login($user); // Log the user in
-    
+
             return response()->json([
                 "message" => "Login Successful",
                 "user" => $user // Include user details if necessary
@@ -92,7 +91,7 @@ class usersController extends Controller
     // update user info
     public function updateUser(Request $data, $userID) {
         if (Users::where('user_ID',$userID)->exists()) {
-            $user = Users::find($userID);
+            $user = Users::find($userID)->get();
             $user->username = is_null($data->username) ? $user->username : $data->username;
             $user->password = is_null($data->password) ? $user->password : Hash::make($data->password);
 
@@ -107,7 +106,7 @@ class usersController extends Controller
     /* Remember to add a second prompt to make sure the user actually wants to delete their account
     */
     public function deleteUser($userID) {
-        $user = Users::find($userID);
+        $user = Users::find($userID)->get();
 
         if (!empty($user)) {
             $user->delete();
