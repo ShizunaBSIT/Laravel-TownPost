@@ -11,4 +11,6 @@ class admins extends Model
     use HasFactory;
     protected $table='admins';
     protected $fillable=['user_ID','date_start'];
+
+    protected $primaryKey = 'admin_ID';
 }

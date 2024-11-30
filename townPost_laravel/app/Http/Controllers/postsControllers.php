@@ -10,7 +10,11 @@ class postsControllers extends Controller
     // GET - Retrieve posts sorted by date created/posted (for landing page)
     public function retrievePosts() {
         // Fetch the latest 5 posts
-        $posts = Posts::orderBy('date_posted', 'desc')->take(5)->get();
+        $posts = Posts::orderBy('date_posted', 'desc')->take(5)
+            ->join('users', 'users.user_ID', '=', 'posts.user_ID')
+            ->join('categories','categories.category_ID','=','posts.category_ID')
+            ->select('posts.*','users.username','categories.name')
+            ->get();
 
         // Pass the posts to the view
         return view('postsTest', ['posts' => $posts]);
