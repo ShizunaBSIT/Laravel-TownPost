@@ -55,6 +55,18 @@ Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost']);
 
 Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comments.get');
 Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
+
+Route::get ('/test/posts', [postsControllers::class, 'getPost'])->name('getPost');
+Route::get('/test/posts/{id}', [postsControllers::class, 'retrievePost'])->name('retrievePost');
+Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');
+Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
+Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('deletePost');
+Route::get('/token', function(){
+    return csrf_token();
+});
+
+Route::get('/test/comments/{id}',[commentsController::class, 'viewComments']);
+Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('postComment');
 Route::put('/test/comments/update',[commentsController::class, 'updateComment']);
 Route::delete('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
 
