@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                 'username' => Str::random(10).$ctr,
                 'email' => Str::random(10).$ctr.'@example.com',
                 'password' => Hash::make('password'),
-                'date_created' => date()
+                'date_created' => now()
             ]);
         }
         
