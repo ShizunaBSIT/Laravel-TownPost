@@ -9,6 +9,8 @@ use App\Http\Controllers\commentsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
+use App\Http\Controllers\reactionController;
+
 Route::get('/', function () {
     return view('announcement');
 });
@@ -50,7 +52,13 @@ Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('posts.delete');
 
 Route::get('/test/comments/{id}',[commentsController::class, 'viewComments']);
+
 Route::post('/test/comments/create', [commentsController::class, 'postComment']);
 Route::put('/test/comments/update',[commentsController::class, 'updateComment']);
 Route::delete('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
+
+Route::get('/test/reactions/{id}',[reactionController::class, 'getReactions']);
+Route::get('/test/reactions/react',[reactionController::class, 'react']);
+Route::get('/test/reactions/unreact',[reactionController::class, 'unreact']);
+
 /* ^^ Routing for postman ^^*/
