@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->timestamp('date_created')->useCurrent(); // Optional, adjust as needed
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

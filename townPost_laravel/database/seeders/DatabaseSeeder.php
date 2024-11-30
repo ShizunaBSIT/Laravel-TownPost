@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\reaction_img;
 use App\Models\Users;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,35 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-       /* User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]); */
-        
-        // create 10 users
-        for ($ctr = 0; $ctr <= 10; $ctr++) {
-            
-            DB::table('users')->insert([
-                'username' => Str::random(10).$ctr,
-                'email' => Str::random(10).$ctr.'@example.com',
-                'password' => Hash::make('password'),
-                'date_created' => now()
-            ]);
-        }
-        
-
-        for ( $ctr = 0; $ctr <= 10; $ctr++) {
-
-             DB::table('users')->insert([
-            'username' => Str::random(10).$ctr,
-            'email' => Str::random(10).$ctr.'@example.com',
-            'password' => Hash::make('password'),
-            'date_created' => now()
+        $this->call([
+            UserDummyData::class,
+            CategoriesData::class,
+            PostDummyData::class,
+            adminSeeder::class,
+            commentsSeeder::class,
+            reactionImgSeeder::class,
+            reactionsSeeder::class,
+            adminPermSeeder::class
         ]);
 
-        }
-        
+
     }
 }
