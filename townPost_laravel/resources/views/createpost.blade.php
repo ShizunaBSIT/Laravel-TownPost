@@ -45,7 +45,7 @@
         
         <!-- Main Content -->
 <main class="container mt-4">
-<form method="POST" action="{{route('posts.create')}}">
+<form method="POST" action="{{route('createPost')}}">
     @csrf
         <div class="card mb-4">
             <div class="card-header">
