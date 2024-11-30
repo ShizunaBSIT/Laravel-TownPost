@@ -122,7 +122,7 @@ main.container {
 }
 
 .modal-header {
-    background-color: #007bff;
+    background-color: #45474B;
     color: white; 
     border-bottom: 2px solid #0056b3; 
     border-top-left-radius: 10px;
@@ -166,7 +166,7 @@ main.container {
     background-color: #c7c7c7;
 }
 
-/* Close Button Styling */
+
 .btn-close {
     color: white; 
     opacity: 1; 
