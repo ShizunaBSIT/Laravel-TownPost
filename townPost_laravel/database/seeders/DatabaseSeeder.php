@@ -33,18 +33,5 @@ class DatabaseSeeder extends Seeder
                 'date_created' => now()
             ]);
         }
-        
-
-        for ( $ctr = 0; $ctr <= 10; $ctr++) {
-
-             DB::table('users')->insert([
-            'username' => Str::random(10).$ctr,
-            'email' => Str::random(10).$ctr.'@example.com',
-            'password' => Hash::make('password'),
-            'date_created' => now()
-        ]);
-
-        }
-        
-    }
+       
 }
