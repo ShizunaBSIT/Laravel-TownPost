@@ -47,7 +47,7 @@
 <main class="container mt-4">
 @if(session('success'))
     <div class="alert alert-success" role="alert">
-        Welcome {{ $user->username }}
+        Welcome {{ Auth::user()->username }}
     </div>
 @endif
             <!-- Weather Forecast -->
