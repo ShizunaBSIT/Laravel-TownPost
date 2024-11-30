@@ -63,11 +63,13 @@
                     <option value="1">Job</option>
                     <option value="2">School</option>
                     <option value="3">Community</option>
+                    <option value="3">Entertainment</option>
+                    <option value="3">News</option>
                 </select>
             </div>
             <div class="card mb-4">
-                    <label for="userid" class="form-label"><strong>User ID:</strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your user ID here">
+                    <label for="userid" class="form-label"><strong>Publish by: </strong></label>
+                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your username here">
             </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
