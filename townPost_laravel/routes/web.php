@@ -37,6 +37,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+/// routing to web test
+Route::get ('/', [postsControllers::class, 'retrievePosts'])->name('posts.get');
+
+
 /* Routing for postman -- TESTING PURPOSES -- */
 Route::get('/test/users/{id}',[usersController::class, 'viewUser']);
 Route::post('/test/users/create', [usersController::class,'createUser']);
@@ -56,8 +61,8 @@ Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost']);
 Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comments.get');
 Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
 
-Route::get ('/test/posts', [postsControllers::class, 'getPost'])->name('getPost');
-Route::get('/test/posts/{id}', [postsControllers::class, 'retrievePost'])->name('retrievePost');
+Route::get ('/test/posts/retrieve', [postsControllers::class, 'getPost'])->name('getPost');
+Route::get('/test/posts/{id}', [postsControllers::class, 'retrievePosts'])->name('retrievePost');
 Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('deletePost');

@@ -13,7 +13,9 @@ class postsControllers extends Controller
         $posts = Posts::orderBy('date_posted', 'desc')->take(5)->get();
 
         // Pass the posts to the view
-        return view('landing', compact('posts'));
+        return view('postsTest', ['posts' => $posts]);
+
+        //return response()->json($posts);
     }
 
     // GET - Retrieve a specific post (for viewing a single post)
