@@ -11,6 +11,10 @@ class postsControllers extends Controller
     public function retrievePost() {
         // Fetch the latest 5 posts
         $posts = Posts::orderBy('date_posted', 'desc')->take(5)->get();
+
+        $posts = json_decode($posts);
+        // Pass the posts to the view
+        return view('showposts', ['posts'=> $posts]);
     }
 
     // GET - Retrieve a specific post (for viewing a single post)

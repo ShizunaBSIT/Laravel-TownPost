@@ -50,7 +50,7 @@ Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost']);
 Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comments.get');
 Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
 
-Route::get ('/test/posts', [postsControllers::class, 'retrievePost'])->name('retrievePost');
+Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
 Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
