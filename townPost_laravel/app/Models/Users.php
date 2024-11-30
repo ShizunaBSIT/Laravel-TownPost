@@ -16,6 +16,8 @@ class Users extends Authenticatable
     // Specify the fillable fields
     protected $fillable = ['username', 'email', 'password', 'date_created'];
 
+    protected $primaryKey = 'user_ID';
+
     // Hash the password when setting it
     public function setPasswordAttribute($value)
     {

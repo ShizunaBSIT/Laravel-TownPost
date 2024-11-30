@@ -8,13 +8,22 @@ use Carbon\Carbon;
 class postsControllers extends Controller
 {
     // GET - Retrieve posts sorted by date created/posted (for landing page)
+
     public function retrievePost() {
         // Fetch the latest 5 posts
-        $posts = Posts::orderBy('date_posted', 'desc')->take(5)->get();
+        $posts = Posts::orderBy('date_posted', 'desc')->take(5)
+            ->join('users', 'users.user_ID', '=', 'posts.user_ID')
+            ->join('categories','categories.category_ID','=','posts.category_ID')
+            ->select('posts.*','users.username','categories.name')
+            ->get();
 
         $posts = json_decode($posts);
         // Pass the posts to the view
+        //return view('postsTest', ['posts' => $posts]);
+
+        //return response()->json($posts);
         return view('showposts', ['posts'=> $posts]);
+
     }
 
     // GET - Retrieve a specific post (for viewing a single post)
