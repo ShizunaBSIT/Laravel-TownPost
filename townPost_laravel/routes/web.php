@@ -13,6 +13,7 @@ use App\Http\Controllers\reactionController;
 Route::get('/', function () {
     return view('announcement');
 });
+Route::view('/announcement','announcement')->name('return.announcement');
 
 Route::get('/landing', function () {
     return view('landing');
@@ -23,6 +24,8 @@ Route::get('/createpost', function () {
 Route::get('/editpost', function () {
     return view('editpost');
 });
+Route::view('/modals', 'modal')->name('modals.account');
+
 //Login routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
