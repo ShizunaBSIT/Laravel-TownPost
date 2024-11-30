@@ -9,14 +9,22 @@
     <link href="{{ asset('/css/announcement.css') }}" rel="stylesheet">
     <style>
         body.modal-open {
-            overflow: hidden; /* Prevent scrolling when modal is open */
+            overflow: hidden; 
         }
         .modal-backdrop {
-            z-index: 1040; /* Ensures backdrop is below the modal */
+            z-index: 1040; 
         }
         .modal {
-            z-index: 1050; /* Ensures modal appears above the backdrop */
-            display: block; /* Force modal to be visible for demo */
+            z-index: 1050; 
+            display: block; 
+            overflow: hidden; 
+        }
+        .modal-backdrop {
+            z-index: 1040; 
+        }
+        .modal {
+            z-index: 1050; 
+            display: block; 
         }
     </style>
 </head>
@@ -43,8 +51,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Required Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

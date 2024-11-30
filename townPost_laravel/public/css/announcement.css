@@ -112,4 +112,5 @@ main.container {
 }
 .nav-link img {
     filter: invert(100%) brightness(100%);
+
 }
