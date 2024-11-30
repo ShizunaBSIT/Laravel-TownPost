@@ -21,9 +21,7 @@ Route::get('/landing', function () {
 Route::get('/createpost', function () {
     return view('createpost');
 });
-Route::get('/editpost', function () {
-    return view('editpost');
-});
+Route::view('/editpost','editpost')->name('edit.post');
 Route::view('/modals', 'modal')->name('modals.account');
 
 //Login routes
@@ -53,9 +51,8 @@ Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('posts.update');
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('posts.delete');
 
-Route::get('/test/comments/{id}',[commentsController::class, 'viewComments']);
-
-Route::post('/test/comments/create', [commentsController::class, 'postComment']);
+Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comments.get');
+Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
 Route::put('/test/comments/update',[commentsController::class, 'updateComment']);
 Route::delete('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
 

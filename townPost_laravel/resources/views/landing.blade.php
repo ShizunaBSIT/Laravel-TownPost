@@ -6,7 +6,7 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
-    <link href="{{ asset('/css/announcement.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/landing.css') }}" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar -->
@@ -39,7 +39,7 @@
         <!-- Navbar -->
         <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list"></i> Toggle Sidebar
+                <i class="bi bi-list"></i>
             </button>
         </div>
 
@@ -91,42 +91,95 @@
                 @else
                     <p>No post available to display.</p>    
                 @endif
+            <br>
+            <div class="container">
+        <!-- Button Section -->
+        <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-info">
+                <i class="bi bi-hand-thumbs-up"></i> Like
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal">
+                <i class="bi bi-chat-left-quote"></i> Comment
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                <i class="bi bi-pencil-square"></i> Edit
+            </button>
+            <form action="/deletePost" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?')">
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash3"></i> Delete
+                </button>
+            </form>
+        </div>
 
-        <!-- if button is click it will prompt a message that they need an account to comment -->
-                    <button type="button" class="btn btn-outline-primary">
-                        <i class="bi bi-hand-thumbs-up">Like</i>
-                    </button>
-                    <button type="button" class="btn btn-outline-info">
-                        <i class="bi bi-comment-dots">Comment</i>
-                    </button> 
-                    <a href="{{route('posts.update', $post->id)}}" button type="button" class="btn btn-outline-success">
-                    @csrf
-                    @method('PUT')
-                        <i class="bi bi-pencil-square">Edit</i>
-                    </button>
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
-                      @csrf
-                      @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger">
-                                <i class="bi bi-trash3">Delete</i>
-                            </button><br><br>
+        <!-- Comment Modal -->
+        <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="commentModalLabel">Add Comment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{route('comments.posts', [$comment->postID])}}">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="commentText" class="form-label">Your Comment:</label>
+                                <textarea class="form-control" id="commentText" rows="3"></textarea>
+                            </div>
+                        </form>
+                        <form method="GET" action="{{route('comments.get')}}">
+                            <div class="mb-3">
+                                <div class="card-body">
+                                    <label class="content"><strong>Comments:</strong></label>
+                                        {{ $comments->id }}
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{route('posts.update', [$post->id])}}>
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                                <label for="editText" class="form-label">Title:</label>
+                                <textarea class="form-control" id="editText" value="{{$post->title}}" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editText" class="form-label">Edit Content:</label>
+                                <textarea class="form-control" id="editText" value="{{$post->content}}" rows="3"></textarea>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
                     </form>
-
-                <!-- Comment Enabled -->
-                <form class="mt-2">
-                  <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Enter your comment">
-                     <button class="btn btn-primary" type="submit">
-                        <i class="bi bi-send"></i>
-                     </button>
-                 </div>
-               </form>
+                </div>
             </div>
         </div>
     </div>
 </main>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/weatherapi.js') }}"></script>
+   <script>
+            document.getElementById('sidebarCollapse').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+            });
+   </script>
 </body>
 </html>
