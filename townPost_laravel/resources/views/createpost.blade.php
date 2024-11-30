@@ -22,12 +22,12 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{route('posts.create')}}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('login')}}">
+                <a class="nav-link text-white" href="{{route('logout')}}">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
@@ -41,15 +41,11 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i> 
             </button>
-            <form class="form-inline my-2 my-lg-0 d-flex">
-                <input class="form-control mr-sm-2" type="search" placeholder="Enter ID to search" aria-label="Search" name="postID">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="submitForm()">Search</button>
-            </form>
         </div>
         
         <!-- Main Content -->
 <main class="container mt-4">
-<form method="POST" action="{{route('posts.create')}}">
+<form method="POST" action="{{route('createPost')}}">
     @csrf
         <div class="card mb-4">
             <div class="card-header">
@@ -67,11 +63,13 @@
                     <option value="1">Job</option>
                     <option value="2">School</option>
                     <option value="3">Community</option>
+                    <option value="3">Entertainment</option>
+                    <option value="3">News</option>
                 </select>
             </div>
             <div class="card mb-4">
-                    <label for="userid" class="form-label"><strong>User ID:</strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your user ID here">
+                    <label for="userid" class="form-label"><strong>Publish by: </strong></label>
+                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your username here">
             </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>

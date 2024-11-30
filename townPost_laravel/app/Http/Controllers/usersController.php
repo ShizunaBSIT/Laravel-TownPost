@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 /*
 NOTE TO SELF: Turn responses into web routes when everything is set up
@@ -36,12 +37,12 @@ class usersController extends Controller
         /* This is meant to be different from the "view user" since this involves letting said user have the ability to login
         and start creating posts on the website
         */
-        $username = $data->username;
+        $email = $data->email;
         $password = $data->password;
 
         $user = Users::where(
             [
-                ['username','=',$username]
+                ['email','=',$email]
             ]
         )->first();
 
@@ -55,8 +56,14 @@ class usersController extends Controller
                 ["message"=>"Login Failed, please check password"],
                  status: 404);
         }
-        else { // login success
-            return response()->json($user);
+        else { 
+            // Login successful
+            Auth::login($user); // Log the user in
+    
+            return response()->json([
+                "message" => "Login Successful",
+                "user" => $user // Include user details if necessary
+            ]);
         }
 
 
