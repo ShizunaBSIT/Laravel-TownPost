@@ -38,7 +38,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Sorry! Create your Account to continue😖 </p>
+                    <p>Sorry! Create an Account to continue😖 </p>
                 </div>
                 <div class="modal-footer">
                     <a href="{{url('/announcement')}}">
