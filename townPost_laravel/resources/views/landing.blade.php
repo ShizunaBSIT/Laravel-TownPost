@@ -59,7 +59,7 @@
                     <p id="weatherInfo" class="mt-3">Weather Info will appear here</p>
                 </div>
             </div>
-            <form method="GET" action="{{ route('getPost', ['$post->postID]) }}">
+            <form method="GET" action="{{ route('getPost', ['$post->postID']) }}">
                 <div class="card-body">
                     <div class="card mb-4">
                         <div class="card-header">
