@@ -16,14 +16,14 @@ class UserDummyData extends Seeder
     public function run(): void
     {
 
-        // create dummy user data 
+        // create dummy user data
         for ($ctr = 0; $ctr <= 10 ; $ctr++) {
 
             DB::table('users')->insert([
-           'username' => Str::random(10).$ctr,
+           'username' => "user".$ctr.Str::random(10),
            'email' => Str::random(10).$ctr.'@example.com',
            'password' => Hash::make('password'),
-           'date_created' => date('2024-11-29')
+           'date_created' => date('2024-11-'.rand(1,25))
             ]);
         }
 
