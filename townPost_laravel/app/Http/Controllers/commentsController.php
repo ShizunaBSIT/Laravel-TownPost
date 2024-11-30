@@ -13,7 +13,7 @@ class commentsController extends Controller
         // this function should be called when the user wants to view the comments of a post they clicked on
         // the $id is the post ID not the comment ID
 
-        $comments = comments::where('post_ID','=',$id);
+        $comments = comments::where('post_ID','=',$id)->get();
 
         if (!empty($comments)) {
             return response()->json($comments);
@@ -47,7 +47,7 @@ class commentsController extends Controller
     // PUT
     // edit comment
     public function updateComment(Request $data) {
-        $comment = comments::where('post_ID','=',$data->postID);
+        $comment = comments::where('post_ID','=',$data->postID)->get();
 
         if(!empty($comment)) {
             $comment->content = is_null($data->content) ? $comment->content : $data->content;
@@ -63,12 +63,12 @@ class commentsController extends Controller
     // DELETE
     // delete comment
     public function deleteComment($id) {
-        $comment = comments::find($id);
+        $comment = comments::where('comment_ID','=',$id)->get();
 
         if (!empty($comment)) {
             $comment->delete();
 
-            return response()->json(["message" => "Comment successfully deleted"]);
+            return response()->json(["message" => "Comment successfully deleted", 'content' => $comment]);
         }
         else {
             return response()->json(["message" => "Comment not found"]);

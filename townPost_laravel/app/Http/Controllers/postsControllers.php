@@ -18,12 +18,30 @@ class postsControllers extends Controller
 
     // GET - Retrieve a specific post (for viewing a single post)
     public function getPost($postID) {
-        $post = Posts::find($postID);
+        // this is meant to be used as a "share" link, it is not made for a search bar function
+        $post = Posts::find($postID)->get();
 
         if (!empty($post)) {
             return response()->json($post);
         } else {
             return response()->json(["message" => "Post does not exist"]);
+        }
+    }
+
+    // GET - for the search function
+    public function searchPost($searchWord) {
+        // This function is for searching via the search bar
+        $posts = Posts::whereLike('title','%'.$searchWord.'%')
+                ->orWhereLike('title','%'.$searchWord)
+                ->orWhereLike('title',$searchWord.'%')->get();
+        /* what the query above does is that it searches posts with titles that contains
+        the string the user inputted into the search bar */
+
+        if (!empty($posts)) {
+            return response()->json($posts);
+        }
+        else {
+            return response()->json(['message' => 'No relevant posts found']);
         }
     }
 
@@ -44,7 +62,7 @@ class postsControllers extends Controller
 
     // PUT - Update post content
     public function updatePost(Request $data, $id) {
-        $post = Posts::find($id);
+        $post = Posts::find($id)->get();
 
         if (!empty($post)) {
             $post->title = is_null($data->title) ? $post->title : $data->title;
@@ -59,7 +77,7 @@ class postsControllers extends Controller
 
     // DELETE - Delete a post
     public function deletePost($id) {
-        $post = Posts::find($id);
+        $post = Posts::find($id)->get();
 
         if (!empty($post)) {
             $post->delete();
