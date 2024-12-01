@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use App\Models\comments;
 
@@ -9,22 +10,18 @@ class commentsController extends Controller
 {
     // GET Method
     // retrieve comments from a specific post
-    public function viewComments($id) {
-        // this function should be called when the user wants to view the comments of a post they clicked on
-        // the $id is the post ID not the comment ID
-
-        $comments = comments::where('post_ID','=',$id)->get();
-
-        if (!empty($comments)) {
-            return response()->json($comments);
+    public function viewComments($id)
+    {
+        $comments = comments::where('post_ID', $id)->get();
+        $post = Posts::find($id);
+    
+        if ($comments->isEmpty()) {
+            return view('comments', ['comments' => [], 'post' => $post]);
         }
-        else {
-            // should probably add a different variant of response when there is no error
-            return response()->json(
-                ["message"=>"Comments not found"],
-                 status: 404);
-        }
+    
+        return view('comments', ['comments' => $comments, 'post' => $post]);
     }
+    
 
     // POST
     // create comment
