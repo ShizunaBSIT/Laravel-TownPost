@@ -13,5 +13,5 @@ class Posts extends Model
     protected $table='posts';
     protected $fillable=['user_ID','category_ID','title','content',"date_posted"];
 
-    protected $primaryKey ='categories';
+    protected $primaryKey ='post_ID';
 }

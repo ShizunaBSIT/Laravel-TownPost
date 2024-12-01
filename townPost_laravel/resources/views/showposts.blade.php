@@ -2,6 +2,7 @@
 <html lang="str_replace('_', '-', app() -> getLocale()">
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,6 +42,10 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i>
             </button>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                 </form>
         </div>
 
         <!-- Main Content -->
@@ -66,35 +71,60 @@
                          </div>
                             <div class="card-body">
                         @foreach($posts as $post)
-                                <div class="card mb-4">
-                                    <label for="titlepage" class="form-label"><strong>Title:</strong></label>
-                                       {{$post->title}}
-                                </div>
-                                <div class="card mb-4">
-                                    <label for="category" class="form-label"><strong>Category ID:</strong></label>
-                                     {{$post->category_ID}}
-                                </div>
-                                <div class="card mb-4">
-                                    <label for="userid" class="form-label"><strong>User ID:</strong></label>
-                                    {{$post->user_ID}}
-                                </div>
-                                <div class="card mb-4 publish-date-container">
-                                    <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
-                                    {{$post->date_posted}}
-                                </div>
-                                <div class="card mb-4">
-                                    <label class="content"><strong>Content:</strong></label>
-                                </div>
-                        <!--buttons-->
-                                <button type="button" class="btn btn-info">
-                                    <i class="bi bi-hand-thumbs-up"></i> Like
-                                </button>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
-                                    <i class="bi bi-pencil-square"></i> Edit
-                                </button>
-                                <button type="submit" class="btn btn-danger">
-                                        <i class="bi bi-trash3"></i> Delete
-                                </button>
+                            <div class="jumbotron">
+                                <h4 class="display-4">{{$post->title}}</h1>
+                                        <p class="lead">{{$post->category_ID}}</p>
+                                            <p class="lead">{{$post->user_ID}}, {{$post->date_posted}}</p>
+                                                <p class="lead">{{$post->content}}</p>
+                                        <hr class="my-4">
+        
+                                         <!-- Like Button -->
+                                        <a href="#" button type="submit" class="btn btn-info">
+                                             <i class="bi bi-hand-thumbs-up"></i> Like
+                                    </a>
+                                        <!-- Edit Button with Post ID -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </button>
+
+                                        <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                        <!-- Edit Post -->
+                                                <form method="POST" action="{{ route('updatePost', $post->post_ID) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                    <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Title:</label>
+                                                            <input type="text" class="form-control" id="recipient-name" name="title" value="{{ $post->title }}">
+                                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Content:</label>
+                                                            <textarea class="form-control" id="message-text" name="content">{{ $post->content }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <!-- Delete Button -->
+                                        <form action="{{ route('deletePost',$post->post_ID) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="bi bi-trash3"></i> Delete
+                                            </button>
+                                        </form>
                         @endforeach
                         </div>
                 </div>

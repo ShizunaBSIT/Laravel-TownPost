@@ -61,7 +61,6 @@ Route::get('/test/posts/{id}', [postsControllers::class, 'retrievePosts'])->name
 
 Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
-
 Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('deletePost');

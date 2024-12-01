@@ -81,8 +81,15 @@ main.container {
     background-attachment: fixed;
     background-color:  #495E57;
     color:#FDEFF4;
+    
 }
 
+.card .form-label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
 .card.mb-4.publish-date-container {
     display: flex;
     align-items: left; 

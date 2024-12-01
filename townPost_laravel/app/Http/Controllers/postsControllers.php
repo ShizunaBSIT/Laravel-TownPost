@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Posts;
 use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+
 class postsControllers extends Controller
 {
     // GET - Retrieve posts sorted by date created/posted (for landing page)
@@ -72,12 +74,16 @@ class postsControllers extends Controller
 
     // PUT - Update post content
     public function updatePost(Request $data, $id) {
-        $post = Posts::find($id)->get();
+        $post = Posts::findOrFail($id);
 
         if (!empty($post)) {
-            $post->title = is_null($data->title) ? $post->title : $data->title;
-            $post->content = is_null($data->content) ? $post->content : $data->content;
-            $post->save();
+            //$post->title = is_null($data->title) ? $post->title : $data->title;
+            //$post->content = is_null($data->content) ? $post->content : $data->content;
+            //$post->save();
+            $post->update([
+                    'title' => $data->title,
+                    'content' => $data->content,
+            ]);
 
             return response()->json(["message" => "Post content updated"]);
         } else {
@@ -87,7 +93,7 @@ class postsControllers extends Controller
 
     // DELETE - Delete a post
     public function deletePost($id) {
-        $post = Posts::find($id)->get();
+        $post = Posts::findOrFail($id);
 
         if (!empty($post)) {
             $post->delete();

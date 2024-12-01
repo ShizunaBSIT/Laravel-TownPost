@@ -83,10 +83,18 @@ main.container {
     color:#FDEFF4;
 }
 
+.card .form-label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+}
+
 .card.mb-4.publish-date-container {
     display: flex;
     align-items: left; 
     gap: 10px; 
+    color: #FDEFF4;
 }
 
 .form-control {
