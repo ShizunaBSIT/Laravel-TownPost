@@ -23,4 +23,10 @@ class Users extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(comments::class, 'user_ID', 'id');
+    }
+
 }

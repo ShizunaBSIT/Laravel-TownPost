@@ -16,13 +16,21 @@ Route::get('/', function () {
 Route::view('/announcement','announcement')->name('return.announcement');
 
 Route::get('/landing', function () {
-    return view('landing');
+    $user = auth()->user(); // Get the authenticated user
+    return view('landing', compact('user'));
 });
+
 Route::get('/createpost', function () {
     return view('createpost');
 });
 Route::view('/editpost','editpost')->name('edit.post');
 Route::view('/modals', 'modal')->name('modals.account');
+
+// Comments Routes
+Route::get('/comments/{id}', [commentsController::class, 'viewComments'])->name('comments.view');
+Route::post('/comments', [commentsController::class, 'postComment'])->name('comments.create');
+Route::put('/comments', [commentsController::class, 'updateComment'])->name('comments.update');
+Route::delete('/comments/{id}', [commentsController::class, 'deleteComment'])->name('comments.delete');
 
 //Login routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
