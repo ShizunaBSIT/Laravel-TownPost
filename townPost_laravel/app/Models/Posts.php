@@ -13,9 +13,5 @@ class Posts extends Model
     protected $table='posts';
     protected $fillable=['user_ID','category_ID','title','content',"date_posted"];
 
-    protected $primaryKey ='categories';
-    public function comments()
-    {
-        return $this->hasMany(comments::class, 'post_ID', 'id');
-    }
+    protected $primaryKey ='post_ID';
 }
