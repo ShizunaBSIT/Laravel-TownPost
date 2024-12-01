@@ -7,6 +7,7 @@ use App\Models\Posts;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 
+
 class postsControllers extends Controller
 {
     // GET - Retrieve posts sorted by date created/posted (for landing page)
