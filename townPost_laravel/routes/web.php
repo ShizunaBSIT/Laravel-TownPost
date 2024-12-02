@@ -17,7 +17,7 @@ Route::view('/announcement','announcement')->name('return.announcement');
 
 Route::get('/landing', function () {
     $user = auth()->user(); // Get the authenticated user
-    return view('landing', compact('user'));
+    return view('showposts', compact('user'));
 });
 
 Route::get('/createpost', function () {
@@ -48,6 +48,7 @@ Route::get('/dashboard', function () {
 
 /// routing to web test
 Route::get ('/', [postsControllers::class, 'retrievePosts'])->name('posts.get');
+Route::get('/landing', [postsControllers::class, 'showPosts'])->name('posts.index');
 
 
 /* Routing for postman -- TESTING PURPOSES -- */

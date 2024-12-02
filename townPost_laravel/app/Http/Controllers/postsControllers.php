@@ -40,6 +40,11 @@ class postsControllers extends Controller
             return response()->json(["message" => "Post does not exist"]);
         }
     }
+    public function showPosts()
+{
+    $posts = posts::all(); // Fetch all posts
+    return view('showposts', compact('posts'));
+}
 
     // GET - for the search function
     public function searchPost($searchWord) {
