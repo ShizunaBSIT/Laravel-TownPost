@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/landing.css}}">
+    <link rel="stylesheet" href="{{asset('css/landing.css')}}">
 </head>
   <body>
     <!-- Sidebar -->
@@ -17,7 +17,7 @@
             <p class="text-white text-center">Menu</p>
             <li class="active">
                 <a class="nav-link text-white" href="#">
-                    <img src="{{ asset('/images/house.svg') }}"> Home
+                    <img src="{{ asset('/images/house.svg')}}"> Home
                 </a>
             </li>
             <li>
