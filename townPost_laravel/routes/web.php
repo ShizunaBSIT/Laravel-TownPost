@@ -50,6 +50,7 @@ Route::get('/dashboard', function () {
 
 /// routing to web test
 Route::get ('/', [postsControllers::class, 'retrievePosts'])->name('posts.get');
+Route::get('/landing', [postsControllers::class, 'showPosts'])->name('posts.index');
 
 
 /* Routing for postman -- TESTING PURPOSES -- */

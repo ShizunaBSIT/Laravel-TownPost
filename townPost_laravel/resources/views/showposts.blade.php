@@ -74,22 +74,31 @@
                             <h5 class="card-title">Retrieve Content</h5>
                          </div>
                             <div class="card-body">
+                        @foreach($posts as $post)
+                            <div class="jumbotron">
+                                <h4 class="display-4">{{$post->title}}</h1>
+                                        <p class="lead">{{$post->category_ID}}</p>
+                                            <p class="lead">{{$post->user_ID}}, {{$post->date_posted}}</p>
+                                                <p class="lead">{{$post->content}}</p>
+                                        <hr class="my-4">
+        
                                          <!-- Like Button -->
-                                <a href="#" button type="submit" class="btn btn-info">
-                                    <i class="bi bi-hand-thumbs-up"></i> Like
-                                </a>
-                                <!-- when this edit button is click the modal will appear to handle the editing of posts -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <i class="bi bi-pencil-square"></i> Edit
-                                </button>
-                                <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <!-- Edit Post -->
-                                        <form method="POST" action="{{ route('updatePost', $post->post_ID) }}">
-                                            @csrf
-                                            @method('PUT')
+                                        <a href="#" button type="submit" class="btn btn-info">
+                                             <i class="bi bi-hand-thumbs-up"></i> Like
+                                    </a>
+                                        <!-- Edit Button with Post ID -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </button>
+
+                                        <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                        <!-- Edit Post -->
+                                                <form method="POST" action="{{ route('updatePost', $post->post_ID) }}">
+                                                    @csrf
+                                                    @method('PUT')
                                                 <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -120,8 +129,7 @@
                                                     <i class="bi bi-trash3"></i> Delete
                                             </button>
                                         </form>
-                                    </div>
-                                </div>    
+                        @endforeach
                         </div>
                 @endforeach
         </main>
