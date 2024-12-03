@@ -191,3 +191,7 @@ main.container {
     max-height: 400px; 
     overflow-y: auto;
 }
+img{
+    width:30;
+    height: 30;
+}

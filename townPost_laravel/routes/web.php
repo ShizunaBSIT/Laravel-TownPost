@@ -10,20 +10,22 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\reactionController;
 
-Route::get('/', function () {
-    return view('announcement');
+Route::get('/editpost', function () {
+    return view('editpost');
+});
+Route::get('/postreactions', function () {
+    return view('postreactions');
 });
 Route::view('/announcement','announcement')->name('return.announcement');
 
-Route::get('/landing', function () {
+Route::get('/showposts', function () {
     $user = auth()->user(); // Get the authenticated user
-    return view('landing', compact('user'));
+    return view('showposts', compact('user'));
 });
 
 Route::get('/createpost', function () {
     return view('createpost');
 });
-Route::view('/editpost','editpost')->name('edit.post');
 Route::view('/modals', 'modal')->name('modals.account');
 
 // Comments Routes
@@ -64,8 +66,8 @@ Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->n
 Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
 
 
-Route::get ('/test/posts/retrieve', [postsControllers::class, 'getPost'])->name('getPost');
-Route::get('/test/posts/{id}', [postsControllers::class, 'retrievePosts'])->name('retrievePost');
+Route::get ('/test/posts/retrieve', [postsControllers::class, 'retrievePosts'])->name('retrievePosts');
+Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
 
 Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');

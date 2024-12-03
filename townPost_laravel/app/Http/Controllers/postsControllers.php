@@ -20,7 +20,7 @@ class postsControllers extends Controller
             ->select('posts.*','users.username','categories.name')
             ->get();
 
-        $posts = json_decode($posts);
+        //$posts = json_decode($posts);
         // Pass the posts to the view
         //return view('postsTest', ['posts' => $posts]);
 
