@@ -86,8 +86,9 @@
                                         <hr class="my-4">
 
                                 <!-- Like Button -->
-                               <button id="reaction-button" class="btn btn-primary" data-post-id="1" data-reacted="false">React</button>
-                               <p id="reaction-count">0</p>
+                               <button id="reaction-button" class="btn btn-primary">
+                                   <i class="bi bi-hand-thumbs-up">Like</i>
+                               </button>
                             
                                 <!--when comment button is clicked it will be redirected to comment.blade.php-->
                                 <button type="button" class="btn btn-info">
