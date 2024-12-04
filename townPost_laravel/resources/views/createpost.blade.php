@@ -67,12 +67,14 @@
                 </select>
             </div>
             <div class="card mb-4">
-                    <label for="userid" class="form-label"><strong>Publish by: </strong></label>
-                    @if(session('success'))
+                <!--session here is not working-->
+                    if(session('success'))
                         <div class="alert alert-success" role="alert">
-                            {{ Auth::user()->userID}}
+                            {{Auth::user()->user_ID}}
                         </div>
                     @endif
+                   <!-- <label for="userid" class="form-label"><strong>Publish by: </strong></label>
+                    <input type="text" class="form-control" id="userid" name="username" placeholder="Enter your username here">-->
             </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
