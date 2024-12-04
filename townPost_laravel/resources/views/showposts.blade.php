@@ -86,10 +86,9 @@
                                         <hr class="my-4">
 
                                 <!-- Like Button -->
-                                <button id="reaction-button" value="{{$post->post_ID}}" data-state="unliked">
+                            <button id="reaction-button" class="btn btn-light" value="{{$post->post_ID}}" data-state="unliked">
                                    <i class="bi bi-hand-thumbs-up">Like</i>
                                 </button>
-                            
                                 <!--when comment button is clicked it will be redirected to comment.blade.php-->
                                 <button type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
