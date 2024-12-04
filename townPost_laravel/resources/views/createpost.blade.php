@@ -59,16 +59,18 @@
             <label for="category" class="form-label"><strong>Category ID:</strong></label>
                 <select class="form-select" id="category" name="category_ID">
                     <option selected>Choose...</option>
-                    <option value="1">Job</option>
-                    <option value="2">School</option>
-                    <option value="3">Community</option>
-                    <option value="3">Entertainment</option>
-                    <option value="3">News</option>
+                    @foreach($categories as $category)
+                    <option value="{{$categories->category_ID}}">{{$category->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="card mb-4">
                     <label for="userid" class="form-label"><strong>Publish by: </strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your userId here">
+                    @if(session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Auth::user()->userID}}
+                        </div>
+                    @endif
             </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>

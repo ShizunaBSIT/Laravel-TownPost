@@ -73,11 +73,13 @@ class postsControllers extends Controller
         $post->date_posted = Carbon::parse($data->date_posted)->format('Y/m/d');
         $post->save();
 
+        
+        return view('createpost');
         return response()->json([
             "message" => "Post created."
         ], 201);
-    }
 
+    }
     // PUT - Update post content
     public function updatePost(Request $data, $id) {
         $post = Posts::findOrFail($id);

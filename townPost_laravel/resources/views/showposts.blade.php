@@ -71,77 +71,113 @@
                          </div>
                             <div class="card-body">
                             @if(empty($posts))
-    <div class="alert alert-warning text-center" role="alert">
-        No posts available at the moment. Please check back later.
+                                <div class="alert alert-warning text-center" role="alert">
+                                    No posts available at the moment. Please check back later.
+                                </div>
+                            @else
+                            @foreach($posts as $post)
+                                <div class="jumbotron">
+                                    <h4 class="display-4">{{ $post->title }}</h4>
+                                        <p class="lead">Category: {{ $post->category_ID }}</p>
+                                        <p class="lead">Posted by User ID: {{ $post->user_ID }} on {{ $post->date_posted }}</p>
+                                        <p class="lead">{{ $post->content }}</p>
+                                        <hr class="my-4">
+
+                                <!-- Like Button -->
+                                <button type="submit" class="btn btn-info"  onclick="getReaction('like', {{$post->post_ID}})">
+                                    <i class="bi bi-hand-thumbs-up"></i> Like
+                                </button>
+                                <!-- Disike Button -->
+                                <button type="submit" class="btn btn-info"  onclick="getReaction('like', {{$post->post_ID}})">
+                                    <i class="bi bi-hand-thumbs-up"></i> Dislike
+                                </button>
+                            
+                                <!--when comment button is clicked it will be redirected to comment.blade.php-->
+                                <button type="button" class="btn btn-info">
+                                    <i class="bi bi-chat"></i> Comment
+                                </button>
+            
+                                <!-- Edit Button -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->post_ID }}">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </button>
+
+                                         <!-- when edit button is triggered this will appear -->
+                                <div class="modal fade" id="editModal{{ $post->post_ID }}" tabindex="-1" aria-labelledby="editModalLabel{{ $post->post_ID }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Edit Post Form -->
+                                    <form method="POST" action="{{ route('updatePost', $post->post_ID) }}">
+                                    @csrf
+                                    @method('PUT')
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel{{ $post->post_ID }}">Edit Post</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="title{{ $post->post_ID }}" class="col-form-label">Title:</label>
+                                                    <input type="text" class="form-control" id="title{{ $post->post_ID }}" name="title" value="{{ $post->title }}">
+                                            </div>
+                                        <div class="form-group">
+                                            <label for="content{{ $post->post_ID }}" class="col-form-label">Content:</label>
+                                                <textarea class="form-control" id="content{{ $post->post_ID }}" name="content">{{ $post->content }}</textarea>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                         </div>
+                     </div>
+            </div>
+
+                     <!-- Delete Button -->
+                    <form action="{{ route('deletePost', $post->post_ID) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash3"></i> Delete
+                        </button>
+                    </form>
+             </div>
+         @endforeach
+        @endif
+
+                 </div>
+            </div>
+        </form>
     </div>
-@else
-    @foreach($posts as $post)
-        <div class="jumbotron">
-            <h4 class="display-4">{{ $post->title }}</h4>
-            <p class="lead">Category: {{ $post->category_ID }}</p>
-            <p class="lead">Posted by User ID: {{ $post->user_ID }} on {{ $post->date_posted }}</p>
-            <p class="lead">{{ $post->content }}</p>
-            <hr class="my-4">
-
-            <!-- Like Button -->
-            <a href="#" class="btn btn-info">
-                <i class="bi bi-hand-thumbs-up"></i> Like
-            </a>
-
-            <!-- Edit Button -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->post_ID }}">
-                <i class="bi bi-pencil-square"></i> Edit
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="editModal{{ $post->post_ID }}" tabindex="-1" aria-labelledby="editModalLabel{{ $post->post_ID }}" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <!-- Edit Post Form -->
-                        <form method="POST" action="{{ route('updatePost', $post->post_ID) }}">
-                            @csrf
-                            @method('PUT')
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $post->post_ID }}">Edit Post</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="title{{ $post->post_ID }}" class="col-form-label">Title:</label>
-                                    <input type="text" class="form-control" id="title{{ $post->post_ID }}" name="title" value="{{ $post->title }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="content{{ $post->post_ID }}" class="col-form-label">Content:</label>
-                                    <textarea class="form-control" id="content{{ $post->post_ID }}" name="content">{{ $post->content }}</textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Delete Button -->
-            <form action="{{ route('deletePost', $post->post_ID) }}" method="POST" class="d-inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm">
-                    <i class="bi bi-trash3"></i> Delete
-                </button>
-            </form>
-        </div>
-    @endforeach
-@endif
-
-                        </div>
-                </div>
-            </form>
-            </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="{{ asset('js/announcement.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+   function getReaction(reactionType, postID){
+    //get the current user id
+        var userId = "{{ Auth::user()->id }}";
+        $.ajax({
+            type: "GET",
+            url: "/getReaction",
+            data: {reactionType: reactionType, postID: postID, userId: userId},
+            success: function(data){
+                console.log(data);
+                if(data == 1){
+                    document.getElementById("reaction"+postID).innerHTML = "<i class='bi bi-heart-fill'
+                    style='font-size: 1.5rem; color: red;'></i>";
+                    }else
+                    if(data == 2){
+                        document.getElementById("reaction"+postID).innerHTML = "<i class='bi bi-heart'
+                        style='font-size: 1.5rem; color: red;'></i>";
+                        }else
+                        if(data == 3){
+                            document.getElementById("reaction"+postID).innerHTML = "<i class='bi bi-x-circle-fill
+                            style='font-size: 1.5rem; color: red;'></i>";
+                            }
+                            }
+                            });
+   }
+</script>
 </body>
 </html>
