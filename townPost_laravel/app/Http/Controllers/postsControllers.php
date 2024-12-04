@@ -32,7 +32,7 @@ class postsControllers extends Controller
     // GET - Retrieve a specific post (for viewing a single post)
     public function getPost($postID) {
         // this is meant to be used as a "share" link, it is not made for a search bar function
-        $post = Posts::find($postID)->get();
+        $post = Posts::find($postID);
 
         if (!empty($post)) {
             return response()->json($post);
