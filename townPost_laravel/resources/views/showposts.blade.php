@@ -153,31 +153,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="{{ asset('js/announcement.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-   function getReaction(reactionType, postID){
-    //get the current user id
-        var userId = "{{ Auth::user()->id }}";
-        $.ajax({
-            type: "GET",
-            url: "/getReaction",
-            data: {reactionType: reactionType, postID: postID, userId: userId},
-            success: function(data){
-                console.log(data);
-                if(data == 1){
-                    document.getElementById("reaction"+postID).innerHTML = "<i class='bi bi-heart-fill'
-                    style='font-size: 1.5rem; color: red;'></i>";
-                    }else
-                    if(data == 2){
-                        document.getElementById("reaction"+postID).innerHTML = "<i class='bi bi-heart'
-                        style='font-size: 1.5rem; color: red;'></i>";
-                        }else
-                        if(data == 3){
-                            document.getElementById("reaction"+postID).innerHTML = "<i class='bi bi-x-circle-fill
-                            style='font-size: 1.5rem; color: red;'></i>";
-                            }
-                            }
-                            });
-   }
-</script>
 </body>
 </html>

@@ -59,9 +59,11 @@
             <label for="category" class="form-label"><strong>Category ID:</strong></label>
                 <select class="form-select" id="category" name="category_ID">
                     <option selected>Choose...</option>
-                    @foreach($categories as $category)
-                    <option value="{{$categories->category_ID}}">{{$category->name}}</option>
-                    @endforeach
+                    <option value="1">Job</option>
+                    <option value="2">School</option>
+                    <option value="3">Community</option>
+                    <option value="3">Entertainment</option>
+                    <option value="3">News</option>
                 </select>
             </div>
             <div class="card mb-4">
