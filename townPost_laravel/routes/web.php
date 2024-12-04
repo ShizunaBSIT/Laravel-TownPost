@@ -88,8 +88,8 @@ Route::get('/test/comments/create', [commentsController::class, 'postComment']);
 Route::get('/test/comments/update',[commentsController::class, 'updateComment']);
 Route::get('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
 
-Route::get('/test/reactions/{id}',[reactionController::class, 'getReactions']);
-Route::get('/test/reactions/react',[reactionController::class, 'react']);
-Route::get('/test/reactions/unreact',[reactionController::class, 'unreact']);
+Route::get('/test/reactions/{id}',[reactionController::class, 'getReactions'])->name('post.getreactions');
+Route::get('/test/reactions/react',[reactionController::class, 'react'])->name('post.react');
+Route::get('/test/reactions/unreact',[reactionController::class, 'unreact'])->name('post.unreact');
 
 /* ^^ Routing for postman ^^*/

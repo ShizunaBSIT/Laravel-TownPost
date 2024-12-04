@@ -68,7 +68,11 @@
             </div>
             <div class="card mb-4">
                     <label for="userid" class="form-label"><strong>Publish by: </strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your userId here">
+                    @if(session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Auth::user()->userID}}
+                        </div>
+                    @endif
             </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
