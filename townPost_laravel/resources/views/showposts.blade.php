@@ -86,8 +86,9 @@
                                         <hr class="my-4">
 
                                 <!-- Like Button -->
-                               <button id="reaction-button" class="btn btn-primary" data-post-id="1" data-reacted="false">React</button>
-                               <p id="reaction-count">0</p>
+                                <button id="reaction-button" value="{{$post->post_ID}}" data-state="unliked">
+                                   <i class="bi bi-hand-thumbs-up">Like</i>
+                                </button>
                             
                                 <!--when comment button is clicked it will be redirected to comment.blade.php-->
                                 <button type="button" class="btn btn-info">
@@ -149,10 +150,10 @@
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="{{ asset('js/announcement.js') }}"></script>
-<!--not yet tried this one if this is working-->
+<!--not yet tried this one is working-->
 <script>
 async function submit() {
-    event.preventDefault();
+      event.preventDefault();
     const searchWord = document.getElementById('search-result').value;
     const url = `search.post`;
 
