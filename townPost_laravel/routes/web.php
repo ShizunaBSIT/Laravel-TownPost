@@ -49,6 +49,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//route to react to post
+Route::post('/react', [reactionController::class, 'react']);
+Route::delete('/unreact', [reactionController::class, 'unreact']);
 
 /// routing to web test
 #Route::get ('/', [postsControllers::class, 'retrievePosts']);
@@ -60,14 +63,15 @@ Route::get('/writePost', function (){
 })->name('writePost');
 
 //routing to search
-Route::get('/search.post', [PostController::class, 'searchPost']);
+Route::get('/searchpost', [PostController::class, 'searchPost'])->name('seachpost');
 
 //for comments blade
 Route::get('/getcomments', function (){
     return view('comments');
 })->name('getcomments');
 
-
+//for account redirection
+#Route::get('/accountView/{id}', [usersController::class, 'viewUser'])->name('accountView');
 
 
 /* Routing for postman -- TESTING PURPOSES -- */

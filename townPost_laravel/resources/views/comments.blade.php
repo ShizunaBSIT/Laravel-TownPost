@@ -25,7 +25,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Add Comment</button>
     </form>
-
     <!-- Display Comments -->
     <div class="mt-4">
         @foreach($comments as $comment)

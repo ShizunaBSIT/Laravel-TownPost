@@ -46,7 +46,7 @@
                 <i class="bi bi-list"></i>
             </button>
             <!--handles the seach word and shows result-->
-            <form class="d-flex" method="GET" action="/search.post">
+            <form class="d-flex" method="GET" action="/searchpost">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchWord">
                     <button class="btn btn-outline-success" onclick="submit()">Search</button>
                  </form>
@@ -89,14 +89,13 @@
                                         <p class="lead">{{ $post->content }}</p>
                                  <hr class="my-4">
             <!-- Like Button -->
-            <button id="reaction-button-{{ $post->post_ID }}" data-post-id="{{ $post->post_ID }}" data-state="unliked" class="btn btn-light">
+            <button type="button" id="like-button" class="btn btn-light">
                 <i class="bi bi-hand-thumbs-up"></i> Like
             </button>
                             
             <!--when comment button is clicked it will be redirected to comment.blade.php-->
             <a href="{{route('getcomments')}}" type="button" class="btn btn-info">
-                    <i class="bi bi-chat">Comment</i>
-                </button>
+                <i class="bi bi-chat">Comment</i>
             </a>
 
             <!-- Edit Button -->

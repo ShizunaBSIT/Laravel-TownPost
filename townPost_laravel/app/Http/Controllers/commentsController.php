@@ -31,8 +31,8 @@ class commentsController extends Controller
         $content = $data->content;
 
         $comment = new comments;
-        $comment->post_ID = $postID;
-        $comment->user_ID = $userID;
+        $comment->post_ID = $post_ID;
+        $comment->user_ID = $user_ID;
         $comment->content = $content;
         $comment->save();
 

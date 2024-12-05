@@ -18,10 +18,13 @@ class usersController extends Controller
     public function viewUser($id) {
         $user = Users::where('user_id','=',$id)->get();
 
-        if (!empty($user)) {
+        //if (!empty($user)) {
             // check if user is not empty and send all user's details to be displayed
             // (obviously we're not displaying the password on the frontend)
-            return response()->json($user);
+            //return response()->json($user);
+        if ($user) {
+        // Pass the user data to the view
+        return view('account', ['users' => [$user]]);
         }
         else {
             return response()->json(
