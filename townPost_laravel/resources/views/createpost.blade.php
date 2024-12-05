@@ -44,7 +44,7 @@
         </div>
         <!-- Main Content -->
 <main class="container mt-4">
-<form method="POST" action="{{route('createPost')}}">
+<form method="POST" active="{{route('createPost')}}">
     @csrf
         <div class="card mb-4">
             <div class="card-header">

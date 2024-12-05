@@ -44,7 +44,7 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i>
             </button>
-            <form class="d-flex" id="search-result">
+            <form class="d-flex" method="GET" action="/search.post">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" onclick="submit()">Search</button>
                  </form>
@@ -86,9 +86,10 @@
                                         <hr class="my-4">
 
                                 <!-- Like Button -->
-                            <button id="reaction-button" class="btn btn-light" value="{{$post->post_ID}}" data-state="unliked">
-                                   <i class="bi bi-hand-thumbs-up">Like</i>
+                               <button id="reaction-button-{{ $post->post_ID }}" data-post-id="{{ $post->post_ID }}" data-state="unliked" class="btn btn-light">
+                                    <i class="bi bi-hand-thumbs-up"></i> Like
                                 </button>
+                            
                                 <!--when comment button is clicked it will be redirected to comment.blade.php-->
                                 <button type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
@@ -149,22 +150,5 @@
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="{{ asset('js/announcement.js') }}"></script>
-<!--not yet tried this one is working-->
-<script>
-async function submit() {
-      event.preventDefault();
-    const searchWord = document.getElementById('search-result').value;
-    const url = `search.post`;
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Post not found');
-        const data = await response.json();
-        document.getElementById('results-container').innerHTML = JSON.stringify(data);
-    } catch (error) {
-        alert('No post to display');
-    }
-}
-</script>
 </body>
 </html>
