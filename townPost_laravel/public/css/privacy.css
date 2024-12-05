@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    font-family: "Barlow", sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #343a40;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+h6 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #007bff;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+
+.card-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+
+p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+
+h6+p,
+h6+ul {
+    margin-top: 10px;
+}
+
+
+.card {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

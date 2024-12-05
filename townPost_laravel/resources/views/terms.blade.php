@@ -109,8 +109,9 @@
             </p>
             <p class="mt-2 text-gray-600">
                 <strong>Email:</strong> support@town-talk.com<br>
-                <strong>Phone:</strong> [Insert phone number]<br>
-                <strong>Mailing Address:</strong> [Insert office address]
+                <strong>Phone:</strong> 09062614911<br>
+                <strong>Mailing Address:</strong> Lico St., Tondo, Manila<br>
+                <strong>Discord</strong> Town Talk E-Bulletin: Customer Service <br>
             </p>
         </section>
 

@@ -63,7 +63,7 @@ Route::get('/writePost', function (){
 })->name('writePost');
 
 //routing to search
-Route::get('/searchpost', [PostController::class, 'searchPost'])->name('seachpost');
+Route::get('/searchpost', [PostController::class, 'searchPost']);
 
 //for comments blade
 Route::get('/getcomments', function (){
@@ -71,9 +71,19 @@ Route::get('/getcomments', function (){
 })->name('getcomments');
 
 //for account redirection
-#Route::get('/accountView/{id}', [usersController::class, 'viewUser'])->name('accountView');
+Route::get('/accountView', function (){
+    return view('account');
+})->name('accountView');
 
+//for privacy redirection
+Route::get('/privacy', function () {
+    return view('privacy');
+});
 
+//for terms
+Route::get('/terms', function () {
+    return view('terms');
+});
 /* Routing for postman -- TESTING PURPOSES -- */
 //routing for user.
 Route::get('/test/users/{id}',[usersController::class, 'viewUser']);

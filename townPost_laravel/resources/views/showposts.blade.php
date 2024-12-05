@@ -31,7 +31,7 @@
             </li>
             <li>
                  <!--once clicked it will be redirected to account.blade.php where updating and deleting of account takes place-->
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{route('accountView')}}">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
