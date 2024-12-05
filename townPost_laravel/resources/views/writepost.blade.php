@@ -71,18 +71,9 @@
             </div>
             <!--upon successful account creation user_id will be successfully fetched here-->
             <div class="card mb-4">
-                <!--@if (session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    @auth
-                    <input type="hidden" name="user_ID" value="{{'Auth::user()->user_ID'}}" id="user_ID">
-                            User ID: {{ Auth::user()->id }}
-                    @endauth -->
-                    <!--</div> -->
-                 <!--@endif-->
-                <label for="user_ID" class="form-label"><strong>Publish by: </strong></label>
-                    <input type="text" class="form-control" id="user_ID" name="user_ID" placeholder="Enter your userID here">
+                <label for="user_ID" class="form-label"><strong>Publish by:</strong></label>
             </div>
+
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
                     <input type="text" class="form-control" id="publishDate" name="date_posted" readonly placeholder="Press the button set date">

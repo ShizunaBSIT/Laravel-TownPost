@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Posts;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 
 class postsControllers extends Controller
@@ -69,7 +70,7 @@ class postsControllers extends Controller
         return response()->json(["message" => "Unauthorized"], 401);
     }
         $post = new Posts;
-        $post->user_ID = $data->user_ID;
+        $post->user_ID = Auth::id(); //automatically assigned the logged-in users ID
         $post->category_ID = $data->category_ID;
         $post->title = $data->title;
         $post->content = $data->content;
