@@ -37,7 +37,7 @@ Route::delete('/comments/{id}', [commentsController::class, 'deleteComment'])->n
 //Login routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Register Routes
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
@@ -72,7 +72,7 @@ Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getP
 
 Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
-Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');
+Route::post('/createpost', [postsControllers::class, 'createPost'])->name('createPost');
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('deletePost');
 Route::get('/token', function(){

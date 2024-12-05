@@ -15,24 +15,19 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
-        // Get the login credentials from the request
+    public function login(Request $request) {
         $credentials = $request->only('email', 'password');
-
+    
         // Find the user by email
         $user = Users::where('email', $credentials['email'])->first();
-
-        // Check if the user exists and if the password matches
+    
         if ($user && Hash::check($credentials['password'], $user->password)) {
-            // Login the user
-            Auth::login($user);
-
-            // Redirect to the intended page or to a default landing page
+            // Store user ID in session
+            $request->session()->put('user_ID', $user->id);
+    
             return redirect()->intended('/showposts')->with('success', 'Logged in successfully!');
         }
-
-        // If login fails, return back with an error message
+    
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);

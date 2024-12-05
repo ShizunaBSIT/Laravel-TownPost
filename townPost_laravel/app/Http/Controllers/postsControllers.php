@@ -64,22 +64,21 @@ class postsControllers extends Controller
     }
 
     // POST - Create a new post
-    public function createPost(Request $data) {
-        $post = new Posts;
-        $post->user_ID = $data->user_ID;
-        $post->category_ID = $data->category_ID;
-        $post->title = $data->title;
-        $post->content = $data->content;
-        $post->date_posted = Carbon::parse($data->date_posted)->format('Y/m/d');
-        $post->save();
+public function createPost(Request $data) {
+    $post = new Posts;
+    // Use the user ID from the session
+    $post->user_ID = session('user_ID');  // Automatically fetches the ID from the session
+    $post->category_ID = $data->category_ID;
+    $post->title = $data->title;
+    $post->content = $data->content;
+    $post->date_posted = Carbon::parse($data->date_posted)->format('Y/m/d');
+    $post->save();
 
-        
-        return view('createpost');
-        return response()->json([
-            "message" => "Post created."
-        ], 201);
+    return response()->json([
+        "message" => "Post created."
+    ], 201);
+}
 
-    }
     // PUT - Update post content
     public function updatePost(Request $data, $id) {
         $post = Posts::findOrFail($id);
