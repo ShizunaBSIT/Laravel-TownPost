@@ -10,6 +10,7 @@ async function toggleReaction(button) {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
+            //converts a javascript to json where the
             body: JSON.stringify({ state: currentState })
         });
 
@@ -22,10 +23,11 @@ async function toggleReaction(button) {
             button.setAttribute('data-state', 'liked');
             button.innerHTML = `<i class="bi bi-hand-thumbs-up-fill"></i> Liked`;
         } else {
+        //if like is clicked again it will change its state to unliked and the icons will be back to unfill
             button.setAttribute('data-state', 'unliked');
             button.innerHTML = `<i class="bi bi-hand-thumbs-up"></i> Like`;
         }
     } catch (error) {
-        alert('Something went wrong. Please try again.');
+        alert('Can`t like posts as of this moment');
     }
 };
