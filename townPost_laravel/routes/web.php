@@ -24,12 +24,12 @@ Route::get('/', function () {
 //once the button comment is click or any button in the static page which is the announcement.blade.ph this modal will appear
 Route::view('/modals', 'modal')->name('modals.account');
 
-Route::get('/showposts', function () {
-    $user = auth()->user(); // Get the authenticated user
-    return view('showposts', [postsControllers::class, 'retrievePosts']);
-});
+//Route::get('/showposts', function () {
+   // $user = auth()->user(); // Get the authenticated user
+   // return view('showposts', [postsControllers::class, 'retrievePosts']);
+//});
 
-
+Route::middleware('auth')->get('/showposts', [postsControllers::class, 'retrievePost']);
 // Comments Routes
 Route::get('/comments/{id}', [commentsController::class, 'viewComments'])->name('comments.view');
 Route::post('/comments', [commentsController::class, 'postComment'])->name('comments.create');
@@ -51,7 +51,7 @@ Route::get('/dashboard', function () {
 
 
 /// routing to web test
-#Route::get ('/', [postsControllers::class, 'retrievePosts'])->name('posts.get');
+#Route::get ('/', [postsControllers::class, 'retrievePosts']);
 #Route::get('/landing', [postsControllers::class, 'showPosts'])->name('posts.index');
 
 // routing to post
@@ -59,8 +59,13 @@ Route::get('/writePost', function (){
     return view('writepost');
 })->name('writePost');
 
+//routing to search
+Route::get('/search.post', [PostController::class, 'searchPost']);
 
-
+//for comments blade
+Route::get('/getcomments', function (){
+    return view('comments');
+})->name('getcomments');
 
 
 

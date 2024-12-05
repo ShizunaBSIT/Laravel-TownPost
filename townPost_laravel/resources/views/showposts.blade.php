@@ -45,8 +45,9 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i>
             </button>
+            <!--handles the seach word and shows result-->
             <form class="d-flex" method="GET" action="/search.post">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchWord">
                     <button class="btn btn-outline-success" onclick="submit()">Search</button>
                  </form>
         </div>
@@ -67,7 +68,7 @@
                     <p id="weatherInfo" class="mt-3">Weather Info will appear here</p>
                 </div>
             </div>
-                <div class="card-body">
+               <div class="card-body">
                     <div class="card mb-4">
                         <div class="card-header">
                             <h5 class="card-title">Retrieve Content</h5>
@@ -80,39 +81,39 @@
                             @else
                             @foreach($posts as $post)
                                 <div class="jumbotron">
-                                    <h4 class="display-4">{{ $post->title }}</h4>
+                                    <h6 class="display-4">{{ $post->title }}</h6>
                                         <p class="lead">Category:
                                              {{ $post->name }}</p>
                                         <p class="lead">Posted by: 
                                             {{ $post->username }} on {{ $post->date_posted }}</p>
                                         <p class="lead">{{ $post->content }}</p>
-                                        <hr class="my-4">
-
-                                <!-- Like Button -->
-                               <button id="reaction-button-{{ $post->post_ID }}" data-post-id="{{ $post->post_ID }}" data-state="unliked" class="btn btn-light">
-                                    <i class="bi bi-hand-thumbs-up"></i> Like
-                                </button>
+                                 <hr class="my-4">
+            <!-- Like Button -->
+            <button id="reaction-button-{{ $post->post_ID }}" data-post-id="{{ $post->post_ID }}" data-state="unliked" class="btn btn-light">
+                <i class="bi bi-hand-thumbs-up"></i> Like
+            </button>
                             
-                                <!--when comment button is clicked it will be redirected to comment.blade.php-->
-                                <button type="button" class="btn btn-info">
-                                    <i class="bi bi-chat"></i> Comment
-                                </button>
-            
-                                <!-- Edit Button -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->post_ID }}">
-                                    <i class="bi bi-pencil-square"></i> Edit
-                                </button>
+            <!--when comment button is clicked it will be redirected to comment.blade.php-->
+            <a href="{{route('getcomments')}}" type="button" class="btn btn-info">
+                    <i class="bi bi-chat">Comment</i>
+                </button>
+            </a>
 
-                                         <!-- when edit button is triggered this will appear -->
-                                <div class="modal fade" id="editModal{{ $post->post_ID }}" tabindex="-1" aria-labelledby="editModalLabel{{ $post->post_ID }}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Edit Post Form -->
-                                    <form method="POST" action="{{ route('updatePost', $post->post_ID) }}">
-                                    @csrf
-                                    @method('PUT')
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="editModalLabel{{ $post->post_ID }}">Edit Post</h5>
+            <!-- Edit Button -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->post_ID }}">
+                <i class="bi bi-pencil-square"></i> Edit
+            </button>
+
+            <!-- when edit button is triggered this will appear -->
+            <div class="modal fade" id="editModal{{ $post->post_ID }}" tabindex="-1" aria-labelledby="editModalLabel{{ $post->post_ID }}" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Edit Post Form -->
+                    <form method="POST" action="{{ route('updatePost', $post->post_ID) }}">
+                        @csrf
+                        @method('PUT')
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel{{ $post->post_ID }}">Edit Post</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -145,9 +146,8 @@
              </div>
          @endforeach
         @endif
-
-                 </div>
             </div>
+          </div>
         </form>
     </div>
 </main>
