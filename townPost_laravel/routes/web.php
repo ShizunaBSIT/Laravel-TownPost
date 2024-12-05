@@ -54,6 +54,7 @@ Route::get('/landing', [postsControllers::class, 'showPosts'])->name('posts.inde
 
 
 /* Routing for postman -- TESTING PURPOSES -- */
+//routing for user.
 Route::get('/test/users/{id}',[usersController::class, 'viewUser']);
 Route::post('/test/users/create', [usersController::class,'createUser']);
 Route::get('/test/users/login', [usersController::class,'loginUser']);
@@ -61,15 +62,18 @@ Route::put('/test/users/update', [usersController::class, 'updateUser']);
 Route::delete('/test/users/delete', [usersController::class, 'deleteUser']);
 
 // search method
-Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost']);
+Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost'])->name("search.post");
 
+//routing for comment
 Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comments.get');
-Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
+Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comment.view');
+Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('postComment');
+Route::put('/test/comments/update',[commentsController::class, 'updateComment']);
+Route::delete('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
 
-
+//routing for posts
 Route::get ('/test/posts/retrieve', [postsControllers::class, 'retrievePosts'])->name('retrievePosts');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
-
 Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
 Route::post('/createpost', [postsControllers::class, 'createPost'])->name('createPost');
@@ -79,17 +83,16 @@ Route::get('/token', function(){
     return csrf_token();
 });
 
-Route::get('/test/comments/{id}',[commentsController::class, 'viewComments']);
-Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('postComment');
-Route::put('/test/comments/update',[commentsController::class, 'updateComment']);
-Route::delete('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
+//routing for reactions
+Route::get('/test/reactions/{id}',[reactionController::class, 'getReactions'])->name('post.getreactions');
+Route::get('/test/reactions/react',[reactionController::class, 'react'])->name('post.react');
+Route::get('/test/reactions/unreact',[reactionController::class, 'unreact'])->name('post.unreact');
 
+
+Route::post('/test/comments/create', [commentsController::class, 'postComment'])->name('comments.post');
 Route::get('/test/comments/create', [commentsController::class, 'postComment']);
 Route::get('/test/comments/update',[commentsController::class, 'updateComment']);
 Route::get('/test/comments/delete/{id}',[commentsController::class, 'deleteComment']);
 
-Route::get('/test/reactions/{id}',[reactionController::class, 'getReactions'])->name('post.getreactions');
-Route::get('/test/reactions/react',[reactionController::class, 'react'])->name('post.react');
-Route::get('/test/reactions/unreact',[reactionController::class, 'unreact'])->name('post.unreact');
 
 /* ^^ Routing for postman ^^*/

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="str_replace('_', '-', app() -> getLocale()">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,7 +23,9 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('createPost')}}">
+                <!--the routing here is that when write post is 'click' di siya nareredirect sa createpost.blade.php-->
+                <!--error says Call to a member function get() on null -->
+                <a class="nav-link text-white" href="{{ route('createPost') }}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
@@ -42,9 +44,9 @@
             <button id="sidebarCollapse" class="btn btn-info">
                 <i class="bi bi-list"></i>
             </button>
-            <form class="d-flex">
+            <form class="d-flex" id="search-result">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success" onclick="submit()">Search</button>
                  </form>
         </div>
 
@@ -84,14 +86,9 @@
                                         <hr class="my-4">
 
                                 <!-- Like Button -->
-                                <button type="submit" class="btn btn-info"  onclick="getReaction('like', {{$post->post_ID}})">
-                                    <i class="bi bi-hand-thumbs-up"></i> Like
+                            <button id="reaction-button" class="btn btn-light" value="{{$post->post_ID}}" data-state="unliked">
+                                   <i class="bi bi-hand-thumbs-up">Like</i>
                                 </button>
-                                <!-- Disike Button -->
-                                <button type="submit" class="btn btn-info"  onclick="getReaction('like', {{$post->post_ID}})">
-                                    <i class="bi bi-hand-thumbs-up"></i> Dislike
-                                </button>
-                            
                                 <!--when comment button is clicked it will be redirected to comment.blade.php-->
                                 <button type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
@@ -152,6 +149,22 @@
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="{{ asset('js/announcement.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!--not yet tried this one is working-->
+<script>
+async function submit() {
+      event.preventDefault();
+    const searchWord = document.getElementById('search-result').value;
+    const url = `search.post`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Post not found');
+        const data = await response.json();
+        document.getElementById('results-container').innerHTML = JSON.stringify(data);
+    } catch (error) {
+        alert('No post to display');
+    }
+}
+</script>
 </body>
 </html>
