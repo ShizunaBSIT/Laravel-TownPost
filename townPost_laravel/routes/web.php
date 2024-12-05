@@ -23,9 +23,10 @@ Route::get('/showposts', function () {
     return view('showposts', compact('user'));
 });
 
-Route::get('/createpost', function () {
-    return view('createpost');
-});
+/*Route::get('/createpost', function () {
+    $post = auth()->user(); // Get the authenticated user
+    return view('createpost', compact('post'));
+}); */
 Route::view('/modals', 'modal')->name('modals.account');
 
 // Comments Routes
@@ -52,6 +53,11 @@ Route::get('/dashboard', function () {
 Route::get ('/', [postsControllers::class, 'retrievePosts'])->name('posts.get');
 Route::get('/landing', [postsControllers::class, 'showPosts'])->name('posts.index');
 
+// routing to post
+Route::get('/writePost', function (){
+    return view('writepost');
+})->name('writePost');
+
 
 /* Routing for postman -- TESTING PURPOSES -- */
 //routing for user.
@@ -76,7 +82,7 @@ Route::get ('/test/posts/retrieve', [postsControllers::class, 'retrievePosts'])-
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
 Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
-Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');
+Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');;
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
 Route::delete('/test/posts/delete/{id}', [postsControllers::class, 'deletePost'])->name('deletePost');
 Route::get('/token', function(){

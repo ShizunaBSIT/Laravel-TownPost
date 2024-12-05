@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin_permissions', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_ID');
-            $table->foreign('admin_ID')->references('admin_ID')->on('admins');
+        Schema::create('mod_permissions', function (Blueprint $table) {
+            $table->unsignedBigInteger('moderator_ID');
+            $table->foreign('moderator_ID')->references('moderator_ID')->on('users');
             $table->id('permission_ID');
             $table->string('permission_name');
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin_permissions');
+        Schema::dropIfExists('mod_permissions');
     }
 };

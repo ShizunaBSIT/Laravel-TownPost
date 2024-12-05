@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->id('admin_ID');
+        /*Schema::create('moderators', function (Blueprint $table) {
+            $table->id('moderator_ID');
             $table->unsignedBigInteger('user_ID');
             $table->foreign('user_ID')->references('user_ID')->on('users');
             $table->date('date_start');
             $table->timestamps();
-        });
+        }); */
     }
 
     /**

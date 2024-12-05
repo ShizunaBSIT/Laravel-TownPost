@@ -10,7 +10,7 @@ async function toggleReaction(button) {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
-            //converts a javascript to json where the
+            //converts a javascript to json where the 
             body: JSON.stringify({ state: currentState })
         });
 

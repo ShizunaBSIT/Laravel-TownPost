@@ -25,7 +25,7 @@
             <li>
                 <!--the routing here is that when write post is 'click' di siya nareredirect sa createpost.blade.php-->
                 <!--error says Call to a member function get() on null -->
-                <a class="nav-link text-white" href="{{ route('createPost') }}">
+                <a class="nav-link text-white" href="{{ route('writePost') }}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
