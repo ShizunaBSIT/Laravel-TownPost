@@ -1,3 +1,4 @@
+<!--Upon Successful logging in this will now be displayed -->
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -18,19 +19,19 @@
         <ul class="list-unstyled components">
             <p class="text-white text-center">Menu</p>
             <li class="active">
+                 <!--when Home is clicked it will be redirected to showposts.blade.php-->
                 <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/house.svg') }}" width="30" height="30" alt="Home" class="me-2"> Home
                 </a>
             </li>
             <li>
-                <!--the routing here is that when write post is 'click' di siya nareredirect sa createpost.blade.php-->
-                <!--error says Call to a member function get() on null -->
                 <a class="nav-link text-white" href="{{ route('writePost') }}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{url('/login')}}">
+                 <!--once clicked it will be redirected to account.blade.php where updating and deleting of account takes place-->
+                <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
@@ -80,8 +81,10 @@
                             @foreach($posts as $post)
                                 <div class="jumbotron">
                                     <h4 class="display-4">{{ $post->title }}</h4>
-                                        <p class="lead">Category: {{ $post->category_ID }}</p>
-                                        <p class="lead">Posted by User ID: {{ $post->user_ID }} on {{ $post->date_posted }}</p>
+                                        <p class="lead">Category:
+                                             {{ $post->name }}</p>
+                                        <p class="lead">Posted by: 
+                                            {{ $post->username }} on {{ $post->date_posted }}</p>
                                         <p class="lead">{{ $post->content }}</p>
                                         <hr class="my-4">
 

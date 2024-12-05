@@ -16,14 +16,19 @@ Route::get('/editpost', function () {
 Route::get('/postreactions', function () {
     return view('postreactions');
 });
-Route::view('/announcement','announcement')->name('return.announcement');
+
+//this is the route for the static page first this will be the first page
+Route::get('/', function () {
+    return view('announcement');
+});
+//once the button comment is click or any button in the static page which is the announcement.blade.ph this modal will appear
+Route::view('/modals', 'modal')->name('modals.account');
 
 Route::get('/showposts', function () {
     $user = auth()->user(); // Get the authenticated user
-    return view('showposts', compact('user'));
+    return view('showposts', [postsControllers::class, 'retrievePosts']);
 });
 
-Route::view('/modals', 'modal')->name('modals.account');
 
 // Comments Routes
 Route::get('/comments/{id}', [commentsController::class, 'viewComments'])->name('comments.view');
@@ -46,13 +51,18 @@ Route::get('/dashboard', function () {
 
 
 /// routing to web test
-Route::get ('/', [postsControllers::class, 'retrievePosts'])->name('posts.get');
-Route::get('/landing', [postsControllers::class, 'showPosts'])->name('posts.index');
+#Route::get ('/', [postsControllers::class, 'retrievePosts'])->name('posts.get');
+#Route::get('/landing', [postsControllers::class, 'showPosts'])->name('posts.index');
 
 // routing to post
 Route::get('/writePost', function (){
     return view('writepost');
 })->name('writePost');
+
+
+
+
+
 
 
 /* Routing for postman -- TESTING PURPOSES -- */
@@ -76,7 +86,7 @@ Route::delete('/test/comments/delete/{id}',[commentsController::class, 'deleteCo
 //routing for posts
 Route::get ('/test/posts/retrieve', [postsControllers::class, 'retrievePosts'])->name('retrievePosts');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
-Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
+#Route::get ('/', [postsControllers::class, 'retrievePost'])->name('retrievePost');
 Route::get('/test/posts/{id}', [postsControllers::class, 'getPost'])->name('getPost');
 Route::post('/test/posts/create', [postsControllers::class, 'createPost'])->name('createPost');;
 Route::put('/test/posts/update/{id}', [postsControllers::class, 'updatePost'])->name('updatePost');
