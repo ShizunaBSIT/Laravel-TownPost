@@ -66,16 +66,19 @@
                     <option value="3">News</option>
                 </select>
             </div>
+            <!--upon successful account creation user_id will be successfully fetched here-->
             <div class="card mb-4">
-                <!--session here is not working-->
-                    if(session('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{Auth::user()->user_ID}}
-                        </div>
-                    @endif
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    @auth
+                            User ID: {{ Auth::user()->id }}
+                    @endauth
+                    </div>
+                 @endif
+            </div>
                    <!-- <label for="userid" class="form-label"><strong>Publish by: </strong></label>
                     <input type="text" class="form-control" id="userid" name="username" placeholder="Enter your username here">-->
-            </div>
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
                     <input type="text" class="form-control" id="publishDate" name="date_posted" readonly placeholder="Press the button set date">

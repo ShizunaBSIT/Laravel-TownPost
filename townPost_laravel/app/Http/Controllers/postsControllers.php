@@ -65,6 +65,9 @@ class postsControllers extends Controller
 
     // POST - Create a new post
     public function createPost(Request $data) {
+        if (!Auth::check()) {
+        return response()->json(["message" => "Unauthorized"], 401);
+    }
         $post = new Posts;
         $post->user_ID = $data->user_ID;
         $post->category_ID = $data->category_ID;
@@ -73,13 +76,11 @@ class postsControllers extends Controller
         $post->date_posted = Carbon::parse($data->date_posted)->format('Y/m/d');
         $post->save();
 
-        
-        return view('createpost');
         return response()->json([
             "message" => "Post created."
         ], 201);
-
     }
+
     // PUT - Update post content
     public function updatePost(Request $data, $id) {
         $post = Posts::findOrFail($id);

@@ -46,17 +46,81 @@
 <main class="container mt-4">
    <div class="card" style="width: 18rem;">
         <div class="card-body">
-        @if(session('success'))
-            <h5 class="card-title">User Details</h5>
-                <p class="card-text"><stong>Username:</stong>{{$user->username}}</p>
-                <p class="card-text"><strong>Email:</strong>{{$user->email}}</p>
-                <p class="card-text"><strong>Password:</strong>{{$user->password}}</p>
-                <p class="card-text"><strong>Account Created on:</strong>{{user->date_created}}</p>
-        @endif
+            <h5 class="card-title">Account Details</h5>
+        @foreach($users as $user)
+            <p class="card-text">Email: {{$user->email}}</p>
+            <p class="card-text">Username: {{$user->username}}</p>
+            <p class="card-text">Date Created: {{$user->date_created}}</p>
+        </div>
+        
+        <!-- Button to trigger Update Account Modal -->
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateAccountModal">
+            Update Account
+        </button>
+        <!-- Update Account Modal -->
+        <div class="modal fade" id="updateAccountModal" tabindex="-1" aria-labelledby="updateAccountModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--in updating the user first it must identify the userID is-->
+                    <form action="{{ route('updateUser', $user->userID) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateAccountModalLabel">Update Account Credentials</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                        <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Email address:</label>
+                            <input type="email" name="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="usernameInput" class="form-label">Username:</label>
+                            <input type="text" name="username" class="form-control" id="usernameInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="form-label">Update Password:</label>
+                            <input type="password" name="password" class="form-control" id="passwordInput">
+                        </div>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-        <i class="bi bi-box-arrow-left float-end">Log out</i>
-  </div>
-</div>
+                <!-- Button to trigger Delete Account Modal -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                    Delete Account
+                </button>
+
+                <!-- Delete Account Modal -->
+                <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                    <form action="{{ route('deleteUser', $user->userID) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteAccountModalLabel">Account Deletion Warning!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete your account? This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+     </div>
 </main>
 </body>
 </html>

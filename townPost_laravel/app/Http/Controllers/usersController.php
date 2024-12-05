@@ -115,8 +115,4 @@ class usersController extends Controller
             return response()->json(["message" => "User doesn't exist"]);
         }
     }
-
-
-
-
 }
