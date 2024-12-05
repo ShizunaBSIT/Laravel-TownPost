@@ -44,7 +44,7 @@
             </button>
             <form class="d-flex" method="GET" action="/searchpost">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchWord">
-                <button class="btn btn-outline-success" onclick="submit()">Search</button>
+                <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
 

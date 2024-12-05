@@ -47,7 +47,6 @@
    <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Account Details</h5>
-        @foreach($users as $user)
             <p class="card-text">Email: {{$user->email}}</p>
             <p class="card-text">Username: {{$user->username}}</p>
             <p class="card-text">Date Created: {{$user->date_created}}</p>
@@ -119,7 +118,6 @@
                     </form>
                 </div>
             </div>
-        @endforeach
      </div>
 </main>
 </body>

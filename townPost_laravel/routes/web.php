@@ -24,10 +24,6 @@ Route::get('/', function () {
 //once the button comment is click or any button in the static page which is the announcement.blade.ph this modal will appear
 Route::view('/modals', 'modal')->name('modals.account');
 
-//Route::get('/showposts', function () {
-   // $user = auth()->user(); // Get the authenticated user
-   // return view('showposts', [postsControllers::class, 'retrievePosts']);
-//});
 
 Route::middleware('auth')->get('/showposts', [postsControllers::class, 'retrievePost']);
 // Comments Routes
@@ -62,8 +58,7 @@ Route::get('/writePost', function (){
     return view('writepost');
 })->name('writePost');
 
-//routing to search
-Route::get('/searchpost', [PostController::class, 'searchPost']);
+Route::get('/searchpost', [postsControllers::class, 'searchPost']);
 
 //for comments blade
 Route::get('/getcomments', function (){
@@ -93,7 +88,7 @@ Route::put('/test/users/update', [usersController::class, 'updateUser']);
 Route::delete('/test/users/delete', [usersController::class, 'deleteUser']);
 
 // search method
-Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost'])->name("search.post");
+#Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost'])->name("search.post");
 
 //routing for comment
 Route::get('/test/comments/{id}',[commentsController::class, 'viewComments'])->name('comments.get');

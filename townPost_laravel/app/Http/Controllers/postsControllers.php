@@ -41,15 +41,11 @@ class postsControllers extends Controller
             return response()->json(["message" => "Post does not exist"]);
         }
     }
-    public function showPosts()
-{
-    $posts = posts::all(); // Fetch all posts
-    return view('showposts', compact('posts'));
-}
 
     // GET - for the search function
-    public function searchPost($searchWord) {
-        // This function is for searching via the search bar
+    public function searchPost(Request $request) {
+        $searchWord = $request->query('searchWord'); // Retrieve the 'searchWord' parameter
+
         $posts = Posts::whereLike('title','%'.$searchWord.'%')
                 ->orWhereLike('title','%'.$searchWord)
                 ->orWhereLike('title',$searchWord.'%')->get();
