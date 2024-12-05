@@ -17,8 +17,8 @@
     <!-- Add Comment -->
     <form action="{{ route('comments.create') }}" method="POST">
         @csrf
-        <input type="hidden" name="postID" value="{{ $post->id }}">
-        <input type="hidden" name="userID" value="{{ Auth::id() }}">
+        <input type="hidden" name="post_ID" value="{{ $post->id }}">
+        <input type="hidden" name="user_ID" value="{{ Auth::id() }}">
         <div class="mb-3">
             <label for="content" class="form-label">Comment:</label>
             <textarea class="form-control" id="content" name="content" rows="3"></textarea>

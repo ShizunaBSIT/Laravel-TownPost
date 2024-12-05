@@ -26,8 +26,8 @@ class commentsController extends Controller
     // POST
     // create comment
     public function postComment(Request $data) {
-        $postID = $data->postID;
-        $userID = $data->userID;
+        $postID = $data->post_ID;
+        $userID = $data->user_ID;
         $content = $data->content;
 
         $comment = new comments;

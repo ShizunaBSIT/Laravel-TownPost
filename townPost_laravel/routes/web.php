@@ -23,10 +23,6 @@ Route::get('/showposts', function () {
     return view('showposts', compact('user'));
 });
 
-/*Route::get('/createpost', function () {
-    $post = auth()->user(); // Get the authenticated user
-    return view('createpost', compact('post'));
-}); */
 Route::view('/modals', 'modal')->name('modals.account');
 
 // Comments Routes
