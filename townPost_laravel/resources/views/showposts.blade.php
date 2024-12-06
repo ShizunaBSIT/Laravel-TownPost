@@ -79,10 +79,11 @@
                                 <p class=>Posted by: {{ $post->username }} on {{ $post->date_posted }}</p>
                                 <p>{!! nl2br(e($post->content)) !!}</p>
                             </div>
+                            <!--button section-->
                             <div class="card-footer d-flex justify-content-between">
-                                <button type="button" id="like-button" class="btn btn-light">
-                                    <i class="bi bi-hand-thumbs-up"></i> Like
-                                </button>
+                                    <button type="button" class="btn btn-light like-button" data-reacted="false" data-post-id="{{$post->post_ID}}" data-user-id="{{$post->user_ID}}">
+                                        <i class="bi bi-hand-thumbs-up"></i> Like
+                                     </button>
                                 <a href="{{route('getcomments')}}" type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
                                 </a>
@@ -134,6 +135,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{ asset('js/announcement.js') }}"></script>
-    <script src="{{asset('js/reaction.js')}}"></script>
 </body>
 </html>

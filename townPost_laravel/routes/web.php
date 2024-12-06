@@ -79,6 +79,13 @@ Route::get('/privacy', function () {
 Route::get('/terms', function () {
     return view('terms');
 });
+
+
+
+
+
+
+
 /* Routing for postman -- TESTING PURPOSES -- */
 //routing for user.
 Route::get('/test/users/{id}',[usersController::class, 'viewUser']);
