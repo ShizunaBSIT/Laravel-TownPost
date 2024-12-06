@@ -80,10 +80,15 @@
                                 <p>{!! nl2br(e($post->content)) !!}</p>
                             </div>
                             <!--button section-->
-                            <div class="card-footer d-flex justify-content-between">
-                                    <button type="button" class="btn btn-light like-button" data-reacted="false" data-post-id="{{$post->post_ID}}" data-user-id="{{$post->user_ID}}">
+                            <div class="card-footer d-flex justify-content-between" style="background-color:#495E57">
+                                    <button type="button" class="btn btn-light like-button" data-reacted="false">
                                         <i class="bi bi-hand-thumbs-up"></i> Like
                                      </button>
+
+                                     <button type="button" id="share-button" class="btn btn-secondary" value="{{$post->post_ID}}">
+                                        <i class="bi bi-share"></i> Share
+                                     </button>
+                                      
                                 <a href="{{route('getcomments')}}" type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
                                 </a>
@@ -135,5 +140,25 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{ asset('js/announcement.js') }}"></script>
+    <script>
+        document.getElementById("share-button").addEventListener("click", function() {
+            var postID = this.value;  // Get the postID from the button value
+
+                // Perform a fetch request to the backend
+                fetch(`/share/${postID}`)
+                .then(response => response.json())  // Parse JSON response
+                    .then(data => {
+                console.log(data);  // Log the returned data
+                if (data.message) {
+                    alert(data.message);  // Show an error message if the post does not exist
+                } else {
+                    alert('Post shared successfully!');  // Success message
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
 </body>
 </html>

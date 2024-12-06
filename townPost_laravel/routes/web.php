@@ -58,7 +58,11 @@ Route::get('/writePost', function (){
     return view('writepost');
 })->name('writePost');
 
+//for search post
 Route::get('/searchpost', [postsControllers::class, 'searchPost']);
+
+//for sharing posts
+Route::get('/share/{postID}', [postsControllers::class, 'getPost']);
 
 //for comments blade
 Route::get('/getcomments', function (){
