@@ -64,6 +64,8 @@
                     <p id="weatherInfo" class="mt-3">Weather Info will appear here</p>
                 </div>
             </div>
+
+            <!--start of cards and retrieving of posts-->
             <div class="card-body">
                 <div class="card mb-4">
                     <div class="card-header">
@@ -88,6 +90,7 @@
                                      <button type="button" id="share-button" class="btn btn-secondary" value="{{$post->post_ID}}">
                                         <i class="bi bi-share"></i> Share
                                      </button>
+                                     <p class="result"></p>
                                       
                                 <a href="{{route('getcomments')}}" type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
@@ -141,24 +144,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{ asset('js/announcement.js') }}"></script>
     <script>
-        document.getElementById("share-button").addEventListener("click", function() {
-            var postID = this.value;  // Get the postID from the button value
+       document.getElementById("share-button").addEventListener("click", async function () {
+        const postID = this.value; // Get the post ID from the button's value
+        const resultPara = document.querySelector(".result");
 
-                // Perform a fetch request to the backend
-                fetch(`/share/${postID}`)
-                .then(response => response.json())  // Parse JSON response
-                    .then(data => {
-                console.log(data);  // Log the returned data
-                if (data.message) {
-                    alert(data.message);  // Show an error message if the post does not exist
-                } else {
-                    alert('Post shared successfully!');  // Success message
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
+        try {
+            // Fetch the post data from the server
+            const response = await fetch(`/share/${postID}`);
+            const post = await response.json();
+
+            if (response.ok && post.length > 0) {
+                const shareData = {
+                 title: post[0].title || "Check this out!", // Customize based on your post structure
+                 text: post[0].content || "Read this amazing post!", // Customize based on your post structure
+                 url: `http://127.0.0.1:8000/posts/${postID}`, // Construct the post URL
+            };
+
+                // Use the Web Share API
+                 await navigator.share(shareData);
+                resultPara.textContent = "Post shared successfully!";
+             } else {
+                resultPara.textContent = post.message || "Failed to fetch the post.";
+        }
+         } catch (err) {
+            resultPara.textContent = `Error: ${err.message}`;
+             }   
+    });
     </script>
 </body>
 </html>
