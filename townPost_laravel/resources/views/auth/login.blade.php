@@ -46,8 +46,8 @@
                                         </div>
                                         <a class="small text-muted" href="#!" style="color: white;">Forgot password?</a>
                                         <p class="mb-5 pb-lg-2" style=" color: white;">Don't have an account? <a href="{{ url('/register') }}" style="color: white;">Register here</a></p>
-                                        <a href="{{url('/terms')}}" class="small text-muted" style="color: white;">Terms of use.</a>
-                                        <a href="{{url('/privacy')}}" class="small text-muted" style="color: white;">Privacy policy</a>
+                                        <a href="{{url('/terms')}}" class="small" style="color: white;">Terms of use.</a>
+                                        <a href="{{url('/privacy')}}" class="small" style="color: white;">Privacy policy</a>
                                     </form>
                                 </div>
                             </div>
