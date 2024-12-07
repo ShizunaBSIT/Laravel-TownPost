@@ -18,6 +18,8 @@
         <ul class="list-unstyled components">
             <p class="text-white text-center">Menu</p>
             <li class="active">
+ 
+               <!--when this button is click it should be back to showposts.blade.php-->
                 <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/house.svg') }}" width="30" height="30" alt="Home" class="me-2"> Home
                 </a>
