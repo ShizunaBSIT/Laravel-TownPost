@@ -46,13 +46,16 @@
 <main class="container mt-4">
    <div class="card" style="width: 18rem;">
         <div class="card-body">
+
+        <!--the error here is that $user is not recognize this is from the users controller basically this
+        is the problem here where the users credentials is not fetch -->
             <h5 class="card-title">Account Details</h5>
             <p class="card-text">Email: {{$user->email}}</p>
             <p class="card-text">Username: {{$user->username}}</p>
             <p class="card-text">Date Created: {{$user->date_created}}</p>
         </div>
         
-        <!-- Button to trigger Update Account Modal -->
+        <!-- Button to trigger Update Account -->
         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateAccountModal">
             Update Account
         </button>

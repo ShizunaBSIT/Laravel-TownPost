@@ -12,6 +12,8 @@
 
 @section('content')
 <div class="container">
+    <!--the error here is that $post and $comment is not recognized as well the basis of nat is that upon clicking the comment button
+    it will be redirected to this page and the comment will be saved in the database-->
     <h2>Comments for Post: {{ $post->title }}</h2>
 
     <!-- Add Comment -->
