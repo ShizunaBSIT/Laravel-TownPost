@@ -83,21 +83,25 @@
                             </div>
                             <!--button section-->
                             <div class="card-footer d-flex justify-content-between" style="background-color:#495E57">
-                                    <button type="button" class="btn btn-light like-button" data-reacted="false">
-                                        <i class="bi bi-hand-thumbs-up"></i> Like
-                                     </button>
+                                <button type="button" class="btn btn-light like-button" data-reacted="false">
+                                    <i class="bi bi-hand-thumbs-up"></i> Like
+                                </button>
 
-                                     <button type="button" id="share-button" class="btn btn-secondary" value="{{$post->post_ID}}">
-                                        <i class="bi bi-share"></i> Share
-                                     </button>
-                                     <p class="result"></p>
-                                      
+                                <button type="button" id="share-button" class="btn btn-secondary" value="{{$post->post_ID}}">
+                                    <i class="bi bi-share"></i> Share
+                                </button>
+                                <p class="result"></p>
+                                
+                                <!--when clicked it will be redirected to comment.blade.php-->
                                 <a href="{{route('getcomments')}}" type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
                                 </a>
+                                <!--when clicked this button the edit page will appear -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->post_ID }}">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </button>
+
+                                <!--delete button-->
                                 <form action="{{ route('deletePost', $post->post_ID) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -107,7 +111,8 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- Edit Modal -->
+
+                        <!-- Edit Page -->
                         <div class="modal fade" id="editModal{{ $post->post_ID }}" tabindex="-1" aria-labelledby="editModalLabel{{ $post->post_ID }}" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">

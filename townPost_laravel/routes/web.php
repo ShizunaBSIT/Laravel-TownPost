@@ -10,9 +10,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\reactionController;
 
-Route::get('/editpost', function () {
-    return view('editpost');
-});
 Route::get('/postreactions', function () {
     return view('postreactions');
 });
@@ -24,7 +21,7 @@ Route::get('/', function () {
 //once the button comment is click or any button in the static page which is the announcement.blade.ph this modal will appear
 Route::view('/modals', 'modal')->name('modals.account');
 
-
+//for showing posts
 Route::middleware('auth')->get('/showposts', [postsControllers::class, 'retrievePost']);
 // Comments Routes
 Route::get('/comments/{id}', [commentsController::class, 'viewComments'])->name('comments.view');
