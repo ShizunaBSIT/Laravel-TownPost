@@ -9,8 +9,8 @@ class admins extends Model
 {
     //
     use HasFactory;
-    protected $table='admins';
+    protected $table='moderators';
     protected $fillable=['user_ID','date_start'];
 
-    protected $primaryKey = 'admin_ID';
+    protected $primaryKey = 'moderator_ID';
 }

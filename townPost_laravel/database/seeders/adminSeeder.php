@@ -20,7 +20,7 @@ class adminSeeder extends Seeder
         ]);*/
 
         for($ctr = 1; $ctr <= 5; $ctr++) {
-            DB::table('admins')->insert([
+            DB::table('moderators')->insert([
                 'user_ID' => $ctr,
                 'date_start' => date('y-m-d')
             ]);

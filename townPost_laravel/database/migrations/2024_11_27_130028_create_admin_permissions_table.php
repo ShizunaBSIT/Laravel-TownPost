@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mod_permissions', function (Blueprint $table) {
-            $table->unsignedBigInteger('moderator_ID');
-            $table->foreign('moderator_ID')->references('moderator_ID')->on('users');
             $table->id('permission_ID');
+            $table->unsignedBigInteger('moderator_ID');
             $table->string('permission_name');
             $table->timestamps();
+
+            //$table->foreign('moderator_ID')->references('moderator_ID')->on('users');
         });
     }
 

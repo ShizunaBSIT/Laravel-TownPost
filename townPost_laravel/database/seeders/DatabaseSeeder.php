@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             UserDummyData::class,
             CategoriesData::class,
             PostDummyData::class,
-            adminSeeder::class,
+            //adminSeeder::class,
             commentsSeeder::class,
             reactionImgSeeder::class,
             reactionsSeeder::class,

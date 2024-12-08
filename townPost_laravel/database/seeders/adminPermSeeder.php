@@ -17,8 +17,8 @@ class adminPermSeeder extends Seeder
         $permissions = ['delete','ban'];
 
         for ($ctr = 1; $ctr <= 5; $ctr++) {
-            DB::table('admin_permissions')->insert([
-                'admin_ID' => rand(1,5),
+            DB::table('mod_permissions')->insert([
+                'moderator_ID' => rand(1,5),
                 'permission_name' => 'delete'
             ]);
         }
