@@ -20,7 +20,6 @@ class postsControllers extends Controller
         $posts = json_decode($posts);
         // Pass the posts to the view
         //return view('postsTest', ['posts' => $posts]);
-
         //return response()->json($posts);
         return view('showposts', ['posts'=> $posts]);
 
