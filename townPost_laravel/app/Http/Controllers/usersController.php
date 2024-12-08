@@ -24,7 +24,9 @@ class usersController extends Controller
             //return response()->json($user);
         if ($user) {
         // Pass the user data to the view
-        return view('account', ['users' => [$user]]);
+        return view('account', ['user' => $user]);
+
+        //return response()->json($user);
         }
         else {
             return response()->json(

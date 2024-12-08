@@ -3,23 +3,21 @@
 <head>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Post</title>
+    <title>Post Comments</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
 </head>
 <body>
-@extends('layouts.app')
 
-@section('content')
 <div class="container">
     <!--the error here is that $post and $comment is not recognized as well the basis of nat is that upon clicking the comment button
     it will be redirected to this page and the comment will be saved in the database-->
-    <h2>Comments for Post: {{ $post->title }}</h2>
+    <h2>Comments for Post: {{ $post[0]->title }}</h2>
 
     <!-- Add Comment -->
     <form action="{{ route('comments.create') }}" method="POST">
         @csrf
-        <input type="hidden" name="post_ID" value="{{ $post->id }}">
+        <input type="hidden" name="post_ID" value="{{ $post[0]->post_ID }}">
         <input type="hidden" name="user_ID" value="{{ Auth::id() }}">
         <div class="mb-3">
             <label for="content" class="form-label">Comment:</label>
@@ -55,7 +53,6 @@
         @endforeach
     </div>
 </div>
-@endsection
 
 </body>
 </html>

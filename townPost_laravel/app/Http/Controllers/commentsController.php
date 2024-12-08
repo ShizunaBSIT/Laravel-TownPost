@@ -13,15 +13,22 @@ class commentsController extends Controller
     public function viewComments($id)
     {
         $comments = comments::where('post_ID', $id)->get();
-        $post = Posts::find($id);
-    
+        $post = Posts::where('post_ID', $id)->get();
+
+        // return redirect()->route('profile', ['id' => 1]);
         if ($comments->isEmpty()) {
-            return view('comments', ['comments' => [], 'post' => $post]);
+            return view('comments',['comments' => [], 'post' => $post]);
+
+            //return response()->json(['comments' => [], 'post' => $post]);
         }
-    
-        return view('comments', ['comments' => $comments, 'post' => $post]);
+        else {
+            return view('comments',['comments' => $comments, 'post' => $post]);
+        }
+
+        //return redirect()->route('getcomments',['comments' => [], 'post' => $post]);
+        //return response()->json(['comments' => [], 'post' => $post]);
     }
-    
+
 
     // POST
     // create comment
@@ -31,8 +38,8 @@ class commentsController extends Controller
         $content = $data->content;
 
         $comment = new comments;
-        $comment->post_ID = $post_ID;
-        $comment->user_ID = $user_ID;
+        $comment->post_ID = $postID;
+        $comment->user_ID = $userID;
         $comment->content = $content;
         $comment->save();
 
@@ -44,7 +51,7 @@ class commentsController extends Controller
     // PUT
     // edit comment
     public function updateComment(Request $data) {
-        $comment = comments::where('post_ID','=',$data->postID)->get();
+        $comment = comments::where('comment_ID','=',$data->commentID)->first();
 
         if(!empty($comment)) {
             $comment->content = is_null($data->content) ? $comment->content : $data->content;

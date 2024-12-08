@@ -18,7 +18,7 @@
         <ul class="list-unstyled components">
             <p class="text-white text-center">Menu</p>
             <li class="active">
- 
+
                <!--when this button is click it should be back to showposts.blade.php-->
                 <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/house.svg') }}" width="30" height="30" alt="Home" class="me-2"> Home
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('accountView')}}">
+                <a class="nav-link text-white" href="{{ route('retrieveAccount',['id'=>Auth::user()->user_ID]) }}">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
@@ -93,9 +93,9 @@
                                     <i class="bi bi-share"></i> Share
                                 </button>
                                 <p class="result"></p>
-                                
+
                                 <!--when clicked it will be redirected to comment.blade.php-->
-                                <a href="{{route('getcomments')}}" type="button" class="btn btn-info">
+                                <a href="{{route('comments.view',['id'=>$post->post_ID])}}" type="button" class="btn btn-info">
                                     <i class="bi bi-chat"></i> Comment
                                 </a>
                                 <!--when clicked this button the edit page will appear -->
@@ -175,7 +175,7 @@
         }
          } catch (err) {
             resultPara.textContent = `Error: ${err.message}`;
-             }   
+             }
     });
     </script>
 </body>

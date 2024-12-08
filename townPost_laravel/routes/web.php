@@ -70,6 +70,7 @@ Route::get('/getcomments', function (){
 Route::get('/accountView', function (){
     return view('account');
 })->name('accountView');
+Route::get('/account/{id}',[usersController::class, 'viewUser'])->name('retrieveAccount');
 
 //for privacy redirection
 Route::get('/privacy', function () {
@@ -92,8 +93,8 @@ Route::get('/terms', function () {
 Route::get('/test/users/{id}',[usersController::class, 'viewUser']);
 Route::post('/test/users/create', [usersController::class,'createUser']);
 Route::get('/test/users/login', [usersController::class,'loginUser']);
-Route::put('/test/users/update', [usersController::class, 'updateUser']);
-Route::delete('/test/users/delete', [usersController::class, 'deleteUser']);
+Route::put('/test/users/update', [usersController::class, 'updateUser'])->name('updateUser');
+Route::delete('/test/users/delete', [usersController::class, 'deleteUser'])->name('deleteUser');
 
 // search method
 #Route::get('/test/post/search/{input}',[postsControllers::class, 'searchPost'])->name("search.post");

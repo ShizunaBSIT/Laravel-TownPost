@@ -39,7 +39,7 @@
         <!-- Navbar -->
         <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list"></i> 
+                <i class="bi bi-list"></i>
             </button>
         </div>
         <!-- Main Content -->
@@ -50,11 +50,11 @@
         <!--the error here is that $user is not recognize this is from the users controller basically this
         is the problem here where the users credentials is not fetch -->
             <h5 class="card-title">Account Details</h5>
-            <p class="card-text">Email: {{$user->email}}</p>
-            <p class="card-text">Username: {{$user->username}}</p>
-            <p class="card-text">Date Created: {{$user->date_created}}</p>
+            <p class="card-text">Email: {{$user[0]->email}}</p>
+            <p class="card-text">Username: {{$user[0]->username}}</p>
+            <p class="card-text">Date Created: {{$user[0]->date_created}}</p>
         </div>
-        
+
         <!-- Button to trigger Update Account -->
         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateAccountModal">
             Update Account
@@ -64,7 +64,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!--in updating the user first it must identify the userID is-->
-                    <form action="{{ route('updateUser', $user->userID) }}" method="POST">
+                    <form action="{{ route('updateUser', $user[0]->userID) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
@@ -104,7 +104,7 @@
                 <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                    <form action="{{ route('deleteUser', $user->userID) }}" method="POST">
+                    <form action="{{ route('deleteUser', $user[0]->userID) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <div class="modal-header">
