@@ -13,4 +13,15 @@ class comments extends Model
     protected $fillable=['post_ID','user_ID','content'];
 
     protected $primaryKey = 'comment_ID';
+
+    public function post()
+    {
+        return $this->belongsTo(posts::class, 'post_ID', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Users::class, 'user_ID', 'id');
+    }
+
 }

@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique(); // Ensure this line exists
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('moderator_ID');
             $table->timestamp('date_created')->useCurrent(); // Optional, adjust as needed
             $table->rememberToken();
         });
