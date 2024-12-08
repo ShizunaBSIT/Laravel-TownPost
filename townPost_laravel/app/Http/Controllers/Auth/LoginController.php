@@ -29,7 +29,7 @@ class LoginController extends Controller
             Auth::login($user);
 
             // Redirect to the intended page or to a default landing page
-            return redirect()->intended('/landing')->with('success', 'Logged in successfully!');
+            return redirect()->intended('/showposts')->with('success', 'Logged in successfully!');
         }
 
         // If login fails, return back with an error message

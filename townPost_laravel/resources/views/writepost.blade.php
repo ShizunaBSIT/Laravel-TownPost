@@ -1,3 +1,4 @@
+<!--This will appear once the write post is triggered-->
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,17 +18,19 @@
         <ul class="list-unstyled components">
             <p class="text-white text-center">Menu</p>
             <li class="active">
+                <!--when Home is clicked it will be redirected to showposts.blade.php-->
                 <a class="nav-link text-white" href="#">
                     <img src="{{ asset('/images/house.svg') }}" width="30" height="30" alt="Home" class="me-2"> Home
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('createPost')}}">
+                <a class="nav-link text-white" href="{{route('writePost')}}">
                     <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="{{route('logout')}}">
+                <!--once clicked it will be redirected to account.blade.php where updating and deleteting takes place-->
+                <a class="nav-link text-white" href="{{route('accountView')}}">
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
             </li>
@@ -66,10 +69,11 @@
                     <option value="3">News</option>
                 </select>
             </div>
+            <!--upon successful account creation user_id will be successfully fetched here-->
             <div class="card mb-4">
-                    <label for="userid" class="form-label"><strong>Publish by: </strong></label>
-                    <input type="text" class="form-control" id="userid" name="user_ID" placeholder="Enter your userId here">
+                <label for="user_ID" class="form-label"><strong>Publish by:</strong></label>
             </div>
+
             <div class="card mb-4 publish-date-container">
                     <label for="publishDate" class="form-label"><strong>Publish Date:</strong></label>
                     <input type="text" class="form-control" id="publishDate" name="date_posted" readonly placeholder="Press the button set date">

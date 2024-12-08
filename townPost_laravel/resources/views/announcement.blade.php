@@ -1,3 +1,4 @@
+<!--first landing page to br displayed-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -72,7 +73,7 @@
         <p><strong>Contact:</strong> Eunice D. Ibardaloza, 0917-123-4567, ibardaloza.eunice@titech.edu.ph</p>
         
         <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="{{route('modals.account')}}" class="btn btn-primary">
+        <a href="{{route('modals.account')}}" class="btn btn-light">
             <i class="bi bi-hand-thumbs-up"></i> Like
         </a>
         <a href="{{route('modals.account')}}"  class="btn btn-info" onclick="myButtons()">
@@ -111,11 +112,8 @@
         </ul>
         
          <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary" onclick="myButtons()">
+        <a href="#" class="btn btn-light" onclick="myButtons()">
             <i class="bi bi-hand-thumbs-up"></i> Like
-        </a>
-        <a href="#" class="btn btn-secondary" onclick="myButtons()">
-            <i class="bi bi-share"></i> Share
         </a>
         <a href="#" class="btn btn-info"onclick="myButtons()" >
             <i class="bi bi-chat-left-quote"></i> Comment
@@ -127,7 +125,6 @@
         </form>
     </div>
 </div>
-
 </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

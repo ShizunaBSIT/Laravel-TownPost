@@ -9,7 +9,7 @@
 <body class="bg-gray-100 text-gray-800">
     <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
         <h1 class="text-3xl font-bold text-center mb-6 text-blue-600">Terms and Services</h1>
-        <p class="text-sm text-gray-500 mb-8 text-center">Last Updated: <span class="font-semibold">[Insert Date]</span></p>
+        <p class="text-sm text-gray-500 mb-8 text-center">Last Updated: <span class="font-semibold">December 5, 2024</span></p>
         
         <section class="mb-6">
             <h2 class="text-xl font-semibold text-gray-800">1. Acceptance of Terms</h2>
@@ -109,8 +109,9 @@
             </p>
             <p class="mt-2 text-gray-600">
                 <strong>Email:</strong> support@town-talk.com<br>
-                <strong>Phone:</strong> [Insert phone number]<br>
-                <strong>Mailing Address:</strong> [Insert office address]
+                <strong>Phone:</strong> 09062614911<br>
+                <strong>Mailing Address:</strong> Lico St., Tondo, Manila<br>
+                <strong>Discord</strong> Town Talk E-Bulletin: Customer Service <br>
             </p>
         </section>
 

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Posts;
 use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+
 class postsControllers extends Controller
 {
     // GET - Retrieve posts sorted by date created/posted (for landing page)
@@ -17,7 +21,7 @@ class postsControllers extends Controller
             ->select('posts.*','users.username','categories.name')
             ->get();
 
-        $posts = json_decode($posts);
+        //$posts = json_decode($posts);
         // Pass the posts to the view
         //return view('postsTest', ['posts' => $posts]);
         //return response()->json($posts);
@@ -38,8 +42,9 @@ class postsControllers extends Controller
     }
 
     // GET - for the search function
-    public function searchPost($searchWord) {
-        // This function is for searching via the search bar
+    public function searchPost(Request $request) {
+        $searchWord = $request->query('searchWord'); // Retrieve the 'searchWord' parameter
+
         $posts = Posts::whereLike('title','%'.$searchWord.'%')
                 ->orWhereLike('title','%'.$searchWord)
                 ->orWhereLike('title',$searchWord.'%')->get();
@@ -56,8 +61,11 @@ class postsControllers extends Controller
 
     // POST - Create a new post
     public function createPost(Request $data) {
+        if (!Auth::check()) {
+        return response()->json(["message" => "Unauthorized"], 401);
+    }
         $post = new Posts;
-        $post->user_ID = $data->user_ID;
+        $post->user_ID = Auth::id(); //automatically assigned the logged-in users ID
         $post->category_ID = $data->category_ID;
         $post->title = $data->title;
         $post->content = $data->content;
@@ -71,12 +79,16 @@ class postsControllers extends Controller
 
     // PUT - Update post content
     public function updatePost(Request $data, $id) {
-        $post = Posts::find($id)->get();
+        $post = Posts::findOrFail($id);
 
         if (!empty($post)) {
-            $post->title = is_null($data->title) ? $post->title : $data->title;
-            $post->content = is_null($data->content) ? $post->content : $data->content;
-            $post->save();
+            //$post->title = is_null($data->title) ? $post->title : $data->title;
+            //$post->content = is_null($data->content) ? $post->content : $data->content;
+            //$post->save();
+            $post->update([
+                    'title' => $data->title,
+                    'content' => $data->content,
+            ]);
 
             return response()->json(["message" => "Post content updated"]);
         } else {
@@ -86,7 +98,7 @@ class postsControllers extends Controller
 
     // DELETE - Delete a post
     public function deletePost($id) {
-        $post = Posts::find($id)->get();
+        $post = Posts::findOrFail($id);
 
         if (!empty($post)) {
             $post->delete();
