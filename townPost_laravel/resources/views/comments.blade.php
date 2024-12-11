@@ -38,6 +38,8 @@
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="commentID" value="{{ $comment->comment_ID }}">
+                    <input type="hidden" name="post_ID" value="{{ $post[0]->post_ID }}">
+
                     <textarea class="form-control mb-2" name="content">{{ $comment->content }}</textarea>
                     <button type="submit" class="btn btn-warning">Update</button>
                 </form>
@@ -46,6 +48,7 @@
                 <form action="{{ route('comments.delete', $comment->comment_ID) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
+                    <input type="hidden" name="post_ID" value="{{ $post[0]->post_ID }}">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>

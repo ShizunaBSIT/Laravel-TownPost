@@ -16,13 +16,14 @@ Route::get('/postreactions', function () {
 
 //this is the route for the static page first this will be the first page
 Route::get('/', function () {
-    return view('announcement');
+    //return view('announcement');
+    return redirect()->route('showpost');
 });
 //once the button comment is click or any button in the static page which is the announcement.blade.ph this modal will appear
 Route::view('/modals', 'modal')->name('modals.account');
 
 //for showing posts
-Route::middleware('auth')->get('/showposts', [postsControllers::class, 'retrievePost']);
+Route::middleware('auth')->get('/showposts', [postsControllers::class, 'retrievePost'])->name('showpost');
 // Comments Routes
 Route::get('/comments/{id}', [commentsController::class, 'viewComments'])->name('comments.view');
 Route::post('/comments', [commentsController::class, 'postComment'])->name('comments.create');
@@ -59,7 +60,7 @@ Route::get('/writePost', function (){
 Route::get('/searchpost', [postsControllers::class, 'searchPost']);
 
 //for sharing posts
-Route::get('/share/{postID}', [postsControllers::class, 'getPost']);
+Route::get('/share/{postID}', [postsControllers::class, 'getPost'])->name('specificPost');
 
 //for comments blade
 Route::get('/getcomments', function (){
@@ -82,8 +83,10 @@ Route::get('/terms', function () {
     return view('terms');
 });
 
-
-
+// error page for try catch statements and errors
+Route::get('/error', function() {
+    return view('errorPage');
+});
 
 
 
@@ -131,3 +134,14 @@ Route::get('/test/comments/delete/{id}',[commentsController::class, 'deleteComme
 
 
 /* ^^ Routing for postman ^^*/
+
+/* I feel... disappointed. I overestimated my groupmates' skills thinking that they know the basics, only to
+    constantly be told something is not working, I give them the solution and it's still not working
+    I have to personally fix things to make them work cause for some reason they can't understand my explanations
+    now that we're past the deadline, even if I really, "really" want to fix every problem I saw while supposedly "polishing" up the
+    project, I can't help but leave certain design flaws as is because of the lack of time.
+
+    Those design flaws are going to get us in trouble with experienced PC users, but for users that are not as computer literate,
+    it would pass, but obviously as third year students, those types of design flaws shouldn't be left there.
+    - Shizuna
+*/
