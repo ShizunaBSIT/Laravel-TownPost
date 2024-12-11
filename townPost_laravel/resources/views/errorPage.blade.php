@@ -62,37 +62,6 @@
     <title>Error</title>
   </head>
   <body>
-    <!-- Side bar -->
-    <nav id="sidebar" class="position-fixed d-flex flex-column">
-        <div class="sidebar-header text-center py-4">
-            <img src="/images/Logo.jpg" width="50" height="50" alt="Logo">
-        </div>
-        <ul class="list-unstyled components flex-grow-1">
-            <p class="text-white text-center">Menu</p>
-            <li class="active">
-                <a class="nav-link text-white" href="#">
-                    <img src="{{ asset('/images/house.svg') }}" width="30" height="30" alt="Home" class="me-2"> Home
-                </a>
-            </li>
-            <li>
-                <a class="nav-link text-white" href="{{ route('writePost') }}">
-                    <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
-                </a>
-            </li>
-            <li>
-                <a class="nav-link text-white" href="{{route('accountView')}}">
-                    <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
-                </a>
-            </li>
-        </ul>
-
-        <!-- Footer Section -->
-        <footer class="mt-auto text-center py-3 bg-dark text-white">
-            <p>&copy; 2024 Town Bulletin</p>
-            <p>All rights reserved</p>
-        </footer>
-    </nav>
-
 
     <div class="row">
       <!-- Error content Message Here -->
@@ -102,7 +71,7 @@
         <p>{{$message}}</p>
       </div>
       <div class="col-4">
-        <img src="{{ asset('/images/error.jpg') }}" width="100" height="100" alt="error" class="me-2">
+        <img src="{{ asset('/images/error_1.jpg') }}" width="100" height="100" alt="error" class="me-2">
       </div>
     </div>
   </body>

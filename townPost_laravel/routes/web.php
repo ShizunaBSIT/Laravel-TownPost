@@ -85,7 +85,7 @@ Route::get('/terms', function () {
 
 // error page for try catch statements and errors
 Route::get('/error', function() {
-    return view('errorPage');
+    return view('errorPage', ['error_code' => "500", 'message' => "An error occured"]);
 });
 
 
