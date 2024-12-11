@@ -19,8 +19,3 @@ async function getWeather() {
 document.getElementById('sidebarCollapse').addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('active');
 });
-
-//for buttons
-function myButtons() {
-    alert("Please go to account to create your profile🥰");
-}

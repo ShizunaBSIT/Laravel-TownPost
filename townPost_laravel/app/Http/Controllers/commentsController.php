@@ -2,77 +2,116 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use App\Models\comments;
+use Exception;
 
 class commentsController extends Controller
 {
     // GET Method
     // retrieve comments from a specific post
-    public function viewComments($id) {
-        // this function should be called when the user wants to view the comments of a post they clicked on
-        // the $id is the post ID not the comment ID
+    public function viewComments($id)
+    {
+        try {
+            $comments = comments::where('post_ID', $id)->get();
+            $post = Posts::where('post_ID', $id)->get();
 
-        $comments = comments::where('post_ID','=',$id);
+            // return redirect()->route('profile', ['id' => 1]);
+            if ($comments->isEmpty()) {
+                return view('comments',['comments' => [], 'post' => $post]);
 
-        if (!empty($comments)) {
-            return response()->json($comments);
+                //return response()->json(['comments' => [], 'post' => $post]);
+            }
+            else {
+                return view('comments',['comments' => $comments, 'post' => $post]);
+            }
+
         }
-        else {
-            // should probably add a different variant of response when there is no error
-            return response()->json(
-                ["message"=>"Comments not found"],
-                 status: 404);
+        catch (Exception $e) {
+            return view('errorPage',['error_code' => "500", 'message' => "An Error Occured"]);
         }
+
+        //return redirect()->route('getcomments',['comments' => [], 'post' => $post]);
+        //return response()->json(['comments' => [], 'post' => $post]);
     }
+
 
     // POST
     // create comment
     public function postComment(Request $data) {
-        $postID = $data->postID;
-        $userID = $data->userID;
-        $content = $data->content;
 
-        $comment = new comments;
-        $comment->post_ID = $postID;
-        $comment->user_ID = $userID;
-        $comment->content = $content;
-        $comment->save();
+        try {
+            $postID = $data->post_ID;
+            $userID = $data->user_ID;
+            $content = $data->content;
 
-        return response()->json([
-            "message" => "Comment created."
-        ], 201);
+            $comment = new comments;
+            $comment->post_ID = $postID;
+            $comment->user_ID = $userID;
+            $comment->content = $content;
+            $comment->save();
+
+            /*return response()->json([
+                "message" => "Comment created."
+            ], 201);*/
+
+            return redirect()->route('comments.view', ['id' => $postID]);
+        }
+        catch (Exception $e) {
+            return view('errorPage',['error_code' => "500", 'message' => "An Error Occured"]);
+        }
+
     }
 
     // PUT
     // edit comment
     public function updateComment(Request $data) {
-        $comment = comments::where('post_ID','=',$data->postID);
+        try {
+            $comment = comments::where('comment_ID','=',$data->commentID)->first();
 
-        if(!empty($comment)) {
-            $comment->content = is_null($data->content) ? $comment->content : $data->content;
-            $comment->save();
+            if(!empty($comment)) {
+                $comment->content = is_null($data->content) ? $comment->content : $data->content;
+                $comment->save();
 
-            return response()->json(["message" => "Comment successfully updated"]);
+                //return response()->json(["message" => "Comment successfully updated"]);
+                return redirect()->route('comments.view', ['id' => $data->post_ID]);
+            }
+            else {
+            //return response()->json(["message" => "Error, comment not found"]);
+            return view('errorPage',['error_code' => "400", 'message' => "Comment not found"]);
+            }
         }
-        else {
-            return response()->json(["message" => "Error, comment not found"]);
+        catch (Exception $e) {
+            return view('errorPage',['error_code' => "500", 'message' => "An Error Occured"]);
         }
+
     }
 
     // DELETE
     // delete comment
-    public function deleteComment($id) {
-        $comment = comments::find($id);
+    public function deleteComment($id, Request $data) {
 
-        if (!empty($comment)) {
-            $comment->delete();
+        try {
 
-            return response()->json(["message" => "Comment successfully deleted"]);
+            $comment = comments::find($id);
+
+            if (!empty($comment)) {
+                $comment->delete();
+
+                //return response()->json(["message" => "Comment successfully deleted", 'content' => $comment]);
+                return redirect()->route('comments.view', ['id' => $data->post_ID]);
+            }
+            else {
+                //return response()->json(["message" => "Comment not found"]);
+                return view('errorPage',['error_code' => "404", 'message' => "Comment not found"]);
+            }
         }
-        else {
-            return response()->json(["message" => "Comment not found"]);
+        catch (Exception $e) {
+            return view('errorPage',['error_code' => "500", 'message' => "An Error Occured"]);
+            //return response()->json($e->getMessage());
         }
+
     }
 
 }

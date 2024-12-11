@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin_permissions', function (Blueprint $table) {
-            $table->foreign('admin_ID')->references('admin_ID')->on('admins');
+        Schema::create('mod_permissions', function (Blueprint $table) {
             $table->id('permission_ID');
+            $table->unsignedBigInteger('moderator_ID');
             $table->string('permission_name');
             $table->timestamps();
+
+            //$table->foreign('moderator_ID')->references('moderator_ID')->on('users');
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin_permissions');
+        Schema::dropIfExists('mod_permissions');
     }
 };

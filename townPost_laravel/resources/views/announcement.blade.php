@@ -1,3 +1,4 @@
+<!--first landing page to br displayed-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,39 +18,19 @@
         <ul class="list-unstyled components">
             <p class="text-white text-center">Menu</p>
             <li class="active">
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{route('modals.account')}}" >
                     <img src="{{ asset('/images/house.svg') }}" width="30" height="30" alt="Home" class="me-2"> Home
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="#">
-                    <img src="{{ asset('/images/Archive.svg') }}" width="30" height="30" alt="Archive" class="me-2"> Archive
+                <a class="nav-link text-white" href="{{route('modals.account')}}" >
+                    <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" style="color: white "class="me-2"> Write Post
                 </a>
             </li>
             <li>
-                <a class="nav-link text-white" href="#">
-                    <img src="{{ asset('/images/pencil-square.svg') }}" width="30" height="30" alt="Write Post" class="me-2"> Write Post
-                </a>
-            </li>
-            <li>
-                <a class="nav-link text-white" href="{{route('login')}}">
+                <a class="nav-link text-white" href="{{route('modals.account')}}" >
                     <img src="{{ asset('/images/person-circle.svg') }}" width="30" height="30" alt="Account Settings" class="me-2"> Account
                 </a>
-            </li>
-        </ul>
-        <ul class="list-unstyled components">
-            <p class="text-white text-center">Filter Posts</p>
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" >
-                        <i class="bi bi-sliders"></i> Filter
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Recent</a></li>
-                        <li><a class="dropdown-item" href="#">Time</a></li>
-                        <li><a class="dropdown-item" href="#">Date</a></li>
-                    </ul>
-                </div>
             </li>
         </ul>
     </nav>
@@ -57,16 +38,10 @@
     <!-- Content -->
     <div id="content" class="ms-auto">
         <!-- Navbar -->
-        <div class="d-flex justify-content-between align-items-center bg-light py-3 px-3">
+        <div class="d-flex justify-content-between align-items-center py-3 px-3">
             <button id="sidebarCollapse" class="btn btn-info">
-                <i class="bi bi-list"></i> Toggle Sidebar
+                <i class="bi bi-list"></i> 
             </button>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search Here" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit" onclick="myButtons()"> 
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
         </div>
 
         <!-- Main Content -->
@@ -98,13 +73,10 @@
         <p><strong>Contact:</strong> Eunice D. Ibardaloza, 0917-123-4567, ibardaloza.eunice@titech.edu.ph</p>
         
         <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary" onclick="myButtons()">
+        <a href="{{route('modals.account')}}" class="btn btn-light">
             <i class="bi bi-hand-thumbs-up"></i> Like
         </a>
-        <a href="#" class="btn btn-secondary" onclick="myButtons()">
-            <i class="bi bi-share"></i> Share
-        </a>
-        <a href="#" class="btn btn-info" onclick="myButtons()">
+        <a href="{{route('modals.account')}}"  class="btn btn-info" onclick="myButtons()">
             <i class="bi bi-chat-left-quote"></i> Comment
         </a>
 
@@ -140,11 +112,8 @@
         </ul>
         
          <!-- if button is click it will prompt a message that they need an account to comment -->
-        <a href="#" class="btn btn-primary" onclick="myButtons()">
+        <a href="#" class="btn btn-light" onclick="myButtons()">
             <i class="bi bi-hand-thumbs-up"></i> Like
-        </a>
-        <a href="#" class="btn btn-secondary" onclick="myButtons()">
-            <i class="bi bi-share"></i> Share
         </a>
         <a href="#" class="btn btn-info"onclick="myButtons()" >
             <i class="bi bi-chat-left-quote"></i> Comment
@@ -156,7 +125,6 @@
         </form>
     </div>
 </div>
-
 </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

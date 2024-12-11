@@ -4,35 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->temporary(); // comment this when done testing and developing
-            /*
-            This is so that the database doesnt get bloated with testing data
-            From Laravel docs:
-            Temporary tables are only visible to the current connection's database session 
-            and are dropped automatically when the connection is closed
-            */
 
             $table->id('user_ID');
-            $table->string('username');
+            $table->string('username')->unique(); // Ensure this line exists
+            $table->string('email')->unique();
             $table->string('password');
-            $table->string('date_created');
-            $table->timestamps();
+            $table->unsignedBigInteger('moderator_ID')->nullable();
+            $table->timestamp('date_created')->useCurrent(); // Optional, adjust as needed
+            $table->rememberToken();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('users');
     }
-};
+}

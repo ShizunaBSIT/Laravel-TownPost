@@ -12,4 +12,5 @@ class reactions extends Model
     use HasFactory;
     protected $table='reactions';
     protected $fillable=['post_ID','user_ID','reaction'];
+
 }

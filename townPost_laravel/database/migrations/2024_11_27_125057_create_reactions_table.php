@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reactions', function (Blueprint $table) {
+            $table->unsignedBigInteger('post_ID');
             $table->foreign('post_ID')->references('post_ID')->on('posts');
+            $table->unsignedBigInteger('user_ID');
             $table->foreign('user_ID')->references('user_ID')->on('users');
-            $table->foreign('reaction')->reference('reaction')->on('reaction_imgs');
+            $table->string('reaction')->references('reaction')->on('reaction_imgs');
             $table->timestamps();
         });
     }

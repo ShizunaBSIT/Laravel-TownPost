@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 /*
 NOTE TO SELF: Turn responses into web routes when everything is set up
@@ -15,12 +16,17 @@ class usersController extends Controller
     // GET
     // view user
     public function viewUser($id) {
-        $user = Users::find($id);
+        $user = Users::where('user_id','=',$id)->get();
 
-        if (!empty($user)) {
+        //if (!empty($user)) {
             // check if user is not empty and send all user's details to be displayed
             // (obviously we're not displaying the password on the frontend)
-            return response()->json($user);
+            //return response()->json($user);
+        if ($user) {
+        // Pass the user data to the view
+        return view('account', ['user' => $user]);
+
+        //return response()->json($user);
         }
         else {
             return response()->json(
@@ -34,16 +40,15 @@ class usersController extends Controller
     public function loginUser(Request $data) {
         // this finds the corresponding user using login credentials (login and password)
         /* This is meant to be different from the "view user" since this involves letting said user have the ability to login
-        and start creating posts on the website
-        */
-        $username = $data->username;
+        and start creating posts on the website */
+        $email = $data->email;
         $password = $data->password;
 
         $user = Users::where(
             [
-                ['username','=',$username]
+                ['email','=',$email]
             ]
-        )->first();
+        )->first()->get();
 
         if (empty($user)) { // if user empty
             return response()->json(
@@ -55,11 +60,15 @@ class usersController extends Controller
                 ["message"=>"Login Failed, please check password"],
                  status: 404);
         }
-        else { // login success
-            return response()->json($user);
+        else {
+            // Login successful
+            Auth::login($user); // Log the user in
+
+            return response()->json([
+                "message" => "Login Successful",
+                "user" => $user // Include user details if necessary
+            ]);
         }
-
-
     }
 
     // POST
@@ -67,7 +76,9 @@ class usersController extends Controller
     public function createUser(Request $data) {
         $user = new Users;
         $user->username = $data->username;
-        $user->password = Hash::make($data->password);
+
+        $user->email = $data->email;
+        $user->password = $data->password;
         $user->date_created = $data->date_created;
         $user->save();
 
@@ -83,9 +94,9 @@ class usersController extends Controller
     // update user info
     public function updateUser(Request $data, $userID) {
         if (Users::where('user_ID',$userID)->exists()) {
-            $user = Users::find($userID);
+            $user = Users::find($userID)->get();
             $user->username = is_null($data->username) ? $user->username : $data->username;
-            $user->password = is_null($data->password) ? $user->password : Hash::make($data->password);
+            $user->password = is_null($data->password) ? $user->password : $data->password;
 
             return response()->json(["message" => "User account Updated"]);
         } else {
@@ -98,7 +109,7 @@ class usersController extends Controller
     /* Remember to add a second prompt to make sure the user actually wants to delete their account
     */
     public function deleteUser($userID) {
-        $user = Users::find($userID);
+        $user = Users::find($userID)->get();
 
         if (!empty($user)) {
             $user->delete();
@@ -109,8 +120,4 @@ class usersController extends Controller
             return response()->json(["message" => "User doesn't exist"]);
         }
     }
-
-
-
-
 }
